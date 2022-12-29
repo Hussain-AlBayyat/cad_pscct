@@ -1,8 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:flutter_echarts/flutter_echarts.dart';
+
+import '../../../models/enums/echart_configurator.dart';
+import '../../../shared-widgets/echarts/echart.dart';
+import '../../../size_config.dart';
 
 class EGRSProcessingTime extends StatelessWidget {
-  EGRSProcessingTime({Key? key}) : super(key: key);
+  EGRSProcessingTime({required this.data, Key? key}) : super(key: key);
+  final List<Map> data;
+
   final egrsData = [
     {"Month": "Sep 2021", "Value": 17.6, "Target": 10},
     {"Month": "Oct 2021", "Value": 21.4, "Target": 10},
@@ -19,7 +27,102 @@ class EGRSProcessingTime extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return SfCartesianChart(
+    return EChartCharts(
+      data: data,
+      name: "Lost Opportunity",
+      configurations: [
+        EChartConfigurator(chartType: ChartType.line, showLabel: true),
+        EChartConfigurator(chartType: ChartType.line)
+      ],
+    );
+
+    SizedBox(
+        height: getProportionateScreenHeight(300), child: Echarts(option: '''{
+
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross'
+    }
+  },
+
+   grid: {
+    left: '5%',
+    right: '1%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'category',
+        boundaryGap: false,
+  axisLabel: {
+        interval: 0,
+        rotate: 45 
+      },
+    data: ${jsonEncode(egrsData.map((e) => e["Month"]).toList())}
+  },
+
+  yAxis: {
+    type: 'value',
+    axisLine: {
+        show: true,
+
+      },
+    splitNumber:3,
+    axisLabel: {
+      formatter: '{value}',
+    },
+  },
+
+
+  legend: {
+  formatter: function (name) {
+    return 'Average Process Time';
+},
+    data: ${jsonEncode(egrsData.first.keys.toList())}
+  },
+
+
+  series: [
+    {
+      name: 'Value',
+      type: 'line',
+      stack: 'Total',
+      smooth: true,
+    
+      label: {
+        show: true,
+        position: 'top',
+        color:'black'
+      },
+
+      data: ${jsonEncode(egrsData.map((e) => e["Value"]).toList())}
+
+    },
+
+
+
+      {
+      name: 'Targets',
+      type: 'line',
+      smooth: true,
+      showSymbol:false,
+      itemStyle: {
+          color: 'red',
+        },
+
+      data: ${jsonEncode(egrsData.map((e) => e["Target"]).toList())},
+       label: {
+        show: false,
+        position: 'top',
+        textStyle: {
+          fontSize: 12
+        }
+      }
+    },
+  ]
+}'''));
+    /*SfCartesianChart(
       plotAreaBorderWidth: 0,
       primaryXAxis: CategoryAxis(
         labelIntersectAction: AxisLabelIntersectAction.wrap,
@@ -58,6 +161,6 @@ class EGRSProcessingTime extends StatelessWidget {
           // Enable data label
         ),
       ],
-    );
+    );*/
   }
 }

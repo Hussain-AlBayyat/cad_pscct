@@ -6,6 +6,8 @@ class AppTheme {
   static const Color primaryColorLight = Color(0xFF6CD5FC);
   static const Color accentColor = Color(0xFF7F82B7);
   static const Color white = Color(0xFFffffff);
+  static const Color backGroundColor = Color(0xFFF7F7F7);
+
   static const Color backgroundDark = Color(0xFFD9CECE);
   static const Color backgroundLight = Color(0xFFFFFFFF);
 
@@ -46,7 +48,7 @@ class AppTheme {
     end: Alignment.bottomCenter,
   );
   static ThemeData android = ThemeData(
-    scaffoldBackgroundColor: Colors.transparent,
+    scaffoldBackgroundColor: Color(0xFFF7F7F7),
     fontFamily: 'Arial',
     primaryColor: primaryColor,
     primaryColorDark: primaryColor,
@@ -56,5 +58,6 @@ class AppTheme {
   );
   static CupertinoThemeData ios = const CupertinoThemeData(
     primaryColor: primaryColor,
+    scaffoldBackgroundColor: Color(0xFFF7F7F7),
   );
 }

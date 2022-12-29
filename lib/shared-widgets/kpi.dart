@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:pscct/models/assets.dart';
 import 'package:pscct/models/dialog_controller.dart';
+import 'package:pscct/models/pscct_kpi.dart';
 import 'package:pscct/shared-widgets/custom_card.dart';
 import 'package:pscct/size_config.dart';
 
+import '../helper.dart';
+
 class KPI extends StatelessWidget {
-  KPI(
-      {required this.title,
-      required this.subtitle,
-      required this.value,
-      required this.target,
-      required this.description,
-      Key? key})
-      : super(key: key);
-  final String title, subtitle, description;
-  final int target, value;
+  KPI({required this.kpi, Key? key}) : super(key: key);
+
+  final PSCCTKpi kpi;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -22,8 +18,8 @@ class KPI extends StatelessWidget {
       height: getProportionateScreenHeight(160),
       child: GestureDetector(
         onTap: () => DialogController.showPopup(
-          title,
-          description,
+          kpi.Title,
+          kpi.Description,
           context,
         ),
         child: CustomCard(
@@ -50,7 +46,7 @@ class KPI extends StatelessWidget {
                 child: Container(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    title,
+                    kpi.Title,
                     style:
                         TextStyle(fontSize: getProportionateScreenHeight(16)),
                   ),
@@ -69,34 +65,36 @@ class KPI extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "$value%",
+                    "${Helper.compactNumber(kpi.Value)}${kpi.Uom == "%" ? "%" : " ${kpi.Uom}"}",
                     style: TextStyle(
-                        fontSize: getProportionateScreenHeight(36),
+                        fontSize: getProportionateScreenHeight(32),
                         fontWeight: FontWeight.w500),
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      if (value > target)
+                      if (double.parse(kpi.Value) >= double.parse(kpi.Target))
                         Image.asset(
-                          Assets.upIcon,
+                          kpi.Inversed ? Assets.downIcon : Assets.upIcon,
                           color: Colors.green,
                           height: getProportionateScreenHeight(14),
                         )
                       else
                         Image.asset(
-                          Assets.downIcon,
+                          kpi.Inversed ? Assets.upIcon : Assets.downIcon,
                           color: Colors.red,
                           height: getProportionateScreenHeight(14),
                         ),
                       SizedBox(
                         width: getProportionateScreenWidth(10),
                       ),
-                      Text(
-                        "$subtitle $target%",
-                        style: TextStyle(
-                            fontSize: getProportionateScreenHeight(16),
-                            color: Color(0xFF8E9090)),
+                      Expanded(
+                        child: Text(
+                          "FYP ${kpi.Target}${kpi.Uom == "%" ? "%" : " ${kpi.Uom}"}",
+                          style: TextStyle(
+                              fontSize: getProportionateScreenHeight(16),
+                              color: Color(0xFF8E9090)),
+                        ),
                       ),
                     ],
                   ),

@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pscct/Theme/theme.dart';
+import 'package:pscct/helper.dart';
 import 'package:pscct/size_config.dart';
 
 class SpendItem extends StatelessWidget {
   const SpendItem(
-      {this.percentage = 0,
-      this.amount = 0,
-      this.title = "Dummy",
-      this.color,
-      Key? key})
+      {required this.amount, this.title = "Dummy", this.color, Key? key})
       : super(key: key);
 
-  final int percentage, amount;
+  final String amount;
   final Color? color;
   final String title;
   @override
@@ -27,21 +24,19 @@ class SpendItem extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: TextStyle(fontSize: getProportionateScreenHeight(16)),
+                  style: TextStyle(fontSize: getProportionateScreenHeight(18)),
                 ),
               ),
               Text(
-                "\$$amount MM",
+                "\$${Helper.compactNumber2(amount)}",
                 style:
                     TextStyle(color: AppTheme.primaryColorLight, fontSize: 24),
               ),
-              SizedBox(
-                width: getProportionateScreenWidth(32),
-              ),
-              Text(
-                "%$percentage",
-                style: TextStyle(color: Colors.grey, fontSize: 20),
-              )
+
+              // Text(
+              //   "%$percentage",
+              //   style: TextStyle(color: Colors.grey, fontSize: 20),
+              // )
             ],
           ),
         ),

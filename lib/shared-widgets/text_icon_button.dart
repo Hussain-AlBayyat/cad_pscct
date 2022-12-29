@@ -12,7 +12,7 @@ class TextIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton.icon(
-      onPressed: () {},
+      onPressed: onPress,
       icon: Image.asset(
         icon ?? "",
         height: getProportionateScreenHeight(30),

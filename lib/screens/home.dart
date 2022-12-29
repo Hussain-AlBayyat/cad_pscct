@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pscct/constants.dart';
 import 'package:pscct/screens/inventory/inventory_screen.dart';
-
 import 'package:pscct/screens/procurement/procurement_screen.dart';
 import 'package:pscct/screens/warehouse/warehouse_screen.dart';
 
@@ -22,8 +21,20 @@ class _HomeState extends State<Home> {
     InventoryScreen(),
   ];
 
+  late int index;
+  static const List<String> titles = [
+    Constants.procurement,
+    Constants.wareHouseAndLogistics,
+    Constants.inventory
+  ];
+
   @override
   void initState() {
+    setSelectedPage();
+    super.initState();
+  }
+
+  setSelectedPage() {
     if (widget.selectedPageIndex == 1) {
       index = widget.selectedPageIndex;
       index++;
@@ -33,15 +44,7 @@ class _HomeState extends State<Home> {
     } else {
       index = widget.selectedPageIndex;
     }
-    super.initState();
   }
-
-  late int index;
-  static const List<String> titles = [
-    Constants.procurement,
-    Constants.wareHouseAndLogistics,
-    Constants.inventory
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +53,6 @@ class _HomeState extends State<Home> {
       enablePaging: true,
       onPageChanged: changeTitle,
       title: titles[index],
-      //isScrollable: true,
       body: pages,
     );
   }

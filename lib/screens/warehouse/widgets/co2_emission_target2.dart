@@ -1,24 +1,110 @@
-import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+import 'dart:io';
 
-class CO2EmissionTargets extends StatelessWidget {
-  CO2EmissionTargets({Key? key}) : super(key: key);
-  final co2EmissionData = [
-    {"Year": "2020", "Value": 20},
-    {"Year": "2025", "Value": 15},
-    {"Year": "2030", "Value": 10},
-  ];
-  final co2EmissionTargetData = [
-    {"Year": "2020", "Value": 20},
-    {"Year": "2025", "Value": 16},
-    {"Year": "2030", "Value": 12},
-    {"Year": "2035", "Value": 8},
-    {"Year": "2040", "Value": 4},
-    {"Year": "2045", "Value": 0}
-  ];
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:pscct/repositories/wh_logistics_repository.dart';
+import 'package:pscct/shared-widgets/loading_circular.dart';
+
+import '../../../shared-widgets/file_opener.dart';
+
+class FileViewer extends StatelessWidget {
+  FileViewer({required this.file_key, Key? key}) : super(key: key);
+  final String file_key;
+
+  final WarehouseLogisticsRepository warehouseLogisticsRepository =
+      WarehouseLogisticsRepository();
   @override
   Widget build(BuildContext context) {
-    return SfCartesianChart(
+    return FutureBuilder<File?>(
+        future: warehouseLogisticsRepository.getCo2Image(file_key),
+        builder: (context, file) {
+          if (file.hasError)
+            return Center(
+                child: Text(
+              (file.error as DioError).message,
+              style: TextStyle(fontSize: 18, color: Colors.red),
+            ));
+          if (!file.hasData) return LoadingCircular();
+          return FileOpener(file: file.data!);
+        });
+    /*   Echarts(option: '''{
+
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross'
+    }
+  },
+   grid: {
+    left: '1%',
+    right: '1%',
+    bottom: '3%',
+    top:'10%',
+    containLabel: true
+  },
+
+  xAxis: {
+    type: 'category',
+        boundaryGap: true,
+  axisLabel: {
+        interval: 0,
+        rotate: 45 
+      },
+    data: ${jsonEncode(co2EmissionTargetData.map((e) => e["Year"]).toList())}
+  },
+
+  yAxis: {
+    type: 'value',
+    axisLine: {
+        show: true,
+
+      },
+    axisLabel: {
+      formatter: '{value}',
+    },
+  },
+
+
+
+  series: [
+    {
+      name: 'Within Two Weeks',
+      type: 'line',
+      itemStyle:{
+      color:'green'
+      },
+      label: {
+        show: true,
+        position: 'bottom',
+        color:'black'
+      },
+
+      data: ${jsonEncode(co2EmissionData.map((e) => e["Value"]).toList())}
+
+    },
+        {
+      name: 'Overdue',
+      type: 'line',
+      itemStyle:{
+      color:'orange'
+      },
+       lineStyle: {
+        width: 2,
+        dashOffset:10,
+        type: 'dashed'
+      },
+      label: {
+        show: true,
+        position: 'top',
+        color:'black'
+      },
+
+      data: ${jsonEncode(co2EmissionTargetData.map((e) => e["Value"]).toList())}
+
+    },
+  ]
+}'''));*/
+    /*SfCartesianChart(
       plotAreaBorderWidth: 0,
       //title: ChartTitle(text: "CO2 EMISSION TARGET"),
       primaryXAxis: CategoryAxis(
@@ -109,6 +195,6 @@ class CO2EmissionTargets extends StatelessWidget {
             // Enable data label
             dataLabelSettings: const DataLabelSettings()),
       ],
-    );
+    );*/
   }
 }

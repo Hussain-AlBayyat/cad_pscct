@@ -1,28 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+
+import '../../../models/enums/echart_configurator.dart';
+import '../../../shared-widgets/echarts/echart.dart';
 
 class ShippingPriceIndex extends StatelessWidget {
-  ShippingPriceIndex({Key? key}) : super(key: key);
-  final shippingPriceIndexData = [
-    {"Quarter": "Q1 2019", "Value": 1.3},
-    {"Quarter": "Q2 2019", "Value": 1.3},
-    {"Quarter": "Q3 2019", "Value": 1.3},
-    {"Quarter": "Q4 2019", "Value": 1.4},
-    {"Quarter": "Q1 2020", "Value": 1.4},
-    {"Quarter": "Q2 2020", "Value": 1.8},
-    {"Quarter": "Q3 2020", "Value": 2.2},
-    {"Quarter": "Q4 2020", "Value": 3.1},
-    {"Quarter": "Q1 2021", "Value": 4.4},
-    {"Quarter": "Q2 2021", "Value": 6.8},
-    {"Quarter": "Q3 2021", "Value": 10.8},
-    {"Quarter": "Q4 2021", "Value": 9.3},
-    {"Quarter": "Q1 2022", "Value": 9.4},
-    {"Quarter": "Q2 2022", "Value": 7.0},
-    {"Quarter": "Q3 2022", "Value": 6.4},
-  ];
+  ShippingPriceIndex({required this.data, Key? key}) : super(key: key);
+  final List<Map> data;
+
   @override
   Widget build(BuildContext context) {
-    return SfCartesianChart(
+    return EChartCharts(
+      data: data,
+      name: "Shipping Price Index",
+      configurations: [
+        EChartConfigurator(),
+      ],
+    );
+
+    /* SfCartesianChart(
       plotAreaBorderWidth: 0,
       //title: ChartTitle(text: "SHIPPING PRICE INDEX (\$M)"),
       primaryXAxis: CategoryAxis(
@@ -49,5 +44,6 @@ class ShippingPriceIndex extends StatelessWidget {
                 isVisible: true, labelAlignment: ChartDataLabelAlignment.top)),
       ],
     );
+  }*/
   }
 }

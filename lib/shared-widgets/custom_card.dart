@@ -7,7 +7,7 @@ class CustomCard extends StatelessWidget {
   final Widget child;
   final double borderRadius;
   final EdgeInsetsGeometry? padding;
-  final Color color;
+  final Color? color;
   final LinearGradient? linearGradiant;
 
   const CustomCard(
@@ -15,7 +15,7 @@ class CustomCard extends StatelessWidget {
       this.margin,
       required this.child,
       this.padding,
-      this.color = Colors.white,
+      this.color,
       this.linearGradiant,
       this.borderRadius = 12})
       : super(key: key);
@@ -27,7 +27,7 @@ class CustomCard extends StatelessWidget {
       margin: margin,
       padding: padding,
       decoration: BoxDecoration(
-        color: color,
+        color: color ?? Theme.of(context).scaffoldBackgroundColor,
         gradient: linearGradiant,
         borderRadius:
             BorderRadius.circular(getProportionateScreenHeight(borderRadius)),

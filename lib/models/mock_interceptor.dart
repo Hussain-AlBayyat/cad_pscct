@@ -2,14 +2,42 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
+import 'package:pscct/helper.dart';
 
 class MockInterceptor extends Interceptor {
   static const _jsonDir = 'assets/mockup_data/';
-  static const _jsonExtension = '.json';
   @override
   Future onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    final resourcePath = _jsonDir + options.path + _jsonExtension;
+    // return handler.next(options);
+    var response;
+    if (options.path.contains(".json")) {
+      response = await responseFromJson(options);
+    } else {
+      response = await responseFromXML(options);
+    }
+    return handler.resolve(response);
+  }
+
+  Future<Response> responseFromXML(
+    RequestOptions options,
+  ) async {
+    final resourcePath = _jsonDir + options.path;
+    final file = await rootBundle.loadString(resourcePath);
+    var data = Helper.convertXmlToJsonList(file.toString());
+
+    Response response = Response(
+      data: data,
+      statusCode: 200,
+      requestOptions: options,
+    );
+    return response;
+  }
+
+  Future<Response> responseFromJson(
+    RequestOptions options,
+  ) async {
+    final resourcePath = _jsonDir + options.path;
     final data = await rootBundle.load(resourcePath);
     final map = json.decode(
       utf8.decode(
@@ -18,11 +46,10 @@ class MockInterceptor extends Interceptor {
     );
 
     Response response = Response(
-      data: map["d"]["results"],
+      data: map,
       statusCode: 200,
       requestOptions: options,
     );
-
-    return handler.resolve(response);
+    return response;
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pscct/screens/home.dart';
 import 'package:pscct/screens/global_market_report/global_market_report_screen.dart';
+import 'package:pscct/screens/home.dart';
 import 'package:pscct/screens/inventory/inventory_screen.dart';
 import 'package:pscct/screens/landing_page/landing_screen.dart';
 import 'package:pscct/screens/procurement/procurement_screen.dart';
@@ -39,7 +39,11 @@ class AppRouter {
       case warehouseRoute:
         return MaterialPageRoute(builder: (_) => WarehouseScreen());
       case loginRoute:
-        return MaterialPageRoute(builder: (_) => LoginScreen());
+        return PageRouteBuilder(
+            pageBuilder: (_, __, ___) => LoginScreen(),
+            transitionsBuilder: (_, a, __, c) =>
+                FadeTransition(opacity: a, child: c),
+            transitionDuration: Duration(seconds: 2));
       case settingsRoute:
         return MaterialPageRoute(builder: (_) => SettingsScreen());
       case newsFeedsRoute:
@@ -48,7 +52,9 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => ProcurementScreen());
 
       default:
-        return MaterialPageRoute(builder: (_) => LandingPageScreen());
+        return PageRouteBuilder(
+          pageBuilder: (_, __, ___) => LandingPageScreen(),
+        );
     }
   }
 }

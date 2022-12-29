@@ -20,10 +20,18 @@ PSCCTAlert _$PSCCTAlertFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PSCCTAlert {
-  String get title => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  num get value => throw _privateConstructorUsedError;
-  num get target => throw _privateConstructorUsedError;
+  String get Title => throw _privateConstructorUsedError;
+  String get Description => throw _privateConstructorUsedError;
+  String get Value => throw _privateConstructorUsedError;
+  String get Category => throw _privateConstructorUsedError;
+  String get Criticality => throw _privateConstructorUsedError;
+  String get OrderOnApp => throw _privateConstructorUsedError;
+  bool get IsCurrencyFormat => throw _privateConstructorUsedError;
+  String get DecimalDigits => throw _privateConstructorUsedError;
+  String? get Uom => throw _privateConstructorUsedError;
+  bool get ShowOnApp => throw _privateConstructorUsedError;
+  bool get Trend => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic> get DataSourceNav => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +45,19 @@ abstract class $PSCCTAlertCopyWith<$Res> {
           PSCCTAlert value, $Res Function(PSCCTAlert) then) =
       _$PSCCTAlertCopyWithImpl<$Res, PSCCTAlert>;
   @useResult
-  $Res call({String title, String description, num value, num target});
+  $Res call(
+      {String Title,
+      String Description,
+      String Value,
+      String Category,
+      String Criticality,
+      String OrderOnApp,
+      bool IsCurrencyFormat,
+      String DecimalDigits,
+      String? Uom,
+      bool ShowOnApp,
+      bool Trend,
+      Map<dynamic, dynamic> DataSourceNav});
 }
 
 /// @nodoc
@@ -53,28 +73,68 @@ class _$PSCCTAlertCopyWithImpl<$Res, $Val extends PSCCTAlert>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
-    Object? description = null,
-    Object? value = null,
-    Object? target = null,
+    Object? Title = null,
+    Object? Description = null,
+    Object? Value = null,
+    Object? Category = null,
+    Object? Criticality = null,
+    Object? OrderOnApp = null,
+    Object? IsCurrencyFormat = null,
+    Object? DecimalDigits = null,
+    Object? Uom = freezed,
+    Object? ShowOnApp = null,
+    Object? Trend = null,
+    Object? DataSourceNav = null,
   }) {
     return _then(_value.copyWith(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      Title: null == Title
+          ? _value.Title
+          : Title // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      Description: null == Description
+          ? _value.Description
+          : Description // ignore: cast_nullable_to_non_nullable
               as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as num,
-      target: null == target
-          ? _value.target
-          : target // ignore: cast_nullable_to_non_nullable
-              as num,
+      Value: null == Value
+          ? _value.Value
+          : Value // ignore: cast_nullable_to_non_nullable
+              as String,
+      Category: null == Category
+          ? _value.Category
+          : Category // ignore: cast_nullable_to_non_nullable
+              as String,
+      Criticality: null == Criticality
+          ? _value.Criticality
+          : Criticality // ignore: cast_nullable_to_non_nullable
+              as String,
+      OrderOnApp: null == OrderOnApp
+          ? _value.OrderOnApp
+          : OrderOnApp // ignore: cast_nullable_to_non_nullable
+              as String,
+      IsCurrencyFormat: null == IsCurrencyFormat
+          ? _value.IsCurrencyFormat
+          : IsCurrencyFormat // ignore: cast_nullable_to_non_nullable
+              as bool,
+      DecimalDigits: null == DecimalDigits
+          ? _value.DecimalDigits
+          : DecimalDigits // ignore: cast_nullable_to_non_nullable
+              as String,
+      Uom: freezed == Uom
+          ? _value.Uom
+          : Uom // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ShowOnApp: null == ShowOnApp
+          ? _value.ShowOnApp
+          : ShowOnApp // ignore: cast_nullable_to_non_nullable
+              as bool,
+      Trend: null == Trend
+          ? _value.Trend
+          : Trend // ignore: cast_nullable_to_non_nullable
+              as bool,
+      DataSourceNav: null == DataSourceNav
+          ? _value.DataSourceNav
+          : DataSourceNav // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>,
     ) as $Val);
   }
 }
@@ -87,7 +147,19 @@ abstract class _$$_PSCCTAlertCopyWith<$Res>
       __$$_PSCCTAlertCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String description, num value, num target});
+  $Res call(
+      {String Title,
+      String Description,
+      String Value,
+      String Category,
+      String Criticality,
+      String OrderOnApp,
+      bool IsCurrencyFormat,
+      String DecimalDigits,
+      String? Uom,
+      bool ShowOnApp,
+      bool Trend,
+      Map<dynamic, dynamic> DataSourceNav});
 }
 
 /// @nodoc
@@ -101,28 +173,68 @@ class __$$_PSCCTAlertCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
-    Object? description = null,
-    Object? value = null,
-    Object? target = null,
+    Object? Title = null,
+    Object? Description = null,
+    Object? Value = null,
+    Object? Category = null,
+    Object? Criticality = null,
+    Object? OrderOnApp = null,
+    Object? IsCurrencyFormat = null,
+    Object? DecimalDigits = null,
+    Object? Uom = freezed,
+    Object? ShowOnApp = null,
+    Object? Trend = null,
+    Object? DataSourceNav = null,
   }) {
     return _then(_$_PSCCTAlert(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      Title: null == Title
+          ? _value.Title
+          : Title // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      Description: null == Description
+          ? _value.Description
+          : Description // ignore: cast_nullable_to_non_nullable
               as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as num,
-      target: null == target
-          ? _value.target
-          : target // ignore: cast_nullable_to_non_nullable
-              as num,
+      Value: null == Value
+          ? _value.Value
+          : Value // ignore: cast_nullable_to_non_nullable
+              as String,
+      Category: null == Category
+          ? _value.Category
+          : Category // ignore: cast_nullable_to_non_nullable
+              as String,
+      Criticality: null == Criticality
+          ? _value.Criticality
+          : Criticality // ignore: cast_nullable_to_non_nullable
+              as String,
+      OrderOnApp: null == OrderOnApp
+          ? _value.OrderOnApp
+          : OrderOnApp // ignore: cast_nullable_to_non_nullable
+              as String,
+      IsCurrencyFormat: null == IsCurrencyFormat
+          ? _value.IsCurrencyFormat
+          : IsCurrencyFormat // ignore: cast_nullable_to_non_nullable
+              as bool,
+      DecimalDigits: null == DecimalDigits
+          ? _value.DecimalDigits
+          : DecimalDigits // ignore: cast_nullable_to_non_nullable
+              as String,
+      Uom: freezed == Uom
+          ? _value.Uom
+          : Uom // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ShowOnApp: null == ShowOnApp
+          ? _value.ShowOnApp
+          : ShowOnApp // ignore: cast_nullable_to_non_nullable
+              as bool,
+      Trend: null == Trend
+          ? _value.Trend
+          : Trend // ignore: cast_nullable_to_non_nullable
+              as bool,
+      DataSourceNav: null == DataSourceNav
+          ? _value._DataSourceNav
+          : DataSourceNav // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>,
     ));
   }
 }
@@ -131,27 +243,58 @@ class __$$_PSCCTAlertCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PSCCTAlert extends _PSCCTAlert {
   const _$_PSCCTAlert(
-      {required this.title,
-      required this.description,
-      required this.value,
-      required this.target})
-      : super._();
+      {required this.Title,
+      required this.Description,
+      required this.Value,
+      required this.Category,
+      required this.Criticality,
+      required this.OrderOnApp,
+      this.IsCurrencyFormat = false,
+      this.DecimalDigits = "1",
+      this.Uom,
+      required this.ShowOnApp,
+      required this.Trend,
+      required final Map<dynamic, dynamic> DataSourceNav})
+      : _DataSourceNav = DataSourceNav,
+        super._();
 
   factory _$_PSCCTAlert.fromJson(Map<String, dynamic> json) =>
       _$$_PSCCTAlertFromJson(json);
 
   @override
-  final String title;
+  final String Title;
   @override
-  final String description;
+  final String Description;
   @override
-  final num value;
+  final String Value;
   @override
-  final num target;
+  final String Category;
+  @override
+  final String Criticality;
+  @override
+  final String OrderOnApp;
+  @override
+  @JsonKey()
+  final bool IsCurrencyFormat;
+  @override
+  @JsonKey()
+  final String DecimalDigits;
+  @override
+  final String? Uom;
+  @override
+  final bool ShowOnApp;
+  @override
+  final bool Trend;
+  final Map<dynamic, dynamic> _DataSourceNav;
+  @override
+  Map<dynamic, dynamic> get DataSourceNav {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_DataSourceNav);
+  }
 
   @override
   String toString() {
-    return 'PSCCTAlert(title: $title, description: $description, value: $value, target: $target)';
+    return 'PSCCTAlert(Title: $Title, Description: $Description, Value: $Value, Category: $Category, Criticality: $Criticality, OrderOnApp: $OrderOnApp, IsCurrencyFormat: $IsCurrencyFormat, DecimalDigits: $DecimalDigits, Uom: $Uom, ShowOnApp: $ShowOnApp, Trend: $Trend, DataSourceNav: $DataSourceNav)';
   }
 
   @override
@@ -159,17 +302,44 @@ class _$_PSCCTAlert extends _PSCCTAlert {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PSCCTAlert &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.value, value) || other.value == value) &&
-            (identical(other.target, target) || other.target == target));
+            (identical(other.Title, Title) || other.Title == Title) &&
+            (identical(other.Description, Description) ||
+                other.Description == Description) &&
+            (identical(other.Value, Value) || other.Value == Value) &&
+            (identical(other.Category, Category) ||
+                other.Category == Category) &&
+            (identical(other.Criticality, Criticality) ||
+                other.Criticality == Criticality) &&
+            (identical(other.OrderOnApp, OrderOnApp) ||
+                other.OrderOnApp == OrderOnApp) &&
+            (identical(other.IsCurrencyFormat, IsCurrencyFormat) ||
+                other.IsCurrencyFormat == IsCurrencyFormat) &&
+            (identical(other.DecimalDigits, DecimalDigits) ||
+                other.DecimalDigits == DecimalDigits) &&
+            (identical(other.Uom, Uom) || other.Uom == Uom) &&
+            (identical(other.ShowOnApp, ShowOnApp) ||
+                other.ShowOnApp == ShowOnApp) &&
+            (identical(other.Trend, Trend) || other.Trend == Trend) &&
+            const DeepCollectionEquality()
+                .equals(other._DataSourceNav, _DataSourceNav));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, title, description, value, target);
+  int get hashCode => Object.hash(
+      runtimeType,
+      Title,
+      Description,
+      Value,
+      Category,
+      Criticality,
+      OrderOnApp,
+      IsCurrencyFormat,
+      DecimalDigits,
+      Uom,
+      ShowOnApp,
+      Trend,
+      const DeepCollectionEquality().hash(_DataSourceNav));
 
   @JsonKey(ignore: true)
   @override
@@ -187,23 +357,47 @@ class _$_PSCCTAlert extends _PSCCTAlert {
 
 abstract class _PSCCTAlert extends PSCCTAlert {
   const factory _PSCCTAlert(
-      {required final String title,
-      required final String description,
-      required final num value,
-      required final num target}) = _$_PSCCTAlert;
+      {required final String Title,
+      required final String Description,
+      required final String Value,
+      required final String Category,
+      required final String Criticality,
+      required final String OrderOnApp,
+      final bool IsCurrencyFormat,
+      final String DecimalDigits,
+      final String? Uom,
+      required final bool ShowOnApp,
+      required final bool Trend,
+      required final Map<dynamic, dynamic> DataSourceNav}) = _$_PSCCTAlert;
   const _PSCCTAlert._() : super._();
 
   factory _PSCCTAlert.fromJson(Map<String, dynamic> json) =
       _$_PSCCTAlert.fromJson;
 
   @override
-  String get title;
+  String get Title;
   @override
-  String get description;
+  String get Description;
   @override
-  num get value;
+  String get Value;
   @override
-  num get target;
+  String get Category;
+  @override
+  String get Criticality;
+  @override
+  String get OrderOnApp;
+  @override
+  bool get IsCurrencyFormat;
+  @override
+  String get DecimalDigits;
+  @override
+  String? get Uom;
+  @override
+  bool get ShowOnApp;
+  @override
+  bool get Trend;
+  @override
+  Map<dynamic, dynamic> get DataSourceNav;
   @override
   @JsonKey(ignore: true)
   _$$_PSCCTAlertCopyWith<_$_PSCCTAlert> get copyWith =>

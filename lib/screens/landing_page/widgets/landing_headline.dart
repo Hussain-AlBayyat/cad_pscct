@@ -24,26 +24,28 @@ class LandingPageHeadline extends StatelessWidget {
           height: getProportionateScreenHeight(32),
         ),
         Center(
-          child: Image.asset(
-            Assets.logoText,
-            width: SizeConfig.screenWidth,
+          child: Container(
+            alignment: Alignment.center,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset(
+                  Assets.logoText,
+                  width: getProportionateScreenWidth(300),
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(10),
+                ),
+                Text(
+                  subtitle,
+                  style: TextStyle(
+                      fontSize: getProportionateScreenHeight(15),
+                      color: Color(0xFF8E9090)),
+                  textAlign: TextAlign.left,
+                ),
+              ],
+            ),
           ),
-        ),
-        /* Text(
-          headline,
-          style: TextStyle(
-              fontSize: getProportionateScreenHeight(23),
-              fontWeight: FontWeight.bold,
-              color: Colors.grey.shade600),
-        ),*/
-        SizedBox(
-          height: getProportionateScreenHeight(10),
-        ),
-        Text(
-          subtitle,
-          style: TextStyle(
-              fontSize: getProportionateScreenHeight(15),
-              color: Color(0xFF8E9090)),
         ),
         SizedBox(
           height: getProportionateScreenHeight(32),

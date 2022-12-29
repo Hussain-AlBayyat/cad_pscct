@@ -20,9 +20,20 @@ PSCCTKpi _$PSCCTKpiFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PSCCTKpi {
-  String get title => throw _privateConstructorUsedError;
-  num get value => throw _privateConstructorUsedError;
-  num get target => throw _privateConstructorUsedError;
+  String get Title => throw _privateConstructorUsedError;
+  String get Description => throw _privateConstructorUsedError;
+  String get Category => throw _privateConstructorUsedError;
+  String get CategoryText => throw _privateConstructorUsedError;
+  String get KPIId => throw _privateConstructorUsedError;
+  bool get Inversed => throw _privateConstructorUsedError;
+  String get Value => throw _privateConstructorUsedError;
+  String get Target => throw _privateConstructorUsedError;
+  bool get ShowOnApp => throw _privateConstructorUsedError;
+  bool get IsCurrencyFormat => throw _privateConstructorUsedError;
+  String get DecimalDigits => throw _privateConstructorUsedError;
+  String? get Uom => throw _privateConstructorUsedError;
+  String get OrderOnApp => throw _privateConstructorUsedError;
+  String get ManualValue => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +46,21 @@ abstract class $PSCCTKpiCopyWith<$Res> {
   factory $PSCCTKpiCopyWith(PSCCTKpi value, $Res Function(PSCCTKpi) then) =
       _$PSCCTKpiCopyWithImpl<$Res, PSCCTKpi>;
   @useResult
-  $Res call({String title, num value, num target});
+  $Res call(
+      {String Title,
+      String Description,
+      String Category,
+      String CategoryText,
+      String KPIId,
+      bool Inversed,
+      String Value,
+      String Target,
+      bool ShowOnApp,
+      bool IsCurrencyFormat,
+      String DecimalDigits,
+      String? Uom,
+      String OrderOnApp,
+      String ManualValue});
 }
 
 /// @nodoc
@@ -51,23 +76,78 @@ class _$PSCCTKpiCopyWithImpl<$Res, $Val extends PSCCTKpi>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
-    Object? value = null,
-    Object? target = null,
+    Object? Title = null,
+    Object? Description = null,
+    Object? Category = null,
+    Object? CategoryText = null,
+    Object? KPIId = null,
+    Object? Inversed = null,
+    Object? Value = null,
+    Object? Target = null,
+    Object? ShowOnApp = null,
+    Object? IsCurrencyFormat = null,
+    Object? DecimalDigits = null,
+    Object? Uom = freezed,
+    Object? OrderOnApp = null,
+    Object? ManualValue = null,
   }) {
     return _then(_value.copyWith(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      Title: null == Title
+          ? _value.Title
+          : Title // ignore: cast_nullable_to_non_nullable
               as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as num,
-      target: null == target
-          ? _value.target
-          : target // ignore: cast_nullable_to_non_nullable
-              as num,
+      Description: null == Description
+          ? _value.Description
+          : Description // ignore: cast_nullable_to_non_nullable
+              as String,
+      Category: null == Category
+          ? _value.Category
+          : Category // ignore: cast_nullable_to_non_nullable
+              as String,
+      CategoryText: null == CategoryText
+          ? _value.CategoryText
+          : CategoryText // ignore: cast_nullable_to_non_nullable
+              as String,
+      KPIId: null == KPIId
+          ? _value.KPIId
+          : KPIId // ignore: cast_nullable_to_non_nullable
+              as String,
+      Inversed: null == Inversed
+          ? _value.Inversed
+          : Inversed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      Value: null == Value
+          ? _value.Value
+          : Value // ignore: cast_nullable_to_non_nullable
+              as String,
+      Target: null == Target
+          ? _value.Target
+          : Target // ignore: cast_nullable_to_non_nullable
+              as String,
+      ShowOnApp: null == ShowOnApp
+          ? _value.ShowOnApp
+          : ShowOnApp // ignore: cast_nullable_to_non_nullable
+              as bool,
+      IsCurrencyFormat: null == IsCurrencyFormat
+          ? _value.IsCurrencyFormat
+          : IsCurrencyFormat // ignore: cast_nullable_to_non_nullable
+              as bool,
+      DecimalDigits: null == DecimalDigits
+          ? _value.DecimalDigits
+          : DecimalDigits // ignore: cast_nullable_to_non_nullable
+              as String,
+      Uom: freezed == Uom
+          ? _value.Uom
+          : Uom // ignore: cast_nullable_to_non_nullable
+              as String?,
+      OrderOnApp: null == OrderOnApp
+          ? _value.OrderOnApp
+          : OrderOnApp // ignore: cast_nullable_to_non_nullable
+              as String,
+      ManualValue: null == ManualValue
+          ? _value.ManualValue
+          : ManualValue // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -79,7 +159,21 @@ abstract class _$$_PSCCTKpiCopyWith<$Res> implements $PSCCTKpiCopyWith<$Res> {
       __$$_PSCCTKpiCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, num value, num target});
+  $Res call(
+      {String Title,
+      String Description,
+      String Category,
+      String CategoryText,
+      String KPIId,
+      bool Inversed,
+      String Value,
+      String Target,
+      bool ShowOnApp,
+      bool IsCurrencyFormat,
+      String DecimalDigits,
+      String? Uom,
+      String OrderOnApp,
+      String ManualValue});
 }
 
 /// @nodoc
@@ -93,23 +187,78 @@ class __$$_PSCCTKpiCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
-    Object? value = null,
-    Object? target = null,
+    Object? Title = null,
+    Object? Description = null,
+    Object? Category = null,
+    Object? CategoryText = null,
+    Object? KPIId = null,
+    Object? Inversed = null,
+    Object? Value = null,
+    Object? Target = null,
+    Object? ShowOnApp = null,
+    Object? IsCurrencyFormat = null,
+    Object? DecimalDigits = null,
+    Object? Uom = freezed,
+    Object? OrderOnApp = null,
+    Object? ManualValue = null,
   }) {
     return _then(_$_PSCCTKpi(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      Title: null == Title
+          ? _value.Title
+          : Title // ignore: cast_nullable_to_non_nullable
               as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as num,
-      target: null == target
-          ? _value.target
-          : target // ignore: cast_nullable_to_non_nullable
-              as num,
+      Description: null == Description
+          ? _value.Description
+          : Description // ignore: cast_nullable_to_non_nullable
+              as String,
+      Category: null == Category
+          ? _value.Category
+          : Category // ignore: cast_nullable_to_non_nullable
+              as String,
+      CategoryText: null == CategoryText
+          ? _value.CategoryText
+          : CategoryText // ignore: cast_nullable_to_non_nullable
+              as String,
+      KPIId: null == KPIId
+          ? _value.KPIId
+          : KPIId // ignore: cast_nullable_to_non_nullable
+              as String,
+      Inversed: null == Inversed
+          ? _value.Inversed
+          : Inversed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      Value: null == Value
+          ? _value.Value
+          : Value // ignore: cast_nullable_to_non_nullable
+              as String,
+      Target: null == Target
+          ? _value.Target
+          : Target // ignore: cast_nullable_to_non_nullable
+              as String,
+      ShowOnApp: null == ShowOnApp
+          ? _value.ShowOnApp
+          : ShowOnApp // ignore: cast_nullable_to_non_nullable
+              as bool,
+      IsCurrencyFormat: null == IsCurrencyFormat
+          ? _value.IsCurrencyFormat
+          : IsCurrencyFormat // ignore: cast_nullable_to_non_nullable
+              as bool,
+      DecimalDigits: null == DecimalDigits
+          ? _value.DecimalDigits
+          : DecimalDigits // ignore: cast_nullable_to_non_nullable
+              as String,
+      Uom: freezed == Uom
+          ? _value.Uom
+          : Uom // ignore: cast_nullable_to_non_nullable
+              as String?,
+      OrderOnApp: null == OrderOnApp
+          ? _value.OrderOnApp
+          : OrderOnApp // ignore: cast_nullable_to_non_nullable
+              as String,
+      ManualValue: null == ManualValue
+          ? _value.ManualValue
+          : ManualValue // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -118,22 +267,59 @@ class __$$_PSCCTKpiCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PSCCTKpi extends _PSCCTKpi {
   const _$_PSCCTKpi(
-      {required this.title, required this.value, required this.target})
+      {required this.Title,
+      required this.Description,
+      required this.Category,
+      required this.CategoryText,
+      required this.KPIId,
+      required this.Inversed,
+      required this.Value,
+      required this.Target,
+      required this.ShowOnApp,
+      this.IsCurrencyFormat = false,
+      this.DecimalDigits = "1",
+      this.Uom,
+      required this.OrderOnApp,
+      required this.ManualValue})
       : super._();
 
   factory _$_PSCCTKpi.fromJson(Map<String, dynamic> json) =>
       _$$_PSCCTKpiFromJson(json);
 
   @override
-  final String title;
+  final String Title;
   @override
-  final num value;
+  final String Description;
   @override
-  final num target;
+  final String Category;
+  @override
+  final String CategoryText;
+  @override
+  final String KPIId;
+  @override
+  final bool Inversed;
+  @override
+  final String Value;
+  @override
+  final String Target;
+  @override
+  final bool ShowOnApp;
+  @override
+  @JsonKey()
+  final bool IsCurrencyFormat;
+  @override
+  @JsonKey()
+  final String DecimalDigits;
+  @override
+  final String? Uom;
+  @override
+  final String OrderOnApp;
+  @override
+  final String ManualValue;
 
   @override
   String toString() {
-    return 'PSCCTKpi(title: $title, value: $value, target: $target)';
+    return 'PSCCTKpi(Title: $Title, Description: $Description, Category: $Category, CategoryText: $CategoryText, KPIId: $KPIId, Inversed: $Inversed, Value: $Value, Target: $Target, ShowOnApp: $ShowOnApp, IsCurrencyFormat: $IsCurrencyFormat, DecimalDigits: $DecimalDigits, Uom: $Uom, OrderOnApp: $OrderOnApp, ManualValue: $ManualValue)';
   }
 
   @override
@@ -141,14 +327,49 @@ class _$_PSCCTKpi extends _PSCCTKpi {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PSCCTKpi &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.value, value) || other.value == value) &&
-            (identical(other.target, target) || other.target == target));
+            (identical(other.Title, Title) || other.Title == Title) &&
+            (identical(other.Description, Description) ||
+                other.Description == Description) &&
+            (identical(other.Category, Category) ||
+                other.Category == Category) &&
+            (identical(other.CategoryText, CategoryText) ||
+                other.CategoryText == CategoryText) &&
+            (identical(other.KPIId, KPIId) || other.KPIId == KPIId) &&
+            (identical(other.Inversed, Inversed) ||
+                other.Inversed == Inversed) &&
+            (identical(other.Value, Value) || other.Value == Value) &&
+            (identical(other.Target, Target) || other.Target == Target) &&
+            (identical(other.ShowOnApp, ShowOnApp) ||
+                other.ShowOnApp == ShowOnApp) &&
+            (identical(other.IsCurrencyFormat, IsCurrencyFormat) ||
+                other.IsCurrencyFormat == IsCurrencyFormat) &&
+            (identical(other.DecimalDigits, DecimalDigits) ||
+                other.DecimalDigits == DecimalDigits) &&
+            (identical(other.Uom, Uom) || other.Uom == Uom) &&
+            (identical(other.OrderOnApp, OrderOnApp) ||
+                other.OrderOnApp == OrderOnApp) &&
+            (identical(other.ManualValue, ManualValue) ||
+                other.ManualValue == ManualValue));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, value, target);
+  int get hashCode => Object.hash(
+      runtimeType,
+      Title,
+      Description,
+      Category,
+      CategoryText,
+      KPIId,
+      Inversed,
+      Value,
+      Target,
+      ShowOnApp,
+      IsCurrencyFormat,
+      DecimalDigits,
+      Uom,
+      OrderOnApp,
+      ManualValue);
 
   @JsonKey(ignore: true)
   @override
@@ -166,19 +387,52 @@ class _$_PSCCTKpi extends _PSCCTKpi {
 
 abstract class _PSCCTKpi extends PSCCTKpi {
   const factory _PSCCTKpi(
-      {required final String title,
-      required final num value,
-      required final num target}) = _$_PSCCTKpi;
+      {required final String Title,
+      required final String Description,
+      required final String Category,
+      required final String CategoryText,
+      required final String KPIId,
+      required final bool Inversed,
+      required final String Value,
+      required final String Target,
+      required final bool ShowOnApp,
+      final bool IsCurrencyFormat,
+      final String DecimalDigits,
+      final String? Uom,
+      required final String OrderOnApp,
+      required final String ManualValue}) = _$_PSCCTKpi;
   const _PSCCTKpi._() : super._();
 
   factory _PSCCTKpi.fromJson(Map<String, dynamic> json) = _$_PSCCTKpi.fromJson;
 
   @override
-  String get title;
+  String get Title;
   @override
-  num get value;
+  String get Description;
   @override
-  num get target;
+  String get Category;
+  @override
+  String get CategoryText;
+  @override
+  String get KPIId;
+  @override
+  bool get Inversed;
+  @override
+  String get Value;
+  @override
+  String get Target;
+  @override
+  bool get ShowOnApp;
+  @override
+  bool get IsCurrencyFormat;
+  @override
+  String get DecimalDigits;
+  @override
+  String? get Uom;
+  @override
+  String get OrderOnApp;
+  @override
+  String get ManualValue;
   @override
   @JsonKey(ignore: true)
   _$$_PSCCTKpiCopyWith<_$_PSCCTKpi> get copyWith =>

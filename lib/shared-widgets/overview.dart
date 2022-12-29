@@ -1,39 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:pscct/models/pscct_report.dart';
 import 'package:pscct/shared-widgets/report_button.dart';
-
 import 'package:pscct/size_config.dart';
 
 import 'overview_header_card.dart';
 
 class Overview extends StatelessWidget {
-  final List<String> titles;
-  final List<Map> widgets;
+  final List<PSCCTReport> reports;
 
-  const Overview({required this.widgets, required this.titles, Key? key})
-      : super(key: key);
+  const Overview({required this.reports, Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         //ImageInimation(),
-        OverviewHeaderCard(
-          spendsTitle: titles,
-        ),
+        if (reports.indexWhere((element) => element.IsCard) != -1)
+          OverviewHeaderCard(
+            report: reports.firstWhere((element) => element.IsCard),
+          ),
         SizedBox(
           height: getProportionateScreenHeight(20),
         ),
         Center(
           child: Wrap(
-            spacing: getProportionateScreenHeight(20),
+            spacing: getProportionateScreenHeight(26),
             runSpacing: getProportionateScreenHeight(20),
             children: [
               ...List.generate(
-                widgets.length,
+                reports
+                    .where((element) => element.IsCard == false)
+                    .toList()
+                    .length,
                 (index) => ReportButton(
-                  buttonText: widgets[index]["title"],
-                  dialogWidget: widgets[index]["widget"],
-                  buttonIcon: widgets[index]["icon"],
-                  description: widgets[index]["description"],
+                  pscctReport: reports
+                      .where((element) => element.IsCard == false)
+                      .toList()[index],
                 ),
               ),
             ],

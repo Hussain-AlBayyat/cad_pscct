@@ -16,7 +16,7 @@ class InventoryScreen extends StatefulWidget {
 class _InventoryScreenState extends State<InventoryScreen> {
   List<Widget> tabPages = [
     InventoryOverview(),
-    const InventoryKpis(),
+    InventoryKpis(),
     InventoryAlerts(),
   ];
 

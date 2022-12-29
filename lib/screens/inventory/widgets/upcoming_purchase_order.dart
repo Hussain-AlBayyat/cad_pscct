@@ -1,43 +1,128 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_echarts/flutter_echarts.dart';
+
+import '../../../models/enums/echart_configurator.dart';
+import '../../../shared-widgets/echarts/echart.dart';
+import '../../../size_config.dart';
 
 class UpcomingPurchaseOrder extends StatelessWidget {
-  UpcomingPurchaseOrder({Key? key}) : super(key: key);
+  UpcomingPurchaseOrder({required this.data, Key? key}) : super(key: key);
+  final List<Map> data;
 
   final pendingGoodsReceiptData = [
     {
       "Month": "May 2022",
-      "Value": 19832232,
+      "Within Two Weeks": 19832232,
     },
     {
       "Month": "Jun 2022",
-      "Value": 12312421,
+      "Within Two Weeks": 12312421,
     },
     {
       "Month": "Jul 2022",
-      "Value": 23212331,
+      "Within Two Weeks": 23212331,
     },
     {
       "Month": "Aug 2022",
-      "Value": 24123123,
+      "Within Two Weeks": 24123123,
     },
     {
       "Month": "Sep 2022",
-      "Value": 14123123,
+      "Within Two Weeks": 14123123,
     },
     {
       "Month": "Oct 2022",
-      "Value": 16242343,
+      "Within Two Weeks": 16242343,
     },
     {
       "Month": "Nov 2022",
-      "Value": 12385924,
+      "Within Two Weeks": 12385924,
     }
   ];
   @override
   Widget build(BuildContext context) {
-    return SfCartesianChart(
+    return EChartCharts(
+      data: data,
+      name: "Lost Opportunity",
+      configurations: [
+        EChartConfigurator(chartType: ChartType.bar),
+      ],
+    );
+    SizedBox(
+        height: getProportionateScreenHeight(300), child: Echarts(option: '''{
+
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross'
+    }
+  },
+   grid: {
+    left: '1%',
+    right: '1%',
+    bottom: '3%',
+    top:'10%',
+    containLabel: true
+  },
+
+  xAxis: {
+    type: 'category',
+        boundaryGap: true,
+        
+  axisLabel: {
+        
+        interval: 0,
+        rotate: 45,
+        
+      },
+    data: ${jsonEncode(pendingGoodsReceiptData.map((e) => e["Month"]).toList())}
+  },
+
+  yAxis: {
+    type: 'value',
+    axisLine: {
+        show: true,
+
+      },
+    axisLabel: {
+      formatter: function (value, index) {
+    return value / '1000000' + 'M';
+}
+    },
+  },
+
+
+  legend: {
+    data: ${jsonEncode(pendingGoodsReceiptData.first.keys.toList())}
+  },
+
+
+  series: [
+    {
+      name: 'Within Two Weeks',
+      type: 'bar',
+      itemStyle:{
+      color:'green'
+      },
+      label: {
+        show: true,
+        position: 'top',
+        color:'black',
+        formatter: function(d) {
+          return (d.data / '1000000').toFixed(0) + 'M';
+
+    }
+      },
+
+      data: ${jsonEncode(pendingGoodsReceiptData.map((e) => e["Within Two Weeks"]).toList())}
+
+    },
+    
+  ]
+}'''));
+    /*SfCartesianChart(
       plotAreaBorderWidth: 0,
       primaryXAxis: CategoryAxis(
         labelIntersectAction: AxisLabelIntersectAction.wrap,
@@ -61,6 +146,6 @@ class UpcomingPurchaseOrder extends StatelessWidget {
               isVisible: true,
             )),
       ],
-    );
+    );*/
   }
 }

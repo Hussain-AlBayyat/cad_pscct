@@ -1,8 +1,14 @@
 class Assets {
   static const backgroundPng = "assets/images/img.jpg";
   static const logo = "assets/images/logo.png";
+  static const co2Image = "assets/images/co2_mobile_big.png";
+
   static const globalMarketReportPdf = "assets/globalMarketSampleReport.pdf";
   static const logoText = "assets/images/logo_text_normal.png";
+  static const loadingImage = "assets/images/pscct_loading.png";
+  static const introVideo = "assets/intro.mp4";
+  static const ipad_image_landscape = "assets/images/ipad_image_landscape.jpg";
+  static const ipad_image_portrait = "assets/images/ipad_image_portrait.jpg";
 
   ///Icons
   static const backArrowIcon = "assets/icons/backarrow_icon.png";
@@ -23,4 +29,5 @@ class Assets {
   static const faceIdIcon = "assets/icons/faceID.png";
   static const privacyIcon = "assets/icons/privacy_icon.png";
   static const supportIcon = "assets/icons/support_icon.png";
+  static const pieIcon = "assets/icons/pie_chart_icon.png";
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../../../models/cartesian_chart.dart';
 
@@ -30,27 +29,27 @@ class SyncfusionCartesianChart extends StatelessWidget {
       ],
     );*/
   }
-
-  LineSeries<Map, String> constructLine(Map data) {
-    //var dataList = data["data"] as List<Map>;
-
-    return LineSeries<Map, String>(
-        dataSource: data["data"],
-        xValueMapper: (Map data, _) => data.values.first, //["Month"],
-        yValueMapper: (Map data, _) => double.parse(data["VALUE001"]),
-        name: 'Sales',
-        dataLabelSettings: const DataLabelSettings(isVisible: true));
-  }
-
-  BarSeries<Map, String> constructBar(List<Map> data) {
-    return BarSeries<Map, String>(
-        // Bind data source
-        dataSource: data,
-        xValueMapper: (Map sales, _) => sales["Month"],
-        yValueMapper: (Map sales, _) => sales["Value"],
-        name: 'Sales',
-
-        // Enable data label
-        dataLabelSettings: const DataLabelSettings(isVisible: true));
-  }
+  //
+  // LineSeries<Map, String> constructLine(Map data) {
+  //   //var dataList = data["data"] as List<Map>;
+  //
+  //   return LineSeries<Map, String>(
+  //       dataSource: data["data"],
+  //       xValueMapper: (Map data, _) => data.values.first, //["Month"],
+  //       yValueMapper: (Map data, _) => double.parse(data["VALUE001"]),
+  //       name: 'Sales',
+  //       dataLabelSettings: const DataLabelSettings(isVisible: true));
+  // }
+  //
+  // BarSeries<Map, String> constructBar(List<Map> data) {
+  //   return BarSeries<Map, String>(
+  //       // Bind data source
+  //       dataSource: data,
+  //       xValueMapper: (Map sales, _) => sales["Month"],
+  //       yValueMapper: (Map sales, _) => sales["Value"],
+  //       name: 'Sales',
+  //
+  //       // Enable data label
+  //       dataLabelSettings: const DataLabelSettings(isVisible: true));
+  // }
 }

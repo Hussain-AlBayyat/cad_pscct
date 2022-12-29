@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pscct/size_config.dart';
 
-import '../../shared-widgets/custom_nav_bar.dart';
+import '../test_nav_bar.dart';
 import 'default_app_bar.dart';
 
 class DefaultScaffold extends StatefulWidget {
@@ -54,66 +54,73 @@ class _DefaultScaffoldState extends State<DefaultScaffold> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          bottomNavigationBar: widget.enablePaging
-              ? CustomNavBar(
-                  onTap: navigationTapped,
-                  selectedPageIndex: _selectedPageIndex,
-                )
-              : null,
-          //title: "Inventory".toUpperCase(),
+    return Scaffold(
+        bottomNavigationBar: widget.enablePaging
+            ? TestNavBar(
+                onTap: navigationTapped,
+                selectedPageIndex: _selectedPageIndex,
+              )
+            : null,
+        //title: "Inventory".toUpperCase(),
 
-          body: body()),
-    );
+        body: body());
   }
 
   Widget body() {
     return Container(
       padding: widget.padding,
-      decoration: BoxDecoration(color: Color(0xFFF7F7F7)),
-      child: Stack(
-        children: [
-          widget.background ??
-              Container(
-                //color: widget.backgroundColor,
-
-                height:
-                    getProportionateScreenHeight(SizeConfig.screenHeight / 2),
+      height: SizeConfig.screenHeight,
+      //decoration: BoxDecoration(color: Color(0xFFF7F7F7)),
+      child: !widget.enablePaging && widget.isScrollable
+          ? SingleChildScrollView(
+              child: Column(
+                children: [...widget.body],
               ),
-          Column(
-            //mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              if (widget.showAppBar)
-                Align(
-                  alignment: Alignment.topRight,
-                  child: DefaultAppBar(
-                    title: widget.title,
-                    showBackButton: widget.showBackButton,
-                    showSettings: widget.showSettings,
-                  ),
+            )
+          : Stack(
+              children: [
+                widget.background ??
+                    Container(
+                      //color: widget.backgroundColor,
+                      height: getProportionateScreenHeight(
+                          SizeConfig.screenHeight / 2),
+                    ),
+                Column(
+                  //mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                      height: getProportionateScreenHeight(32),
+                    ),
+                    if (widget.showAppBar)
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: DefaultAppBar(
+                          title: widget.title,
+                          showBackButton: widget.showBackButton,
+                          showSettings: widget.showSettings,
+                        ),
+                      ),
+                    if (!widget.enablePaging && widget.addSpacing) Spacer(),
+                    if (widget.enablePaging)
+                      Flexible(
+                        child: PageView(
+                          //onPageChanged: onPageChanged,
+                          controller: _pageController,
+                          children: [
+                            ...List.generate(widget.body.length,
+                                (index) => widget.body[index]),
+                          ],
+                        ),
+                      ),
+                    if (!widget.enablePaging) ...widget.body
+                  ],
                 ),
-              if (!widget.enablePaging && widget.addSpacing) Spacer(),
-              if (widget.enablePaging)
-                Flexible(
-                  child: PageView(
-                    //onPageChanged: onPageChanged,
-                    controller: _pageController,
-                    children: [
-                      ...List.generate(
-                          widget.body.length, (index) => widget.body[index]),
-                    ],
-                  ),
-                ),
-              if (!widget.enablePaging) ...widget.body
-            ],
-          ),
-          /*if (!widget.enablePaging)
+                /*if (!widget.enablePaging)
             Column(
               children: [...widget.body],
             ),*/
-        ],
-      ),
+              ],
+            ),
     );
   }
 

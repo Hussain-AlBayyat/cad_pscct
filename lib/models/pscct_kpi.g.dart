@@ -7,14 +7,36 @@ part of 'pscct_kpi.dart';
 // **************************************************************************
 
 _$_PSCCTKpi _$$_PSCCTKpiFromJson(Map<String, dynamic> json) => _$_PSCCTKpi(
-      title: json['title'] as String,
-      value: json['value'] as num,
-      target: json['target'] as num,
+      Title: json['Title'] as String,
+      Description: json['Description'] as String,
+      Category: json['Category'] as String,
+      CategoryText: json['CategoryText'] as String,
+      KPIId: json['KPIId'] as String,
+      Inversed: json['Inversed'] as bool,
+      Value: json['Value'] as String,
+      Target: json['Target'] as String,
+      ShowOnApp: json['ShowOnApp'] as bool,
+      IsCurrencyFormat: json['IsCurrencyFormat'] as bool? ?? false,
+      DecimalDigits: json['DecimalDigits'] as String? ?? "1",
+      Uom: json['Uom'] as String?,
+      OrderOnApp: json['OrderOnApp'] as String,
+      ManualValue: json['ManualValue'] as String,
     );
 
 Map<String, dynamic> _$$_PSCCTKpiToJson(_$_PSCCTKpi instance) =>
     <String, dynamic>{
-      'title': instance.title,
-      'value': instance.value,
-      'target': instance.target,
+      'Title': instance.Title,
+      'Description': instance.Description,
+      'Category': instance.Category,
+      'CategoryText': instance.CategoryText,
+      'KPIId': instance.KPIId,
+      'Inversed': instance.Inversed,
+      'Value': instance.Value,
+      'Target': instance.Target,
+      'ShowOnApp': instance.ShowOnApp,
+      'IsCurrencyFormat': instance.IsCurrencyFormat,
+      'DecimalDigits': instance.DecimalDigits,
+      'Uom': instance.Uom,
+      'OrderOnApp': instance.OrderOnApp,
+      'ManualValue': instance.ManualValue,
     };

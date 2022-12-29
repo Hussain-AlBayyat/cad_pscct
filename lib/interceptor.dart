@@ -1,5 +1,3 @@
-import 'package:kiwi/kiwi.dart';
-
 class Injector {
   /*static Container container;
   static final resolve = container.resolve;

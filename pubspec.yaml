@@ -33,9 +33,7 @@ dependencies:
     sdk: flutter
   responsive_framework: ^0.2.0
   flutter_platform_widgets: ^2.0.0
-  flutter_inappwebview: ^5.5.0+3
   xml2json: ^5.3.5
-  kiwi: ^4.0.3
   #Http client
   dio: ^4.0.6
   #State Management
@@ -46,19 +44,22 @@ dependencies:
   #Freezed
   freezed_annotation: ^2.2.0
   json_annotation: ^4.7.0
+  #local Storage
+  flutter_secure_storage: ^7.0.1
   #Local Fingerprint or Facial Auth
   local_auth: ^2.1.2
+  local_session_timeout: ^2.2.0
+  video_player: ^2.4.10
     #Charts
     #charts_flutter: ^0.12.0
-  #flutter_echarts: ^2.4.0
-  #graphic: ^0.10.6
-  syncfusion_flutter_charts: ^20.2.49
-  syncfusion_flutter_maps: ^20.2.49
-  syncfusion_flutter_datagrid: ^20.2.49
-  syncfusion_flutter_pdfviewer: ^20.3.50
-
-  quiver: ^3.1.0
-  # The following adds the Cupertino Icons font to your application.
+    #flutter_echarts: ^2.4.0
+  flutter_cached_pdfview: ^0.4.1
+  path_provider: ^2.0.11
+  #syncfusion_flutter_charts: ^20.2.49
+  #syncfusion_flutter_maps: ^20.2.49
+  #syncfusion_flutter_datagrid: ^20.2.49
+  flutter_echarts: ^2.4.0
+    # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
 
 
@@ -67,7 +68,7 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.10.0
+  flutter_launcher_icons: ^0.11.0
   build_runner: ^2.3.2
   json_serializable: ^6.3.1
   freezed: ^2.1.0+1
@@ -78,7 +79,7 @@ flutter_icons:
   android: "ic_launcher"
   ios: true
   image_path_ios: "assets/appstore_icon.png"
-  image_path_android: "assets/images/logo.png"
+  image_path_android: "assets/appstore_icon.png"
   remove_alpha_ios: true
   min_sdk_android: 21
 
@@ -105,8 +106,9 @@ flutter:
     - assets/mockup_data/
     - assets/images/
     - assets/icons/
-    - assets/images/landing_page/
-    - assets/world_map.json
+    - assets/images/home/
+    #- assets/world_map.json
+    - assets/intro.mp4
     - assets/globalMarketSampleReport.pdf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

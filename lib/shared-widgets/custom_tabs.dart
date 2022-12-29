@@ -8,7 +8,7 @@ class CustomTabs extends StatelessWidget {
       {required this.tabPages,
       this.tabsLabel = const [
         Constants.overview,
-        Constants.kpi,
+        Constants.kpis,
         Constants.alerts
       ],
       Key? key})
@@ -20,6 +20,7 @@ class CustomTabs extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: tabPages.length,
+        animationDuration: Duration(milliseconds: 100),
         child: Column(children: [
           Container(
             margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
@@ -42,7 +43,7 @@ class CustomTabs extends StatelessWidget {
                   ...List.generate(
                       tabsLabel.length,
                       (index) => Tab(
-                            height: 40,
+                            height: getProportionateScreenHeight(40),
                             text: tabsLabel[index],
                           ))
                 ]),
@@ -53,21 +54,28 @@ class CustomTabs extends StatelessWidget {
                     if (overscroll is OverscrollNotification &&
                         overscroll.overscroll != 0 &&
                         overscroll.dragDetails != null) {
-                      print(overscroll.toString());
                       /*_pageController.animateToPage(overscroll.overscroll < 0 ? 0 : 2,
                       curve: Curves.ease, duration: Duration(milliseconds: 250));*/
                     }
                     return true;
                   },
+                  //
                   child: TabBarView(children: [
                     ...List.generate(
                         tabPages.length,
-                        (index) => SingleChildScrollView(
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Center(child: tabPages[index]),
-                              ),
-                            )),
+                        (index) =>
+                            LayoutBuilder(builder: (context, constraints) {
+                              return SingleChildScrollView(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: Container(
+                                    constraints: BoxConstraints(
+                                        minHeight: constraints.maxHeight),
+                                    child: tabPages[index],
+                                  ),
+                                ),
+                              );
+                            })),
                   ])))
         ]));
   }

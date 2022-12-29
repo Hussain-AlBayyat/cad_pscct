@@ -7,7 +7,11 @@ class ProcurementCubit extends Cubit<ProcurementState> {
   ProcurementCubit() : super(const Uninitialized());
   final ProcurementRepository _procurementRepository = ProcurementRepository();
   getReports() {
-    _procurementRepository.getReports(category: PSCCTCategories.Procurement);
+    _procurementRepository.getReports(category: PSCCTCategories.PR);
+  }
+
+  getAlerts() {
+    _procurementRepository.getAlerts(category: PSCCTCategories.PR);
   }
 
   @override

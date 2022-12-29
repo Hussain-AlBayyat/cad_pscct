@@ -34,12 +34,15 @@ class Report extends StatelessWidget {
                     child: Center(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
-                        child: Text(
-                          title,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: getProportionateScreenHeight(18),
-                              fontWeight: FontWeight.bold),
+                        child: Hero(
+                          tag: title,
+                          child: Text(
+                            title,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: getProportionateScreenHeight(18),
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                     ),

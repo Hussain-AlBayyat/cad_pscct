@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:pscct/models/dialog_controller.dart';
+import 'package:pscct/models/pscct_report.dart';
 import 'package:pscct/shared-widgets/custom_card.dart';
 import 'package:pscct/size_config.dart';
 
+import '../models/assets.dart';
+import '../models/enums/echart_configurator.dart';
+import '../screens/inventory/widgets/inventory_trend.dart';
+import '../screens/inventory/widgets/outsourced_inventory.dart';
+import '../screens/inventory/widgets/upcoming_purchase_order.dart';
+import '../screens/procurement/widgets/egrs_processing_time.dart';
+import '../screens/procurement/widgets/iktva.dart';
+import '../screens/procurement/widgets/lost_opportunity.dart';
+import '../screens/procurement/widgets/low_value_procurement.dart';
+import '../screens/procurement/widgets/materials.dart';
+import '../screens/procurement/widgets/ses_processing_time.dart';
+import '../screens/procurement/widgets/spend_by_country.dart';
+import '../screens/warehouse/widgets/co2_emission_target2.dart';
+import '../screens/warehouse/widgets/pending_goods_receipt.dart';
+import '../screens/warehouse/widgets/shipping_price_index.dart';
+import 'echarts/echart.dart';
+
 class ReportButton extends StatelessWidget {
-  const ReportButton(
-      {required this.buttonText,
-      required this.buttonIcon,
-      required this.dialogWidget,
-      required this.description,
-      Key? key})
-      : super(key: key);
-  final String buttonText, buttonIcon, description;
-  final Widget dialogWidget;
+  const ReportButton({required this.pscctReport, Key? key}) : super(key: key);
+  final PSCCTReport pscctReport;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -21,12 +32,14 @@ class ReportButton extends StatelessWidget {
       child: CustomCard(
         child: TextButton(
             style: ElevatedButton.styleFrom(
-                alignment: Alignment.center,
-                padding: EdgeInsets.all(16),
-                backgroundColor: Colors.white),
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(16),
+            ),
             onPressed: () {
-              DialogController.showPopup(buttonText, description, context,
-                  dialogBody: dialogWidget);
+              DialogController.showPopup(
+                  pscctReport.Title, pscctReport.Description, context,
+                  dialogBody:
+                      mapWidgets(pscctReport.ComponentKey, pscctReport));
               /*showModalBottomSheet(
                   isScrollControlled: true,
                   context: context,
@@ -51,19 +64,28 @@ class ReportButton extends StatelessWidget {
                   height: getProportionateScreenHeight(16),
                 ),
                 Image.asset(
-                  buttonIcon,
+                  pscctReport.ChartType == "Table"
+                      ? Assets.tableListIcon
+                      : pscctReport.ChartType == "Line"
+                          ? Assets.trendIcon
+                          : pscctReport.ChartType == "Pie"
+                              ? Assets.pieIcon
+                              : Assets.columnChartIcon,
                   width: getProportionateScreenHeight(40),
                   height: getProportionateScreenHeight(40),
                 ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text(
-                      buttonText,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Color(0xFF323232),
-                          fontSize: getProportionateScreenHeight(16)),
+                    child: Hero(
+                      tag: pscctReport.Title,
+                      child: Text(
+                        pscctReport.Title,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Color(0xFF323232),
+                            fontSize: getProportionateScreenHeight(16)),
+                      ),
                     ),
                   ),
                 ),
@@ -71,5 +93,105 @@ class ReportButton extends StatelessWidget {
             )),
       ),
     );
+  }
+
+  mapWidgets(String id, PSCCTReport report) {
+    List<Map> data = report.RawData;
+    if (report.ImageKey.isNotEmpty) {
+      //data is an image
+      return FileViewer(file_key: pscctReport.ImageKey);
+    } else if (report.IsGeneric) {
+      if (report.ChartType == "Table") {
+        return Materials(data: data);
+      } else if (report.ChartType == "Line") {
+        return EChartCharts(
+          data: data,
+          name: report.Title,
+          configurations: [EChartConfigurator(chartType: ChartType.line)],
+        );
+      } else if (report.ChartType == "Bar") {
+        return EChartCharts(
+          data: data,
+          name: report.Title,
+          configurations: [EChartConfigurator(chartType: ChartType.bar)],
+        );
+      } else if (report.ChartType == "Pie") {
+        return EChartCharts(
+          data: data,
+          name: report.Title,
+          showAxis: false,
+          configurations: [
+            EChartConfigurator(chartType: ChartType.pie, showLabel: true)
+          ],
+        );
+      } else {
+        return Container(
+          child: Text(
+            "Widget is not built",
+            style: TextStyle(color: Colors.red),
+          ),
+        );
+      }
+    } else {
+      id = id.toUpperCase();
+
+      switch (id) {
+        //Procurement
+        case "IKTVA":
+          return IKTVA(
+            data: data,
+          );
+        case "PROCESSINGTIMEFORSES":
+          return SESProcessingTime(
+            data: data,
+          );
+        case "PROCESSINGTIMEFOREGR":
+          return EGRSProcessingTime(
+            data: data,
+          );
+        case "LOSTOPPORTUNITY":
+          return LostOpportunity(
+            data: data,
+          );
+        case "INDIRECTMATERIALSPENDBYCATEGORY":
+          return Materials(data: data);
+        case "COUNTRYSPEND":
+          return SpendByCountry(data: data);
+        case "LOWVALUEPROC":
+          return LowValueProcurement(
+            data: data,
+          );
+        //Warehouse & Logistics
+        case "SHIPPINGPRICEINDEX":
+          return ShippingPriceIndex(
+            data: data,
+          );
+        case "PENDINGGR":
+          return PendingGoodsReceipt(
+            data: data,
+          );
+
+        //Inventory
+        case "INVENTORYTRENDCHART":
+          return InventoryTrend(
+            data: data,
+          );
+        case "OUTSOURCEDINVENTORY":
+          return OutsourcedInventory(
+            data: data,
+          );
+        case "UPCOMINGPO":
+          return UpcomingPurchaseOrder(
+            data: data,
+          );
+        default:
+          return Container(
+            child: Text(
+              "Widget is not built",
+              style: TextStyle(color: Colors.red),
+            ),
+          );
+      }
+    }
   }
 }

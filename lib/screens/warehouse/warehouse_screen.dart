@@ -10,7 +10,7 @@ class WarehouseScreen extends StatelessWidget {
   WarehouseScreen({Key? key}) : super(key: key);
   final List<Widget> tabPages = [
     WarehouseLogisticsOverview(),
-    const WarehouseLogisticsKpis(),
+    WarehouseLogisticsKpis(),
     WarehouseLogisticsAlerts(),
   ];
 

@@ -1,1 +1,1 @@
-enum PSCCTCategories { Procurement, Inventory, WarehouseAndLogistics }
+enum PSCCTCategories { PR, IN, LG }
