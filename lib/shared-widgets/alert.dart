@@ -68,14 +68,20 @@ class Alert extends StatelessWidget {
             Expanded(
               child: Text(
                 pscctAlert.Title,
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Theme.of(context).highlightColor,
+                ),
               ),
             ),
             Column(
               children: [
                 Text(
                   "${Helper.compactNumber(pscctAlert.Value)}",
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      color: Theme.of(context).highlightColor,
+                      fontSize: 20),
                 ),
                 /*    Container(
                     width: getProportionateScreenWidth(33),

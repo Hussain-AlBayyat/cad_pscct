@@ -15,23 +15,31 @@ class IntroVideo extends StatefulWidget {
 
 class _IntroVideoState extends State<IntroVideo>
     with SingleTickerProviderStateMixin {
-  late VideoPlayerController videoController =
-      VideoPlayerController.asset(Assets.introVideo);
-
+  late VideoPlayerController videoController;
+  bool isPlaying = false;
   @override
   void initState() {
+    super.initState();
+  }
+
+  setupVideo() {
+    videoController = VideoPlayerController.asset(SizeConfig.screenWidth > 720
+        ? Assets.introVideoLandscape
+        : Assets.introVideo);
+
     videoController
         .initialize()
         .then((value) => videoController.play().then((value) {
               videoController.addListener(() {
                 if (videoController.value.position.inSeconds >
                     videoController.value.duration.inSeconds - 3) {
+                  isPlaying = false;
+
                   navToLogin();
                 }
               });
             }));
-
-    super.initState();
+    isPlaying = true;
   }
 
   @override
@@ -43,17 +51,16 @@ class _IntroVideoState extends State<IntroVideo>
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    if (!isPlaying) setupVideo();
 
     return Scaffold(
         body: GestureDetector(
       onPanUpdate: (_) => navToLogin(),
       child: Stack(
         children: [
-          SizedBox(
-              height: SizeConfig.screenHeight,
-              child: VideoPlayer(
-                videoController,
-              )),
+          VideoPlayer(
+            videoController,
+          ),
           Align(
               alignment: Alignment.bottomRight,
               child: Padding(

@@ -9,7 +9,7 @@ class SizeConfig {
 
   static double? defaultSize;
   static Orientation? orientation;
-
+  static isLandscape() => SizeConfig.orientation == Orientation.landscape;
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
     screenWidth = _mediaQueryData.size.width;
@@ -35,7 +35,6 @@ double getProportionateScreenWidth(double inputWidth) {
   double screenWidth = SizeConfig.screenWidth;
   // 375 is the layout width that designer use
   //return SizeConfig.blockSizeHorizontal * screenWidth;
-
   return (inputWidth /
           (SizeConfig.orientation == Orientation.portrait ? 390 : 1024)) *
       screenWidth;

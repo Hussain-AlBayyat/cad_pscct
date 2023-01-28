@@ -27,7 +27,7 @@ class CustomCard extends StatelessWidget {
       margin: margin,
       padding: padding,
       decoration: BoxDecoration(
-        color: color ?? Theme.of(context).scaffoldBackgroundColor,
+        color: color,
         gradient: linearGradiant,
         borderRadius:
             BorderRadius.circular(getProportionateScreenHeight(borderRadius)),

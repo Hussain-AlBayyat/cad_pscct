@@ -12,6 +12,7 @@ class DefaultAppBar extends StatelessWidget {
       Key? key})
       : super(key: key);
   final String title;
+
   final bool showBackButton, showSettings;
 
   @override
@@ -26,15 +27,18 @@ class DefaultAppBar extends StatelessWidget {
           if (showBackButton)
             IconButton(
                 onPressed: () => Navigator.pop(context),
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back_rounded,
-                  color: Colors.black,
+                  color: Theme.of(context).highlightColor,
                   size: 32,
                 )),
           if (title.isNotEmpty)
             Text(
               title,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Theme.of(context).highlightColor),
             ),
           Visibility(
             visible: showSettings,

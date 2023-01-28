@@ -38,7 +38,7 @@ class _ImageInimationState extends State<ImageInimation>
           height: 200,
           width: 200,
           fit: BoxFit.cover,
-          image: AssetImage(Assets.backgroundPng),
+          image: AssetImage(Assets.backgroundLight),
         ),
       ),
     );

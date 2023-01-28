@@ -20,6 +20,7 @@ import '../screens/warehouse/widgets/co2_emission_target2.dart';
 import '../screens/warehouse/widgets/pending_goods_receipt.dart';
 import '../screens/warehouse/widgets/shipping_price_index.dart';
 import 'echarts/echart.dart';
+import 'file_viewer.dart';
 
 class ReportButton extends StatelessWidget {
   const ReportButton({required this.pscctReport, Key? key}) : super(key: key);
@@ -30,6 +31,7 @@ class ReportButton extends StatelessWidget {
       width: getProportionateScreenWidth(165),
       height: getProportionateScreenHeight(130),
       child: CustomCard(
+        color: Theme.of(context).cardColor,
         child: TextButton(
             style: ElevatedButton.styleFrom(
               alignment: Alignment.center,
@@ -71,8 +73,8 @@ class ReportButton extends StatelessWidget {
                           : pscctReport.ChartType == "Pie"
                               ? Assets.pieIcon
                               : Assets.columnChartIcon,
-                  width: getProportionateScreenHeight(40),
-                  height: getProportionateScreenHeight(40),
+                  width: getProportionateScreenHeight(32),
+                  height: getProportionateScreenHeight(32),
                 ),
                 Expanded(
                   child: Container(
@@ -83,7 +85,7 @@ class ReportButton extends StatelessWidget {
                         pscctReport.Title,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Color(0xFF323232),
+                            color: Theme.of(context).highlightColor,
                             fontSize: getProportionateScreenHeight(16)),
                       ),
                     ),
@@ -97,6 +99,19 @@ class ReportButton extends StatelessWidget {
 
   mapWidgets(String id, PSCCTReport report) {
     List<Map> data = report.RawData;
+    data.forEach((element) {
+      element.forEach((key, value) {
+        try {
+          // format the current value decimal digits and then update the data
+          var formattedNumber = double.parse(value)
+              .toStringAsFixed(int.parse(report.DecimalDigits));
+          element.update(key, (value) => formattedNumber);
+        } catch (error) {
+          // value is not a number
+        }
+      });
+    });
+
     if (report.ImageKey.isNotEmpty) {
       //data is an image
       return FileViewer(file_key: pscctReport.ImageKey);
@@ -141,6 +156,10 @@ class ReportButton extends StatelessWidget {
           return IKTVA(
             data: data,
           );
+        case "CO2EMISSIONTARGET":
+          return Co2EmissionTarget(
+            data: data,
+          );
         case "PROCESSINGTIMEFORSES":
           return SESProcessingTime(
             data: data,
@@ -149,6 +168,7 @@ class ReportButton extends StatelessWidget {
           return EGRSProcessingTime(
             data: data,
           );
+
         case "LOSTOPPORTUNITY":
           return LostOpportunity(
             data: data,

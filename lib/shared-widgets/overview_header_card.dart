@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:pscct/Theme/theme.dart';
 import 'package:pscct/models/dialog_controller.dart';
 import 'package:pscct/models/pscct_report.dart';
@@ -15,7 +14,6 @@ class OverviewHeaderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var formatter = NumberFormat('###,000');
     return GestureDetector(
       onTap: () => DialogController.showPopup(
         report.Title,
@@ -25,7 +23,8 @@ class OverviewHeaderCard extends StatelessWidget {
       child: CustomCard(
         linearGradiant: AppTheme.menuItemGradient,
         padding: EdgeInsets.symmetric(
-            horizontal: getProportionateScreenWidth(32), vertical: 32),
+            horizontal: getProportionateScreenWidth(28),
+            vertical: getProportionateScreenHeight(24)),
         child: Column(
           children: [
             ...List.generate(
@@ -41,12 +40,14 @@ class OverviewHeaderCard extends StatelessWidget {
                               report.RawData.toList()[index].values.first,
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: getProportionateScreenHeight(20)),
+                                  fontSize: getProportionateScreenHeight(18)),
                             ),
                           ),
-                          leading: Image.asset(Assets.dollarIcon),
+                          leading: report.Category == "LG"
+                              ? Image.asset(Assets.hashtagIcon)
+                              : Image.asset(Assets.dollarIcon),
                           subtitle: Text(
-                            "\$${Helper.compactNumber2(report.RawData.toList()[index].values.last).toString()} ${report.Uom ?? ""}",
+                            "${Helper.compactNumber2(report.RawData.toList()[index].values.last).toString()} ${report.Uom ?? ""}",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: getProportionateScreenHeight(24)),
@@ -56,7 +57,7 @@ class OverviewHeaderCard extends StatelessWidget {
                           Divider(
                             height: 30,
                             thickness: 0.7,
-                            color: Colors.white,
+                            color: Colors.white.withOpacity(0.3),
                           ),
                       ],
                     ))

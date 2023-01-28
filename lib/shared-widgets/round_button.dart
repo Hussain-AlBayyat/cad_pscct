@@ -13,9 +13,9 @@ class RoundButton extends StatelessWidget {
       child: Text(text),
       style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,
-          disabledBackgroundColor: Colors.grey[400],
-          backgroundColor: Color(0xFF323232),
-          minimumSize: Size.fromHeight(50),
+          disabledBackgroundColor: Theme.of(context).disabledColor,
+          backgroundColor: Theme.of(context).primaryColor,
+          minimumSize: Size.fromHeight(getProportionateScreenHeight(50)),
           textStyle: TextStyle(fontSize: getProportionateScreenHeight(16)),
           padding: EdgeInsets.all(getProportionateScreenHeight(16)),
           shape: RoundedRectangleBorder(

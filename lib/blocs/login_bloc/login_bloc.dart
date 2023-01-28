@@ -1,10 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:pscct/blocs/login_bloc/login_state.dart';
 import 'package:pscct/repositories/procurement_repository.dart';
 import 'package:pscct/services/auth_service.dart';
-
-import '../../repositories/pscct_repository.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(const Uninitialized());
@@ -17,6 +16,7 @@ class LoginCubit extends Cubit<LoginState> {
   final iosOption =
       IOSOptions(accessibility: KeychainAccessibility.first_unlock);
   ProcurementRepository procurementRepository = ProcurementRepository();
+
   initialize() async {
     setupStorage();
     await _readCredential();
@@ -59,28 +59,46 @@ class LoginCubit extends Cubit<LoginState> {
       //   typedPassword = "";
       //   typedUserName = "";
       // });
-      bool isLoggedIn = await AuthService.login(typedUserName, typedPassword)
+      _isLoggedIn = await AuthService.login(typedUserName, typedPassword)
           .catchError((onError) {
-        emit(Error(message: 'Error'));
+        typedPassword = "";
+
+        emit(Error(message: (onError as DioError).error.toString()));
       });
       //await Future.delayed(Duration(seconds: 2));
-      if (isLoggedIn) {
+      if (_isLoggedIn) {
         _saveCredential();
-        typedPassword = "";
-        typedUserName = "";
         isFirstTime = false;
+        await Future.wait([
+          procurementRepository.getProcurementReports(),
+          procurementRepository.getProcurementAlerts(),
+          procurementRepository.getProcurementKpis()
+        ]).catchError((onError) {
+          AuthService.logout();
+          typedPassword = "";
 
-        //   var reports = await procurementRepository.getReports();
-        // print(reports);
-        emit(LoggedIn());
+          emit(Error(
+            message: (onError as DioError).message ?? onError.toString(),
+          ));
+        }).then((value) {
+          typedPassword = "";
+          typedUserName = "";
+          emit(LoggedIn());
+        });
       } else {
         typedPassword = "";
-        typedUserName = "";
+
         emit(Error(
-          message: "Error",
+          message: "Error signing you in",
         ));
       }
     }
+  }
+
+  isLoggedIn() => _isLoggedIn;
+
+  logOut() {
+    _isLoggedIn = false;
   }
 
   updateEnvironmentUrl() {

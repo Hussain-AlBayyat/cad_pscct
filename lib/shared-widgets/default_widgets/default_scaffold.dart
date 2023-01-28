@@ -74,7 +74,9 @@ class _DefaultScaffoldState extends State<DefaultScaffold> {
       child: !widget.enablePaging && widget.isScrollable
           ? SingleChildScrollView(
               child: Column(
-                children: [...widget.body],
+                children: [
+
+                  ...widget.body],
               ),
             )
           : Stack(

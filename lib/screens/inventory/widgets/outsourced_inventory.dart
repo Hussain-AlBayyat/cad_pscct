@@ -20,6 +20,7 @@ class OutsourcedInventory extends StatelessWidget {
                 child: Text(
                   "Commodity",
                   style: TextStyle(
+                      color: Theme.of(context).highlightColor,
                       fontSize: getProportionateScreenHeight(12),
                       fontWeight: FontWeight.bold),
                 ),
@@ -32,6 +33,7 @@ class OutsourcedInventory extends StatelessWidget {
                       "<6\nMonth",
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                          color: Theme.of(context).highlightColor,
                           fontSize: getProportionateScreenHeight(12),
                           fontWeight: FontWeight.bold),
                     ),
@@ -78,6 +80,7 @@ class OutsourcedInventory extends StatelessWidget {
                       data.toList()[index].values.first,
                       style: TextStyle(
                           fontSize: getProportionateScreenHeight(16),
+                          color: Theme.of(context).highlightColor,
                           fontWeight: data.length - 1 == index
                               ? FontWeight.bold
                               : null),
@@ -92,6 +95,7 @@ class OutsourcedInventory extends StatelessWidget {
                             Helper.compactNumber(
                                 data.toList()[index].values.toList()[1]),
                             style: TextStyle(
+                                color: Theme.of(context).highlightColor,
                                 fontSize: getProportionateScreenHeight(16),
                                 fontWeight: data.length - 1 == index
                                     ? FontWeight.bold
@@ -101,6 +105,7 @@ class OutsourcedInventory extends StatelessWidget {
                             Helper.compactNumber(
                                 data.toList()[index].values.toList()[2]),
                             style: TextStyle(
+                                color: Theme.of(context).highlightColor,
                                 fontSize: getProportionateScreenHeight(16),
                                 fontWeight: data.length - 1 == index
                                     ? FontWeight.bold
@@ -110,6 +115,7 @@ class OutsourcedInventory extends StatelessWidget {
                             Helper.compactNumber(
                                 data.toList()[index].values.toList()[3]),
                             style: TextStyle(
+                                color: Theme.of(context).highlightColor,
                                 fontSize: getProportionateScreenHeight(16),
                                 fontWeight: data.length - 1 == index
                                     ? FontWeight.bold

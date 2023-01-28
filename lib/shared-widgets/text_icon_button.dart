@@ -15,13 +15,16 @@ class TextIconButton extends StatelessWidget {
       onPressed: onPress,
       icon: Image.asset(
         icon ?? "",
+        color: Theme.of(context).highlightColor,
         height: getProportionateScreenHeight(30),
       ),
-      label: Text(text ?? ""),
+      label: Text(
+        text ?? "",
+      ),
       style: TextButton.styleFrom(
+        foregroundColor: Theme.of(context).highlightColor,
         alignment: Alignment.centerLeft,
         minimumSize: Size.fromHeight(50),
-        foregroundColor: Color(0xFF323232),
         padding: EdgeInsets.all(getProportionateScreenHeight(16)),
         textStyle: TextStyle(
           fontSize: getProportionateScreenHeight(16),

@@ -49,33 +49,36 @@ class TestNavBar extends StatelessWidget {
   double getFontSize(int index) => selectedPageIndex == index ? 14 : 12;
   Color _getItemColor(int index) =>
       selectedPageIndex == index ? _selectedItemColor : _unselectedItemColor;
-  Widget _buildIcon(String image, String text, int index) => AnimatedContainer(
-        width: SizeConfig.screenWidth / 3,
-        margin: EdgeInsets.all(0),
-        padding: EdgeInsets.all(0),
-        height: getProportionateScreenHeight(80),
-        color: _getBgColor(index),
-        duration: const Duration(milliseconds: 500),
-        child: InkWell(
-          onTap: () => onTap!(index),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.asset(
-                image,
-                height: iconHeight,
-                color: _getItemColor(index),
-              ),
-              SizedBox(
-                height: getProportionateScreenHeight(8),
-              ),
-              Text(text,
-                  style: TextStyle(
-                      fontSize:
-                          getProportionateScreenHeight(getFontSize(index)),
-                      color: _getItemColor(index))),
-            ],
+  Widget _buildIcon(String image, String text, int index) =>
+      OrientationBuilder(builder: (context, _) {
+        return AnimatedContainer(
+          width: SizeConfig.screenWidth / 3,
+          margin: EdgeInsets.all(0),
+          padding: EdgeInsets.all(0),
+          height: getProportionateScreenHeight(80),
+          color: _getBgColor(index),
+          duration: const Duration(milliseconds: 100),
+          child: InkWell(
+            onTap: () => onTap!(index),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image.asset(
+                  image,
+                  height: iconHeight,
+                  color: _getItemColor(index),
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(8),
+                ),
+                Text(text,
+                    style: TextStyle(
+                        fontSize:
+                            getProportionateScreenHeight(getFontSize(index)),
+                        color: _getItemColor(index))),
+              ],
+            ),
           ),
-        ),
-      );
+        );
+      });
 }

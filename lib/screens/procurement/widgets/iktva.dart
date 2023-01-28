@@ -13,7 +13,7 @@ class IKTVA extends StatelessWidget {
       Map x = {};
 
       element.forEach((key, value) {
-        if (value == "0.000") {
+        if (value == "0.000" || value == "0") {
           x[key] = null;
         } else
           x[key] = value;
@@ -24,10 +24,8 @@ class IKTVA extends StatelessWidget {
       data: filteredData,
       name: "IKTVA",
       configurations: [
-        EChartConfigurator(
-            chartType: ChartType.line, lineColor: 'green', symbolType: "none"),
-        EChartConfigurator(
-            lineType: LineType.dashed, lineColor: "green", symbolType: "none"),
+        EChartConfigurator(chartType: ChartType.line, symbolType: "none"),
+        EChartConfigurator(lineType: LineType.dashed, symbolType: "none"),
       ],
     );
   }

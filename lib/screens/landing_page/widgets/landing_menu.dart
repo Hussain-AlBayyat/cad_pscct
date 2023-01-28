@@ -26,7 +26,7 @@ class LandingPageMenu extends StatelessWidget {
         ...List.generate(
           menuItems.length,
           (index) => Container(
-            width: getProportionateScreenWidth(140),
+            width: getProportionateScreenWidth(135),
             height: getProportionateScreenHeight(140),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(

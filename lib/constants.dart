@@ -4,7 +4,7 @@ class Constants {
 
   static const alerts = "Alerts";
   static const overview = "Overview";
-  static const kpis = "KPIS";
+  static const kpis = "KPIs";
   static const inventory = "Inventory";
   static const procurement = "Procurement";
   static const wareHouseAndLogistics = "Warehouse & Logistics";

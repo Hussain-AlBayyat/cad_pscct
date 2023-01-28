@@ -24,7 +24,9 @@ class SpendItem extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: TextStyle(fontSize: getProportionateScreenHeight(18)),
+                  style: TextStyle(
+                      color: Theme.of(context).highlightColor,
+                      fontSize: getProportionateScreenHeight(18)),
                 ),
               ),
               Text(

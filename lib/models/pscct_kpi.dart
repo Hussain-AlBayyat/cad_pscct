@@ -11,7 +11,7 @@ class PSCCTKpi with _$PSCCTKpi {
     required String Description,
     required String Category,
     required String CategoryText,
-    required String KPIId,
+    required String CompId,
     required bool Inversed,
     required String Value,
     required String Target,

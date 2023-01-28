@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pscct/home/home_widgets/landing_headline.dart';
 import 'package:pscct/home/home_widgets/landing_menu.dart';
-import 'package:pscct/shared-widgets/custom_card.dart';
-
 import 'package:pscct/size_config.dart';
 
 import '../models/assets.dart';
@@ -13,14 +11,12 @@ class LandingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
-
     return DefaultScaffold(
       showAppBar: true,
       showBackButton: false,
       background: Image.asset(
         height: getProportionateScreenHeight(500),
-        Assets.backgroundPng,
+        Assets.backgroundLight,
         fit: BoxFit.cover,
         width: SizeConfig.screenWidth,
       ),

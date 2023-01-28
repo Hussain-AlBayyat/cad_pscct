@@ -31,7 +31,11 @@ class EGRSProcessingTime extends StatelessWidget {
       data: data,
       name: "Lost Opportunity",
       configurations: [
-        EChartConfigurator(chartType: ChartType.line, showLabel: true),
+        EChartConfigurator(
+          chartType: ChartType.line,
+          showLabel: true,
+          //labelColor: Theme.of(context).highlightColor.toString(),
+        ),
         EChartConfigurator(chartType: ChartType.line)
       ],
     );

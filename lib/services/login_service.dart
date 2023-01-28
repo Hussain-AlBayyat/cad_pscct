@@ -1,11 +1,12 @@
 import 'dart:convert';
-import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:pscct/services/http_service.dart';
 
 class LoginService {
   static String cookie = '';
   static String portalUrl = "https://dp4.aramco.com.sa/irj/portal";
+  static String myHomeUrl = "https://myhome.aramco.com.sa/irj/portal";
   static String username = '';
   static String orgCode = '';
   static Future<bool> login(String username, String password) async {
@@ -17,7 +18,7 @@ class LoginService {
         'Basic ' + base64Encode(ascii.encode('$username:$password'));
 
     final response = await HttpService.get(
-        path: portalUrl,
+        path: myHomeUrl,
         options: Options(headers: {
           'Authorization': basicAuth,
           "Accept": "*/*",

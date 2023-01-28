@@ -22,12 +22,16 @@ class LowValueProcurement extends StatelessWidget {
                     children: [
                       Text(
                         (lowValueProcurementData[index]["label"])!,
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Theme.of(context).highlightColor),
                       ),
                       Text(
                         Helper.compactNumber(
                             data.first.values.toList()[index + 1]),
-                        style: TextStyle(fontSize: 28),
+                        style: TextStyle(
+                            fontSize: 28,
+                            color: Theme.of(context).primaryColor),
                       ),
                     ],
                   ),

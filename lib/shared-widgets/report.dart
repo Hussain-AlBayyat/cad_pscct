@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:pscct/size_config.dart';
+import 'package:simple_html_css/simple_html_css.dart';
 
 class Report extends StatelessWidget {
   final String title;
@@ -40,6 +40,7 @@ class Report extends StatelessWidget {
                             title,
                             textAlign: TextAlign.center,
                             style: TextStyle(
+                                color: Theme.of(context).highlightColor,
                                 fontSize: getProportionateScreenHeight(18),
                                 fontWeight: FontWeight.bold),
                           ),
@@ -51,14 +52,15 @@ class Report extends StatelessWidget {
                     onPressed: () => Navigator.pop(context),
                     icon: Icon(
                       Icons.close,
-                      color: Color(0xFF5F6369),
+                      color: Theme.of(context).highlightColor,
                       size: getProportionateScreenHeight(36),
                     ),
                   ),
                 ]),
-            Text(
-              description,
-              style: TextStyle(fontSize: getProportionateScreenHeight(14)),
+            RichText(
+              text: HTML.toTextSpan(context, description,
+                  defaultTextStyle:
+                      TextStyle(color: Theme.of(context).highlightColor)),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16.0, bottom: 32),

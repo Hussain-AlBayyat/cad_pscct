@@ -62,11 +62,25 @@ class _LoginScreenState extends State<LoginScreen>
       return DefaultScaffold(
         isScrollable: true,
         addSpacing: false,
+        showSettings: true,
+        showBackButton: false,
         padding: EdgeInsets.all(getProportionateScreenWidth(20)),
-        showAppBar: false,
+        showAppBar: true,
         body: [
           SizedBox(
-            height: getProportionateScreenHeight(SizeConfig.screenHeight * .15),
+            height: getProportionateScreenHeight(16),
+          ),
+          Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                  onPressed: () =>
+                      navService.pushNamed(AppRouter.settingsRoute),
+                  icon: Icon(
+                    Icons.settings_outlined,
+                    size: 32,
+                  ))),
+          SizedBox(
+            height: getProportionateScreenHeight(SizeConfig.screenHeight * .04),
           ),
           Center(
             child: Image.asset(
@@ -89,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen>
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Text(
-                "Error signing you in",
+                state.message,
                 style: TextStyle(color: Colors.red, fontSize: 18),
               ),
             ),
@@ -107,21 +121,22 @@ class _LoginScreenState extends State<LoginScreen>
           SizedBox(
             height: getProportionateScreenHeight(45),
           ),
-          if (!loginCubit.isFirstTime)
-            Center(
-              child: GestureDetector(
-                onTap: loginCubit.loginWithBiometric,
-                child: ScaleTransition(
-                  scale: CurvedAnimation(
-                      parent: animationController,
-                      curve: Curves.fastLinearToSlowEaseIn),
-                  child: Image.asset(
-                    Assets.faceIdIcon,
-                    height: getProportionateScreenHeight(112),
-                  ),
+          //if (!loginCubit.isFirstTime)
+          Center(
+            child: GestureDetector(
+              onTap: loginCubit.loginWithBiometric,
+              child: ScaleTransition(
+                scale: CurvedAnimation(
+                    parent: animationController,
+                    curve: Curves.fastLinearToSlowEaseIn),
+                child: Image.asset(
+                  Assets.faceIdIcon,
+                  color: Theme.of(context).primaryColor,
+                  height: getProportionateScreenHeight(112),
                 ),
               ),
             ),
+          ),
           SizedBox(
             height: getProportionateScreenHeight(45),
           ),

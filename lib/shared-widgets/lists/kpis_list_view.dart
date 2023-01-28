@@ -24,17 +24,23 @@ class KpisListView extends StatelessWidget {
             return Center(child: LoadingCircular());
           }
 
-          return Wrap(
-              spacing: getProportionateScreenWidth(26),
-              runSpacing: getProportionateScreenHeight(20),
-              alignment: WrapAlignment.start,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                ...List.generate(
-                  kpis.data!.length,
-                  (index) => KPI(kpi: kpis.data![index]),
-                )
-              ]);
+          return OrientationBuilder(builder: (context, orientation) {
+            return GridView.count(
+                shrinkWrap: true,
+                mainAxisSpacing: 20,
+                padding: EdgeInsets.only(top: 10),
+                physics: NeverScrollableScrollPhysics(),
+                crossAxisSpacing: 20,
+                crossAxisCount: 2,
+                childAspectRatio:
+                    SizeConfig.screenWidth / SizeConfig.screenHeight * 2.2,
+                children: [
+                  ...List.generate(
+                    kpis.data!.length,
+                    (index) => KPI(kpi: kpis.data![index]),
+                  )
+                ]);
+          });
         });
   }
 }

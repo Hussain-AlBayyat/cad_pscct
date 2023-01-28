@@ -10,30 +10,30 @@ import 'package:pscct/models/pscct_kpi.dart';
 import 'package:pscct/services/http_service.dart';
 
 import '../models/enums/pscct_categories.dart';
-import '../models/mock_interceptor.dart';
 import '../models/pscct_report.dart';
 
 abstract class PSCCTRepository {
+  static String _prefix = "/MobComponents";
   //Development
   static String dvbOdataUrl =
       "https://dvb.aramco.com.sa:44303/sap/opu/odata/sap/zscm_ct_config_srv";
   static const String dvbBspUrl =
       "https://dvb.aramco.com.sa:44303/sap/bc/bsp/sap/zbw_reporting/execute_report_oo.htm?query=";
   //Production
-  static const String prOdataUrl =
+  static String prOdataUrl =
       "https://prwascs.aramco.com.sa:44303/sap/opu/odata/sap/zscm_ct_config_srv";
   static const String prBspUrl =
       "https://prwascs.aramco.com.sa: 44382/sap/bc/bsp/sap/zbw_reporting/execute_report_oo.htm?query=";
 
   static String _alertsPath =
-      "$dvbOdataUrl/Alerts?\$format=json&\$expand=DataSourceNav&\$filter=(ShowOnApp eq true)";
+      "$prOdataUrl$_prefix?\$format=json&\$filter=(ComponentCategory eq 'A')&\$expand=DataSourceNav";
   static String _kpisPath =
-      "$dvbOdataUrl/KPIs?\$format=json&\$filter=(ShowOnApp eq true)";
+      "$prOdataUrl$_prefix?\$format=json&\$filter=(ComponentCategory eq 'K')&\$expand=DataSourceNav";
   static String _reportsPath =
-      "$dvbOdataUrl/Components?\$format=json&expand=DataSourceNav&\$filter=(ShowOnApp eq true)";
+      "$prOdataUrl$_prefix?\$format=json&\$filter=(ComponentCategory eq 'O')&\$expand=DataSourceNav";
 
-  String _pdfPath = "$dvbOdataUrl/FilePDFs('pdf')?\$format=json";
-  String _imagePath = "$dvbOdataUrl/FileUtils";
+  String _pdfPath = "$prOdataUrl/FilePDFs('pdf')?\$format=json";
+  String _imagePath = "$prOdataUrl/FileUtils";
 
   static List<PSCCTReport> _reportsList = [];
   static List<PSCCTAlert> _alertsList = [];
@@ -42,12 +42,12 @@ abstract class PSCCTRepository {
   //For testing
   static File? _pdfFile, _co2Image;
   static updateOdataUrl(String url) {
-    dvbOdataUrl = url;
+    prOdataUrl = url;
   }
 
   getAlerts({required PSCCTCategories category}) async {
     if (_alertsList.isEmpty) {
-      Response response = await HttpService.get(path: "alerts.json");
+      Response response = await HttpService.get(path: _alertsPath);
       List data = response.data["d"]["results"];
       _alertsList.addAll(data.map((e) => PSCCTAlert.fromJson(e)).toList());
       _alertsList
@@ -62,7 +62,7 @@ abstract class PSCCTRepository {
 
   getKpis({required PSCCTCategories category}) async {
     if (_kpisList.isEmpty) {
-      Response response = await HttpService.get(path: "kpis.json");
+      Response response = await HttpService.get(path: _kpisPath);
       List data = response.data["d"]["results"];
       _kpisList.addAll(data.map((e) => PSCCTKpi.fromJson(e)).toList());
       _kpisList
@@ -74,9 +74,9 @@ abstract class PSCCTRepository {
   }
 
   Future<List<PSCCTReport>> getReports({PSCCTCategories? category}) async {
-    HttpService.addInterceptor(interceptorsWrapper: MockInterceptor());
+    //HttpService.addInterceptor(interceptorsWrapper: MockInterceptor());
     if (_reportsList.isEmpty) {
-      Response response = await HttpService.get(path: "reports.json");
+      Response response = await HttpService.get(path: _reportsPath);
       List data = response.data["d"]["results"];
       _reportsList.addAll(data.map((e) => PSCCTReport.fromJson(e)).toList());
       _reportsList
@@ -120,7 +120,7 @@ abstract class PSCCTRepository {
   }
 
   Future<List<Map>> getAlertTrend(String queryName) async {
-    String url = "$dvbBspUrl$queryName";
+    String url = "$prBspUrl$queryName";
     Response response = await HttpService.get(path: url /*_reportsPath*/);
     var json = Helper.convertXmlToJsonList(response.data);
 

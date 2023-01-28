@@ -33,6 +33,7 @@ class PSCCTReport with _$PSCCTReport {
   static xmlToJson(String xml) {
     if (xml.isNotEmpty) {
       var json = Helper.convertXmlToJsonList(xml);
+
       return json;
     } else
       return <Map<String, dynamic>>[];

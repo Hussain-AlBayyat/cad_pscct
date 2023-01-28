@@ -42,11 +42,11 @@ class Helper {
             List<Map<String, dynamic>>.from(item);
         List<Map<String, dynamic>> editedItems = [];
         items.forEach((element) {
-          Map<String, dynamic> it = {};
+          Map<String, dynamic> item = {};
           for (int i = 0; i < element.length; i++) {
-            it[columnNames[i]] = element.values.toList()[i];
+            item[columnNames[i]] = element.values.toList()[i];
           }
-          editedItems.add(it);
+          editedItems.add(item);
 
           /*  columnNames.forEach((column) {
             editedItems.add({column: element.values.first});
@@ -80,8 +80,13 @@ class Helper {
 
   static compactNumber(String value) {
     NumberFormat numberFormat = new NumberFormat.compact();
+
     try {
-      return numberFormat.format(double.parse(value));
+      numberFormat.maximumFractionDigits = 1;
+      var number = numberFormat.format(
+        double.parse(value),
+      );
+      return number;
     } catch (error) {
       return value;
     }

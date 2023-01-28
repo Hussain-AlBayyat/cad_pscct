@@ -18,13 +18,17 @@ class Overview extends StatelessWidget {
           OverviewHeaderCard(
             report: reports.firstWhere((element) => element.IsCard),
           ),
-        SizedBox(
-          height: getProportionateScreenHeight(20),
-        ),
-        Center(
-          child: Wrap(
-            spacing: getProportionateScreenHeight(26),
-            runSpacing: getProportionateScreenHeight(20),
+
+        OrientationBuilder(builder: (context, _) {
+          return GridView.count(
+            shrinkWrap: true,
+            padding: EdgeInsets.only(top: 16, bottom: 16),
+            mainAxisSpacing: 20,
+            physics: NeverScrollableScrollPhysics(),
+            crossAxisSpacing: 20,
+            crossAxisCount: 2,
+            childAspectRatio:
+                SizeConfig.screenWidth / SizeConfig.screenHeight * 2.5,
             children: [
               ...List.generate(
                 reports
@@ -38,8 +42,8 @@ class Overview extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-        ),
+          );
+        }),
       ],
     );
   }

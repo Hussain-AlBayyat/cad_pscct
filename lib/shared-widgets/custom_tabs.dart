@@ -26,16 +26,16 @@ class CustomTabs extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
             //padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Colors.grey.shade200,
+              color: Theme.of(context).disabledColor.withOpacity(0.2),
               borderRadius:
                   BorderRadius.circular(4), /* color: Colors.grey.shade200*/
             ),
             child: TabBar(
-                unselectedLabelColor: Colors.black,
+                unselectedLabelColor: Theme.of(context).highlightColor,
                 labelStyle:
                     TextStyle(fontSize: getProportionateScreenHeight(14)),
                 indicator: BoxDecoration(
-                    color: Colors.white,
+                    // color: Theme.of(context).cardColor,
                     border: Border.all(color: Theme.of(context).primaryColor),
                     borderRadius: BorderRadius.circular(4)),
                 labelColor: Theme.of(context).primaryColor,
@@ -43,7 +43,7 @@ class CustomTabs extends StatelessWidget {
                   ...List.generate(
                       tabsLabel.length,
                       (index) => Tab(
-                            height: getProportionateScreenHeight(40),
+                            height: getProportionateScreenHeight(32),
                             text: tabsLabel[index],
                           ))
                 ]),
@@ -67,7 +67,8 @@ class CustomTabs extends StatelessWidget {
                             LayoutBuilder(builder: (context, constraints) {
                               return SingleChildScrollView(
                                 child: Padding(
-                                  padding: const EdgeInsets.all(20.0),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20.0),
                                   child: Container(
                                     constraints: BoxConstraints(
                                         minHeight: constraints.maxHeight),

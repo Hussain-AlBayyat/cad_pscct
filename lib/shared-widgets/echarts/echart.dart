@@ -50,14 +50,24 @@ class EChartCharts extends StatelessWidget {
   },
   legend: {
   show:${jsonEncode(legendsData.length > 1 ? true : false)},
+  textStyle:{
+    color:'grey',
+
+  },
     data: ${jsonEncode(legendsData)}
+  },
+    grid: {
+    left: '1%',
+    right: '0%',
+    bottom: '0%',
+    
+    containLabel: true
   },
   xAxis: {
     show:${jsonEncode(showAxis)},
      type: 'category',
       // prettier-ignore
     axisLabel: {
-          
           interval: ${xAxis.length > 15 ? 4 : 0},
         rotate: 45 
         },
@@ -155,11 +165,11 @@ class EChartCharts extends StatelessWidget {
   }
 
   formatData(List data) {
-    print(data);
-    var da = data.map((e) => double.parse(e!).toStringAsFixed(0));
-    print(da);
+    var da = data
+        .map((e) => e != null ? double.parse(e).toStringAsFixed(0) : null)
+        .toList();
 
-    return da;
+    return data;
   }
 
   test() {
@@ -203,8 +213,8 @@ class EChartCharts extends StatelessWidget {
             "fontSize": 14,
             "color": configurations?[index].labelColor
           },
-          "formatter":
-              dataSet[index] != null ? Helper.compactNumber(dataSet[index]) : ""
+          // "formatter":
+          //     dataSet[index] != null ? dataSet.map((e) => Helper.compactNumber(e)).toList() : ""
         },
         "data": formatData(dataSet),
       };

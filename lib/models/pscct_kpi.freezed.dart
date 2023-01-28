@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'pscct_kpi.dart';
 
@@ -24,7 +24,7 @@ mixin _$PSCCTKpi {
   String get Description => throw _privateConstructorUsedError;
   String get Category => throw _privateConstructorUsedError;
   String get CategoryText => throw _privateConstructorUsedError;
-  String get KPIId => throw _privateConstructorUsedError;
+  String get CompId => throw _privateConstructorUsedError;
   bool get Inversed => throw _privateConstructorUsedError;
   String get Value => throw _privateConstructorUsedError;
   String get Target => throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ abstract class $PSCCTKpiCopyWith<$Res> {
       String Description,
       String Category,
       String CategoryText,
-      String KPIId,
+      String CompId,
       bool Inversed,
       String Value,
       String Target,
@@ -80,7 +80,7 @@ class _$PSCCTKpiCopyWithImpl<$Res, $Val extends PSCCTKpi>
     Object? Description = null,
     Object? Category = null,
     Object? CategoryText = null,
-    Object? KPIId = null,
+    Object? CompId = null,
     Object? Inversed = null,
     Object? Value = null,
     Object? Target = null,
@@ -108,9 +108,9 @@ class _$PSCCTKpiCopyWithImpl<$Res, $Val extends PSCCTKpi>
           ? _value.CategoryText
           : CategoryText // ignore: cast_nullable_to_non_nullable
               as String,
-      KPIId: null == KPIId
-          ? _value.KPIId
-          : KPIId // ignore: cast_nullable_to_non_nullable
+      CompId: null == CompId
+          ? _value.CompId
+          : CompId // ignore: cast_nullable_to_non_nullable
               as String,
       Inversed: null == Inversed
           ? _value.Inversed
@@ -164,7 +164,7 @@ abstract class _$$_PSCCTKpiCopyWith<$Res> implements $PSCCTKpiCopyWith<$Res> {
       String Description,
       String Category,
       String CategoryText,
-      String KPIId,
+      String CompId,
       bool Inversed,
       String Value,
       String Target,
@@ -191,7 +191,7 @@ class __$$_PSCCTKpiCopyWithImpl<$Res>
     Object? Description = null,
     Object? Category = null,
     Object? CategoryText = null,
-    Object? KPIId = null,
+    Object? CompId = null,
     Object? Inversed = null,
     Object? Value = null,
     Object? Target = null,
@@ -219,9 +219,9 @@ class __$$_PSCCTKpiCopyWithImpl<$Res>
           ? _value.CategoryText
           : CategoryText // ignore: cast_nullable_to_non_nullable
               as String,
-      KPIId: null == KPIId
-          ? _value.KPIId
-          : KPIId // ignore: cast_nullable_to_non_nullable
+      CompId: null == CompId
+          ? _value.CompId
+          : CompId // ignore: cast_nullable_to_non_nullable
               as String,
       Inversed: null == Inversed
           ? _value.Inversed
@@ -271,7 +271,7 @@ class _$_PSCCTKpi extends _PSCCTKpi {
       required this.Description,
       required this.Category,
       required this.CategoryText,
-      required this.KPIId,
+      required this.CompId,
       required this.Inversed,
       required this.Value,
       required this.Target,
@@ -295,7 +295,7 @@ class _$_PSCCTKpi extends _PSCCTKpi {
   @override
   final String CategoryText;
   @override
-  final String KPIId;
+  final String CompId;
   @override
   final bool Inversed;
   @override
@@ -319,7 +319,7 @@ class _$_PSCCTKpi extends _PSCCTKpi {
 
   @override
   String toString() {
-    return 'PSCCTKpi(Title: $Title, Description: $Description, Category: $Category, CategoryText: $CategoryText, KPIId: $KPIId, Inversed: $Inversed, Value: $Value, Target: $Target, ShowOnApp: $ShowOnApp, IsCurrencyFormat: $IsCurrencyFormat, DecimalDigits: $DecimalDigits, Uom: $Uom, OrderOnApp: $OrderOnApp, ManualValue: $ManualValue)';
+    return 'PSCCTKpi(Title: $Title, Description: $Description, Category: $Category, CategoryText: $CategoryText, CompId: $CompId, Inversed: $Inversed, Value: $Value, Target: $Target, ShowOnApp: $ShowOnApp, IsCurrencyFormat: $IsCurrencyFormat, DecimalDigits: $DecimalDigits, Uom: $Uom, OrderOnApp: $OrderOnApp, ManualValue: $ManualValue)';
   }
 
   @override
@@ -334,7 +334,7 @@ class _$_PSCCTKpi extends _PSCCTKpi {
                 other.Category == Category) &&
             (identical(other.CategoryText, CategoryText) ||
                 other.CategoryText == CategoryText) &&
-            (identical(other.KPIId, KPIId) || other.KPIId == KPIId) &&
+            (identical(other.CompId, CompId) || other.CompId == CompId) &&
             (identical(other.Inversed, Inversed) ||
                 other.Inversed == Inversed) &&
             (identical(other.Value, Value) || other.Value == Value) &&
@@ -360,7 +360,7 @@ class _$_PSCCTKpi extends _PSCCTKpi {
       Description,
       Category,
       CategoryText,
-      KPIId,
+      CompId,
       Inversed,
       Value,
       Target,
@@ -391,7 +391,7 @@ abstract class _PSCCTKpi extends PSCCTKpi {
       required final String Description,
       required final String Category,
       required final String CategoryText,
-      required final String KPIId,
+      required final String CompId,
       required final bool Inversed,
       required final String Value,
       required final String Target,
@@ -414,7 +414,7 @@ abstract class _PSCCTKpi extends PSCCTKpi {
   @override
   String get CategoryText;
   @override
-  String get KPIId;
+  String get CompId;
   @override
   bool get Inversed;
   @override

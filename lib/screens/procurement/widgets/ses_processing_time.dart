@@ -41,13 +41,15 @@ class SESProcessingTime extends StatelessWidget {
         EChartConfigurator(
           lineColor: "red",
           symbolType: "none",
-          labelColor: "white",
           showLabel: false,
           areaStyleOpacity: 0.0,
         ),
         EChartConfigurator(
             areaStyleOpacity: 0.7,
             showLabel: true,
+            labelColor: Theme.of(context).brightness == Brightness.dark
+                ? "white"
+                : "black",
             stackType: "total",
             lineWidth: 0)
       ],
