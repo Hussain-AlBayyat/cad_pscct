@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pscct/repositories/wh_logistics_repository.dart';
 
-import '../../../shared-widgets/kpi.dart';
 import '../../../shared-widgets/lists/kpis_list_view.dart';
-import '../../../size_config.dart';
 
 class WarehouseLogisticsKpis extends StatelessWidget {
   WarehouseLogisticsKpis({Key? key}) : super(key: key);

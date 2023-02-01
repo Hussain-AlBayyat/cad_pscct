@@ -56,7 +56,7 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> login() async {
-    if (typedUserName!.toLowerCase() == "reset") {
+    if (typedUserName.toLowerCase() == "reset") {
       emit(Reset(_url));
     } else {
       emit(Loading());
@@ -68,7 +68,6 @@ class LoginCubit extends Cubit<LoginState> {
       //   typedUserName = ""; Sb2hj26ZLoG6nJiwCDH2nx7HKMr2nyDr
 
       // });
-      // procurementRepository.getProcurementReports();
 
       _isLoggedIn = await AuthService.login(typedUserName, typedPassword)
           .catchError((onError) {

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pscct/Theme/theme.dart';
 import 'package:pscct/size_config.dart';
 
-import '../../models/assets.dart';
 import '../../shared-widgets/custom_nav_bar.dart';
 import 'default_app_bar.dart';
 

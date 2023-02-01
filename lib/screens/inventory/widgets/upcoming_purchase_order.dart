@@ -1,11 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_echarts/flutter_echarts.dart';
 
 import '../../../models/enums/echart_configurator.dart';
 import '../../../shared-widgets/echarts/echart.dart';
-import '../../../size_config.dart';
 
 class UpcomingPurchaseOrder extends StatelessWidget {
   UpcomingPurchaseOrder({required this.data, Key? key}) : super(key: key);
@@ -50,6 +46,7 @@ class UpcomingPurchaseOrder extends StatelessWidget {
         EChartConfigurator(chartType: ChartType.bar),
       ],
     );
+/*
     SizedBox(
         height: getProportionateScreenHeight(300), child: Echarts(option: '''{
 
@@ -122,6 +119,7 @@ class UpcomingPurchaseOrder extends StatelessWidget {
     
   ]
 }'''));
+*/
     /*SfCartesianChart(
       plotAreaBorderWidth: 0,
       primaryXAxis: CategoryAxis(

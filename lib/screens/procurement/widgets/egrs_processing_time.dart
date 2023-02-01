@@ -1,11 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_echarts/flutter_echarts.dart';
 
 import '../../../models/enums/echart_configurator.dart';
 import '../../../shared-widgets/echarts/echart.dart';
-import '../../../size_config.dart';
 
 class EGRSProcessingTime extends StatelessWidget {
   EGRSProcessingTime({required this.data, Key? key}) : super(key: key);
@@ -42,7 +38,7 @@ class EGRSProcessingTime extends StatelessWidget {
       ],
     );
 
-    SizedBox(
+    /*  SizedBox(
         height: getProportionateScreenHeight(300), child: Echarts(option: '''{
 
   tooltip: {
@@ -127,7 +123,7 @@ class EGRSProcessingTime extends StatelessWidget {
       }
     },
   ]
-}'''));
+}'''));*/
     /*SfCartesianChart(
       plotAreaBorderWidth: 0,
       primaryXAxis: CategoryAxis(

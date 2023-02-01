@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:no_context_navigation/no_context_navigation.dart';
-import 'package:pscct/shared-widgets/custom_tabs.dart';
 import 'package:pscct/size_config.dart';
 
 import '../../router.dart';

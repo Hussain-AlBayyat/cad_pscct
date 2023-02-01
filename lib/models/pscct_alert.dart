@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pscct/models/pscct.dart';
 
 part 'pscct_alert.freezed.dart';
 part 'pscct_alert.g.dart';

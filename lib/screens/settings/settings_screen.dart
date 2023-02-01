@@ -1,13 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:no_context_navigation/no_context_navigation.dart';
 import 'package:pscct/blocs/settings_bloc/settings_bloc.dart';
 import 'package:pscct/blocs/settings_bloc/settings_state.dart';
 import 'package:pscct/models/assets.dart';
 import 'package:pscct/models/dialog_controller.dart';
-import 'package:pscct/router.dart';
-import 'package:pscct/services/auth_service.dart';
 import 'package:pscct/shared-widgets/loading_circular.dart';
 import 'package:pscct/shared-widgets/text_icon_button.dart';
 import 'package:pscct/size_config.dart';
@@ -118,7 +114,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       "Please Wait", "logging you out...", context,
                       dialogBody: LoadingCircular());
                   await loginCubit.logOut();
-
                 }),
           ),
         Spacer(

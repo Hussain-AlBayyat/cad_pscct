@@ -27,7 +27,7 @@ class EChartCharts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // var xAxis = data!.map((e) => e.values.first).toSet().toList();
-    var xAxis = data!
+    var xAxis = data
         .map((e) {
           if (e.keys.contains("Calendar day")) {
             DateTime date = DateTime.parse(e.values.first);
@@ -151,7 +151,7 @@ class EChartCharts extends StatelessWidget {
     for (int index = 0; index < seriesDataList.length; index++) {
       Map series = {
         "name": '${seriesDataList.keys.toList()[index]}',
-        "type": configurations![index].chartType?.name,
+        "type": configurations![index].chartType.name,
         "lineStyle": {
           //"color": 'green',
           "width": 2,
@@ -203,17 +203,17 @@ class EChartCharts extends StatelessWidget {
     ) {
       Map series = {
         "name": legendsData[index],
-        "type": configurations![index].chartType?.name,
+        "type": configurations![index].chartType.name,
         "smooth": true,
-        "symbol": configurations?[index]?.symbolType,
-        "stack": configurations?[index]?.stackType,
+        "symbol": configurations?[index].symbolType,
+        "stack": configurations?[index].stackType,
         "connectNulls": true,
         "sampling": {"type": "min", "threshold": "4"},
         "lineStyle": {
-          "color": configurations?[index]?.lineColor,
-          "width": configurations?[index]?.lineWidth,
+          "color": configurations?[index].lineColor,
+          "width": configurations?[index].lineWidth,
           "dashOffset": 10,
-          "type": configurations?[index]?.lineType.name
+          "type": configurations?[index].lineType.name
         },
         "areaStyle": {
           "opacity": configurations?[index].areaStyleOpacity,

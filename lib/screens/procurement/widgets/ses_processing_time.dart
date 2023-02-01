@@ -1,11 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_echarts/flutter_echarts.dart';
 
 import '../../../models/enums/echart_configurator.dart';
 import '../../../shared-widgets/echarts/echart.dart';
-import '../../../size_config.dart';
 
 class SESProcessingTime extends StatelessWidget {
   SESProcessingTime({required this.data, Key? key}) : super(key: key);
@@ -55,7 +51,7 @@ class SESProcessingTime extends StatelessWidget {
       ],
     );
 
-    SizedBox(
+/*    SizedBox(
       height: getProportionateScreenHeight(300),
       child: Echarts(
         option: '''{
@@ -170,7 +166,7 @@ nameGap:0,
   ]
 }''',
       ),
-    );
+    );*/
 
     /* SfCartesianChart(
       plotAreaBorderWidth: 0,

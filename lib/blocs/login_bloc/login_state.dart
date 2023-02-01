@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:local_session_timeout/local_session_timeout.dart';
 
 part 'login_state.freezed.dart';
 
