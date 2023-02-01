@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_echarts/flutter_echarts.dart';
+import 'package:intl/intl.dart';
 import 'package:pscct/helper.dart';
 import 'package:pscct/models/enums/echart_configurator.dart';
 import 'package:pscct/size_config.dart';
@@ -25,7 +26,19 @@ class EChartCharts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var xAxis = data!.map((e) => e.values.first).toSet().toList();
+    // var xAxis = data!.map((e) => e.values.first).toSet().toList();
+    var xAxis = data!
+        .map((e) {
+          if (e.keys.contains("Calendar day")) {
+            DateTime date = DateTime.parse(e.values.first);
+            String tempDate = new DateFormat("yyyy/MM/dd").format(date);
+            return tempDate;
+          } else
+            return e.values.first;
+        })
+        .toSet()
+        .toList();
+
     if (isSecondMode) {
       legendsData =
           data!.map((e) => e.values.toList().sublist(1).first).toList();
@@ -57,7 +70,7 @@ class EChartCharts extends StatelessWidget {
     data: ${jsonEncode(legendsData)}
   },
     grid: {
-    left: '1%',
+    left: '4%',
     right: '0%',
     bottom: '0%',
     

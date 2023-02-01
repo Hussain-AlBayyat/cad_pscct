@@ -35,7 +35,6 @@ class Helper {
     //check if xml has values and not empty
     if (values != null) {
       var item = values["OUTPUT"]["item"];
-
       //values can be list of item or only an item '(Map)'
       if (item.runtimeType == List<dynamic>) {
         List<Map<String, dynamic>> items =
@@ -47,10 +46,6 @@ class Helper {
             item[columnNames[i]] = element.values.toList()[i];
           }
           editedItems.add(item);
-
-          /*  columnNames.forEach((column) {
-            editedItems.add({column: element.values.first});
-          });*/
         });
         return editedItems;
       } else {

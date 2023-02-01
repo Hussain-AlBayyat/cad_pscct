@@ -6,16 +6,7 @@ import 'package:pscct/services/http_service.dart';
 
 import '../repositories/pscct_repository.dart';
 
-class AuthService {
-  static String _cookie = '';
-  static String portalUrl = "https://dp4.aramco.com.sa/irj/portal";
-  static String logoutUrl =
-      "https://dp4.aramco.com.sa/aramco.com~it~ca~myhome~masthead/html/logoff.html";
-
-  static String username = '';
-  static String orgCode = '';
-  static final LocalAuthentication _localAuthentication = LocalAuthentication();
-  /*
+/*
   usr: Mohata0j
   pass: Bihana@9
 
@@ -26,6 +17,17 @@ Welcome.1
   DVP User: alsham0y
   PW: pscctapp&1
    */
+class AuthService {
+  static String _cookie = '';
+  static String portalUrl = "https://dp4.aramco.com.sa/irj/portal";
+  static String myHomeUrl = "https://myhome.aramco.com.sa/irj/portal";
+  static String logoutUrl =
+      "https://dp4.aramco.com.sa/aramco.com~it~ca~myhome~masthead/html/logoff.html";
+  static String authUrl = myHomeUrl;
+  static String username = '';
+  static String orgCode = '';
+
+  static final LocalAuthentication _localAuthentication = LocalAuthentication();
 
   static Future<bool> logout() async {
     final response = await HttpService.get(path: logoutUrl);
@@ -41,7 +43,7 @@ Welcome.1
     String basicAuth =
         'Basic ' + base64Encode(ascii.encode('$username:$password'));
     Response response = await HttpService.get(
-        path: portalUrl,
+        path: authUrl,
         options: Options(headers: {
           'Authorization': basicAuth,
           "Accept": "*/*",

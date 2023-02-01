@@ -81,8 +81,6 @@ class _IntroVideoState extends State<IntroVideo>
   }
 
   navToLogin() {
-    //videoController.dispose();
     navService.pushReplacementNamed(AppRouter.loginRoute);
-    //videoController.dispose();
   }
 }

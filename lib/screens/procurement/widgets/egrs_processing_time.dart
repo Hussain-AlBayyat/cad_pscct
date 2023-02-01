@@ -29,12 +29,14 @@ class EGRSProcessingTime extends StatelessWidget {
   Widget build(BuildContext context) {
     return EChartCharts(
       data: data,
-      name: "Lost Opportunity",
+      name: "EGR Processing Time",
       configurations: [
         EChartConfigurator(
           chartType: ChartType.line,
           showLabel: true,
-          //labelColor: Theme.of(context).highlightColor.toString(),
+          labelColor: Theme.of(context).brightness == Brightness.dark
+              ? "white"
+              : "black",
         ),
         EChartConfigurator(chartType: ChartType.line)
       ],

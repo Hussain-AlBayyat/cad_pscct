@@ -10,6 +10,7 @@ class ProcurementRepository extends PSCCTRepository {
   factory ProcurementRepository() {
     return _procurementRepository;
   }
+
   Future<List<PSCCTReport>> getProcurementReports() async {
     List<PSCCTReport> reports =
         await this.getReports(category: PSCCTCategories.PR);

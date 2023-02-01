@@ -1,108 +1,135 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<asx:abap xmlns:asx="http://www.sap.com/abapxml"
-version="1.0">
-<asx:values>
-<metadata>
-<infoprovider>ZASATREND</infoprovider>
-<query>YSCM_CT_TREND_OPEN_DEL_REQ</query>
-<description>Alerts Trend: Open Orders With Deleted Requirements</description>
-<author>SID_BWSCM_01</author>
-<changed_by>SID_BWSCM_01</changed_by>
-<changed_on>11/09/2022 13:51:18</changed_on>
-<current_user>SID_BWSCM_01</current_user>
-<load_date>11/14/2022 18:30:33</load_date>
-</metadata>
-<META>
-<ZBW_QUERY_OUTPUT_METADATA type ="CHA">
-<FIELDNAME>DATE</FIELDNAME>
-<OUTPUTLEN>000010</OUTPUTLEN>
-<DATATYPE>DATS</DATATYPE>
-<SCRTEXT_L>Date</SCRTEXT_L>
-<AXIS_TYPE>ROW</AXIS_TYPE>
-<TYPE>CHA</TYPE>
-<DISPLAY_STYLE>2</DISPLAY_STYLE>
-</ZBW_QUERY_OUTPUT_METADATA>
-<ZBW_QUERY_OUTPUT_METADATA type ="KF">
-<FIELDNAME>VALUE001</FIELDNAME>
-<OUTPUTLEN>30</OUTPUTLEN>
-<DATATYPE>DEC</DATATYPE>
-<SCRTEXT_L>Value 1</SCRTEXT_L>
-<AXIS_TYPE>COLUMN</AXIS_TYPE>
-<TYPE>KF</TYPE>
-<DISPLAY_STYLE>1</DISPLAY_STYLE>
-<ELEM>00O2TFPHN3XBVNK0L7GQMRVU3</ELEM>
-</ZBW_QUERY_OUTPUT_METADATA>
-</META>
-<PAGING_INFO>
-<RECORD_NO>16 </RECORD_NO>
-<TOTAL_REC>16 </TOTAL_REC>
-<PAGE_NO>1 </PAGE_NO>
-</PAGING_INFO>
-<OUTPUT>
-<item>
-<DATE>20221018</DATE>
-<VALUE001>379.000</VALUE001>
-</item>
-<item>
-<DATE>20221020</DATE>
-<VALUE001>387.000</VALUE001>
-</item>
-<item>
-<DATE>20221024</DATE>
-<VALUE001>338.000</VALUE001>
-</item>
-<item>
-<DATE>20221025</DATE>
-<VALUE001>338.000</VALUE001>
-</item>
-<item>
-<DATE>20221026</DATE>
-<VALUE001>338.000</VALUE001>
-</item>
-<item>
-<DATE>20221027</DATE>
-<VALUE001>338.000</VALUE001>
-</item>
-<item>
-<DATE>20221030</DATE>
-<VALUE001>299.000</VALUE001>
-</item>
-<item>
-<DATE>20221031</DATE>
-<VALUE001>299.000</VALUE001>
-</item>
-<item>
-<DATE>20221101</DATE>
-<VALUE001>299.000</VALUE001>
-</item>
-<item>
-<DATE>20221102</DATE>
-<VALUE001>299.000</VALUE001>
-</item>
-<item>
-<DATE>20221103</DATE>
-<VALUE001>299.000</VALUE001>
-</item>
-<item>
-<DATE>20221104</DATE>
-<VALUE001>299.000</VALUE001>
-</item>
-<item>
-<DATE>20221105</DATE>
-<VALUE001>299.000</VALUE001>
-</item>
-<item>
-<DATE>20221106</DATE>
-<VALUE001>297.000</VALUE001>
-</item>
-<item>
-<DATE>20221107</DATE>
-<VALUE001>297.000</VALUE001>
-</item>
-<item>
-<DATE>20221108</DATE>
-<VALUE001>297.000</VALUE001>
-</item>
-</OUTPUT>
-</asx:values>
+<asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+    <asx:values>
+        <metadata>
+            <infoprovider>ZOSCMOB</infoprovider>
+            <query>YSCM_CT_TREND_EMER_PR</query>
+            <description>Emergency PR (Mobile)</description>
+            <author>ALHUMIAS</author>
+            <changed_by>ALHUMIAS</changed_by>
+            <changed_on>01/29/2023 11:14:25</changed_on>
+            <current_user>MIRAJSM</current_user>
+            <load_date>01/19/2023 10:09:48</load_date>
+        </metadata>
+        <META>
+            <ZBW_QUERY_OUTPUT_METADATA type="CHA">
+                <FIELDNAME>CALDAY</FIELDNAME>
+                <OUTPUTLEN>000010</OUTPUTLEN>
+                <DATATYPE>DATS</DATATYPE>
+                <SCRTEXT_L>Calendar day</SCRTEXT_L>
+                <AXIS_TYPE>ROW</AXIS_TYPE>
+                <TYPE>CHA</TYPE>
+                <DISPLAY_STYLE>2</DISPLAY_STYLE>
+            </ZBW_QUERY_OUTPUT_METADATA>
+            <ZBW_QUERY_OUTPUT_METADATA type="KF">
+                <FIELDNAME>VALUE001</FIELDNAME>
+                <OUTPUTLEN>130</OUTPUTLEN>
+                <DATATYPE>CHAR</DATATYPE>
+                <SCRTEXT_L>Value</SCRTEXT_L>
+                <AXIS_TYPE>COLUMN</AXIS_TYPE>
+                <TYPE>KF</TYPE>
+                <DISPLAY_STYLE>1</DISPLAY_STYLE>
+                <ELEM>00O2TFPLNEXEWLCCO1CEZCMPZ</ELEM>
+            </ZBW_QUERY_OUTPUT_METADATA>
+        </META>
+        <PAGING_INFO>
+            <RECORD_NO>23</RECORD_NO>
+            <TOTAL_REC>23</TOTAL_REC>
+            <PAGE_NO>1</PAGE_NO>
+        </PAGING_INFO>
+        <OUTPUT>
+            <item>
+                <CALDAY>20221201</CALDAY>
+                <VALUE001>75.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221202</CALDAY>
+                <VALUE001>95.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221203</CALDAY>
+                <VALUE001>15.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221204</CALDAY>
+                <VALUE001>75.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221205</CALDAY>
+                <VALUE001>34.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221206</CALDAY>
+                <VALUE001>78.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221207</CALDAY>
+                <VALUE001>15.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221208</CALDAY>
+                <VALUE001>98.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221209</CALDAY>
+                <VALUE001>45.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221210</CALDAY>
+                <VALUE001>95.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221211</CALDAY>
+                <VALUE001>75.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221212</CALDAY>
+                <VALUE001>48.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221213</CALDAY>
+                <VALUE001>36.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221214</CALDAY>
+                <VALUE001>75.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221215</CALDAY>
+                <VALUE001>76.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221216</CALDAY>
+                <VALUE001>77.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221217</CALDAY>
+                <VALUE001>78.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221218</CALDAY>
+                <VALUE001>79.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221219</CALDAY>
+                <VALUE001>80.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221220</CALDAY>
+                <VALUE001>81.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221221</CALDAY>
+                <VALUE001>82.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221222</CALDAY>
+                <VALUE001>83.000</VALUE001>
+            </item>
+            <item>
+                <CALDAY>20221223</CALDAY>
+                <VALUE001>84.000</VALUE001>
+            </item>
+        </OUTPUT>
+    </asx:values>
 </asx:abap>

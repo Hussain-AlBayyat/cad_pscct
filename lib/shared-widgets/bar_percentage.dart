@@ -32,7 +32,7 @@ class SpendItem extends StatelessWidget {
               Text(
                 "\$${Helper.compactNumber2(amount)}",
                 style:
-                    TextStyle(color: AppTheme.primaryColorLight, fontSize: 24),
+                    TextStyle(color: AppTheme.primaryColorLight, fontSize: 20),
               ),
 
               // Text(

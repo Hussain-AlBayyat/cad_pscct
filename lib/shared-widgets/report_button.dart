@@ -113,7 +113,7 @@ class ReportButton extends StatelessWidget {
     });
 
     if (report.ImageKey.isNotEmpty) {
-      //data is an image
+      //data is an image or pdf file
       return FileViewer(file_key: pscctReport.ImageKey);
     } else if (report.IsGeneric) {
       if (report.ChartType == "Table") {

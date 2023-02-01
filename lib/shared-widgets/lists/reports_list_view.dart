@@ -17,7 +17,7 @@ class ReportsListView extends StatelessWidget {
           if (reports.hasError)
             return Center(
                 child: Text(
-              (reports.error as DioError).response?.statusMessage ?? "Error",
+              (reports.error as DioError).response?.statusMessage ?? "Error!",
               style: TextStyle(fontSize: 18, color: Colors.red),
             ));
           if (!reports.hasData) {

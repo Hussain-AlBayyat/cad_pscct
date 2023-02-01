@@ -1,10 +1,7 @@
 class Injector {
-  /*static Container container;
-  static final resolve = container.resolve;
+  /*static final resolve = container.resolve;
 
   static void setup() {
-    container = Container();
-
     _common();
     switch (Environment.current.runtimeType) {
       case DevelopmentEnvironment:

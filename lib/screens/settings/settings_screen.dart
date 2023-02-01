@@ -117,12 +117,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   DialogController.showPopup(
                       "Please Wait", "logging you out...", context,
                       dialogBody: LoadingCircular());
-                  bool isLoggedOut = await AuthService.logout();
-                  if (isLoggedOut) {
-                    loginCubit.logOut();
-                    //Navigator.pop(context);
-                    navService.pushReplacementNamed(AppRouter.loginRoute);
-                  } else {}
+                  await loginCubit.logOut();
+
                 }),
           ),
         Spacer(
@@ -130,10 +126,5 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
       ],
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 }

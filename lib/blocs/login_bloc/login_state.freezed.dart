@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'login_state.dart';
 
@@ -21,6 +21,7 @@ mixin _$LoginState {
     required TResult Function() uninitialized,
     required TResult Function(bool isFirstTime) initialized,
     required TResult Function() loggedIn,
+    required TResult Function(bool isTimedOut) loggedOut,
     required TResult Function(String username, String password) fieldsChanged,
     required TResult Function(String message) error,
     required TResult Function() loading,
@@ -32,6 +33,7 @@ mixin _$LoginState {
     TResult? Function()? uninitialized,
     TResult? Function(bool isFirstTime)? initialized,
     TResult? Function()? loggedIn,
+    TResult? Function(bool isTimedOut)? loggedOut,
     TResult? Function(String username, String password)? fieldsChanged,
     TResult? Function(String message)? error,
     TResult? Function()? loading,
@@ -43,6 +45,7 @@ mixin _$LoginState {
     TResult Function()? uninitialized,
     TResult Function(bool isFirstTime)? initialized,
     TResult Function()? loggedIn,
+    TResult Function(bool isTimedOut)? loggedOut,
     TResult Function(String username, String password)? fieldsChanged,
     TResult Function(String message)? error,
     TResult Function()? loading,
@@ -55,6 +58,7 @@ mixin _$LoginState {
     required TResult Function(Uninitialized value) uninitialized,
     required TResult Function(Initialized value) initialized,
     required TResult Function(LoggedIn value) loggedIn,
+    required TResult Function(LoggedOut value) loggedOut,
     required TResult Function(FieldsChanged value) fieldsChanged,
     required TResult Function(Error value) error,
     required TResult Function(Loading value) loading,
@@ -66,6 +70,7 @@ mixin _$LoginState {
     TResult? Function(Uninitialized value)? uninitialized,
     TResult? Function(Initialized value)? initialized,
     TResult? Function(LoggedIn value)? loggedIn,
+    TResult? Function(LoggedOut value)? loggedOut,
     TResult? Function(FieldsChanged value)? fieldsChanged,
     TResult? Function(Error value)? error,
     TResult? Function(Loading value)? loading,
@@ -77,6 +82,7 @@ mixin _$LoginState {
     TResult Function(Uninitialized value)? uninitialized,
     TResult Function(Initialized value)? initialized,
     TResult Function(LoggedIn value)? loggedIn,
+    TResult Function(LoggedOut value)? loggedOut,
     TResult Function(FieldsChanged value)? fieldsChanged,
     TResult Function(Error value)? error,
     TResult Function(Loading value)? loading,
@@ -145,6 +151,7 @@ class _$Uninitialized implements Uninitialized {
     required TResult Function() uninitialized,
     required TResult Function(bool isFirstTime) initialized,
     required TResult Function() loggedIn,
+    required TResult Function(bool isTimedOut) loggedOut,
     required TResult Function(String username, String password) fieldsChanged,
     required TResult Function(String message) error,
     required TResult Function() loading,
@@ -159,6 +166,7 @@ class _$Uninitialized implements Uninitialized {
     TResult? Function()? uninitialized,
     TResult? Function(bool isFirstTime)? initialized,
     TResult? Function()? loggedIn,
+    TResult? Function(bool isTimedOut)? loggedOut,
     TResult? Function(String username, String password)? fieldsChanged,
     TResult? Function(String message)? error,
     TResult? Function()? loading,
@@ -173,6 +181,7 @@ class _$Uninitialized implements Uninitialized {
     TResult Function()? uninitialized,
     TResult Function(bool isFirstTime)? initialized,
     TResult Function()? loggedIn,
+    TResult Function(bool isTimedOut)? loggedOut,
     TResult Function(String username, String password)? fieldsChanged,
     TResult Function(String message)? error,
     TResult Function()? loading,
@@ -191,6 +200,7 @@ class _$Uninitialized implements Uninitialized {
     required TResult Function(Uninitialized value) uninitialized,
     required TResult Function(Initialized value) initialized,
     required TResult Function(LoggedIn value) loggedIn,
+    required TResult Function(LoggedOut value) loggedOut,
     required TResult Function(FieldsChanged value) fieldsChanged,
     required TResult Function(Error value) error,
     required TResult Function(Loading value) loading,
@@ -205,6 +215,7 @@ class _$Uninitialized implements Uninitialized {
     TResult? Function(Uninitialized value)? uninitialized,
     TResult? Function(Initialized value)? initialized,
     TResult? Function(LoggedIn value)? loggedIn,
+    TResult? Function(LoggedOut value)? loggedOut,
     TResult? Function(FieldsChanged value)? fieldsChanged,
     TResult? Function(Error value)? error,
     TResult? Function(Loading value)? loading,
@@ -219,6 +230,7 @@ class _$Uninitialized implements Uninitialized {
     TResult Function(Uninitialized value)? uninitialized,
     TResult Function(Initialized value)? initialized,
     TResult Function(LoggedIn value)? loggedIn,
+    TResult Function(LoggedOut value)? loggedOut,
     TResult Function(FieldsChanged value)? fieldsChanged,
     TResult Function(Error value)? error,
     TResult Function(Loading value)? loading,
@@ -304,6 +316,7 @@ class _$Initialized implements Initialized {
     required TResult Function() uninitialized,
     required TResult Function(bool isFirstTime) initialized,
     required TResult Function() loggedIn,
+    required TResult Function(bool isTimedOut) loggedOut,
     required TResult Function(String username, String password) fieldsChanged,
     required TResult Function(String message) error,
     required TResult Function() loading,
@@ -318,6 +331,7 @@ class _$Initialized implements Initialized {
     TResult? Function()? uninitialized,
     TResult? Function(bool isFirstTime)? initialized,
     TResult? Function()? loggedIn,
+    TResult? Function(bool isTimedOut)? loggedOut,
     TResult? Function(String username, String password)? fieldsChanged,
     TResult? Function(String message)? error,
     TResult? Function()? loading,
@@ -332,6 +346,7 @@ class _$Initialized implements Initialized {
     TResult Function()? uninitialized,
     TResult Function(bool isFirstTime)? initialized,
     TResult Function()? loggedIn,
+    TResult Function(bool isTimedOut)? loggedOut,
     TResult Function(String username, String password)? fieldsChanged,
     TResult Function(String message)? error,
     TResult Function()? loading,
@@ -350,6 +365,7 @@ class _$Initialized implements Initialized {
     required TResult Function(Uninitialized value) uninitialized,
     required TResult Function(Initialized value) initialized,
     required TResult Function(LoggedIn value) loggedIn,
+    required TResult Function(LoggedOut value) loggedOut,
     required TResult Function(FieldsChanged value) fieldsChanged,
     required TResult Function(Error value) error,
     required TResult Function(Loading value) loading,
@@ -364,6 +380,7 @@ class _$Initialized implements Initialized {
     TResult? Function(Uninitialized value)? uninitialized,
     TResult? Function(Initialized value)? initialized,
     TResult? Function(LoggedIn value)? loggedIn,
+    TResult? Function(LoggedOut value)? loggedOut,
     TResult? Function(FieldsChanged value)? fieldsChanged,
     TResult? Function(Error value)? error,
     TResult? Function(Loading value)? loading,
@@ -378,6 +395,7 @@ class _$Initialized implements Initialized {
     TResult Function(Uninitialized value)? uninitialized,
     TResult Function(Initialized value)? initialized,
     TResult Function(LoggedIn value)? loggedIn,
+    TResult Function(LoggedOut value)? loggedOut,
     TResult Function(FieldsChanged value)? fieldsChanged,
     TResult Function(Error value)? error,
     TResult Function(Loading value)? loading,
@@ -440,6 +458,7 @@ class _$LoggedIn implements LoggedIn {
     required TResult Function() uninitialized,
     required TResult Function(bool isFirstTime) initialized,
     required TResult Function() loggedIn,
+    required TResult Function(bool isTimedOut) loggedOut,
     required TResult Function(String username, String password) fieldsChanged,
     required TResult Function(String message) error,
     required TResult Function() loading,
@@ -454,6 +473,7 @@ class _$LoggedIn implements LoggedIn {
     TResult? Function()? uninitialized,
     TResult? Function(bool isFirstTime)? initialized,
     TResult? Function()? loggedIn,
+    TResult? Function(bool isTimedOut)? loggedOut,
     TResult? Function(String username, String password)? fieldsChanged,
     TResult? Function(String message)? error,
     TResult? Function()? loading,
@@ -468,6 +488,7 @@ class _$LoggedIn implements LoggedIn {
     TResult Function()? uninitialized,
     TResult Function(bool isFirstTime)? initialized,
     TResult Function()? loggedIn,
+    TResult Function(bool isTimedOut)? loggedOut,
     TResult Function(String username, String password)? fieldsChanged,
     TResult Function(String message)? error,
     TResult Function()? loading,
@@ -486,6 +507,7 @@ class _$LoggedIn implements LoggedIn {
     required TResult Function(Uninitialized value) uninitialized,
     required TResult Function(Initialized value) initialized,
     required TResult Function(LoggedIn value) loggedIn,
+    required TResult Function(LoggedOut value) loggedOut,
     required TResult Function(FieldsChanged value) fieldsChanged,
     required TResult Function(Error value) error,
     required TResult Function(Loading value) loading,
@@ -500,6 +522,7 @@ class _$LoggedIn implements LoggedIn {
     TResult? Function(Uninitialized value)? uninitialized,
     TResult? Function(Initialized value)? initialized,
     TResult? Function(LoggedIn value)? loggedIn,
+    TResult? Function(LoggedOut value)? loggedOut,
     TResult? Function(FieldsChanged value)? fieldsChanged,
     TResult? Function(Error value)? error,
     TResult? Function(Loading value)? loading,
@@ -514,6 +537,7 @@ class _$LoggedIn implements LoggedIn {
     TResult Function(Uninitialized value)? uninitialized,
     TResult Function(Initialized value)? initialized,
     TResult Function(LoggedIn value)? loggedIn,
+    TResult Function(LoggedOut value)? loggedOut,
     TResult Function(FieldsChanged value)? fieldsChanged,
     TResult Function(Error value)? error,
     TResult Function(Loading value)? loading,
@@ -529,6 +553,176 @@ class _$LoggedIn implements LoggedIn {
 
 abstract class LoggedIn implements LoginState {
   const factory LoggedIn() = _$LoggedIn;
+}
+
+/// @nodoc
+abstract class _$$LoggedOutCopyWith<$Res> {
+  factory _$$LoggedOutCopyWith(
+          _$LoggedOut value, $Res Function(_$LoggedOut) then) =
+      __$$LoggedOutCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isTimedOut});
+}
+
+/// @nodoc
+class __$$LoggedOutCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$LoggedOut>
+    implements _$$LoggedOutCopyWith<$Res> {
+  __$$LoggedOutCopyWithImpl(
+      _$LoggedOut _value, $Res Function(_$LoggedOut) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isTimedOut = null,
+  }) {
+    return _then(_$LoggedOut(
+      null == isTimedOut
+          ? _value.isTimedOut
+          : isTimedOut // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoggedOut implements LoggedOut {
+  const _$LoggedOut(this.isTimedOut);
+
+  @override
+  final bool isTimedOut;
+
+  @override
+  String toString() {
+    return 'LoginState.loggedOut(isTimedOut: $isTimedOut)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoggedOut &&
+            (identical(other.isTimedOut, isTimedOut) ||
+                other.isTimedOut == isTimedOut));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isTimedOut);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoggedOutCopyWith<_$LoggedOut> get copyWith =>
+      __$$LoggedOutCopyWithImpl<_$LoggedOut>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() uninitialized,
+    required TResult Function(bool isFirstTime) initialized,
+    required TResult Function() loggedIn,
+    required TResult Function(bool isTimedOut) loggedOut,
+    required TResult Function(String username, String password) fieldsChanged,
+    required TResult Function(String message) error,
+    required TResult Function() loading,
+    required TResult Function(String url) reset,
+  }) {
+    return loggedOut(isTimedOut);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? uninitialized,
+    TResult? Function(bool isFirstTime)? initialized,
+    TResult? Function()? loggedIn,
+    TResult? Function(bool isTimedOut)? loggedOut,
+    TResult? Function(String username, String password)? fieldsChanged,
+    TResult? Function(String message)? error,
+    TResult? Function()? loading,
+    TResult? Function(String url)? reset,
+  }) {
+    return loggedOut?.call(isTimedOut);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? uninitialized,
+    TResult Function(bool isFirstTime)? initialized,
+    TResult Function()? loggedIn,
+    TResult Function(bool isTimedOut)? loggedOut,
+    TResult Function(String username, String password)? fieldsChanged,
+    TResult Function(String message)? error,
+    TResult Function()? loading,
+    TResult Function(String url)? reset,
+    required TResult orElse(),
+  }) {
+    if (loggedOut != null) {
+      return loggedOut(isTimedOut);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Uninitialized value) uninitialized,
+    required TResult Function(Initialized value) initialized,
+    required TResult Function(LoggedIn value) loggedIn,
+    required TResult Function(LoggedOut value) loggedOut,
+    required TResult Function(FieldsChanged value) fieldsChanged,
+    required TResult Function(Error value) error,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Reset value) reset,
+  }) {
+    return loggedOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Uninitialized value)? uninitialized,
+    TResult? Function(Initialized value)? initialized,
+    TResult? Function(LoggedIn value)? loggedIn,
+    TResult? Function(LoggedOut value)? loggedOut,
+    TResult? Function(FieldsChanged value)? fieldsChanged,
+    TResult? Function(Error value)? error,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Reset value)? reset,
+  }) {
+    return loggedOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Uninitialized value)? uninitialized,
+    TResult Function(Initialized value)? initialized,
+    TResult Function(LoggedIn value)? loggedIn,
+    TResult Function(LoggedOut value)? loggedOut,
+    TResult Function(FieldsChanged value)? fieldsChanged,
+    TResult Function(Error value)? error,
+    TResult Function(Loading value)? loading,
+    TResult Function(Reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (loggedOut != null) {
+      return loggedOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoggedOut implements LoginState {
+  const factory LoggedOut(final bool isTimedOut) = _$LoggedOut;
+
+  bool get isTimedOut;
+  @JsonKey(ignore: true)
+  _$$LoggedOutCopyWith<_$LoggedOut> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -608,6 +802,7 @@ class _$FieldsChanged implements FieldsChanged {
     required TResult Function() uninitialized,
     required TResult Function(bool isFirstTime) initialized,
     required TResult Function() loggedIn,
+    required TResult Function(bool isTimedOut) loggedOut,
     required TResult Function(String username, String password) fieldsChanged,
     required TResult Function(String message) error,
     required TResult Function() loading,
@@ -622,6 +817,7 @@ class _$FieldsChanged implements FieldsChanged {
     TResult? Function()? uninitialized,
     TResult? Function(bool isFirstTime)? initialized,
     TResult? Function()? loggedIn,
+    TResult? Function(bool isTimedOut)? loggedOut,
     TResult? Function(String username, String password)? fieldsChanged,
     TResult? Function(String message)? error,
     TResult? Function()? loading,
@@ -636,6 +832,7 @@ class _$FieldsChanged implements FieldsChanged {
     TResult Function()? uninitialized,
     TResult Function(bool isFirstTime)? initialized,
     TResult Function()? loggedIn,
+    TResult Function(bool isTimedOut)? loggedOut,
     TResult Function(String username, String password)? fieldsChanged,
     TResult Function(String message)? error,
     TResult Function()? loading,
@@ -654,6 +851,7 @@ class _$FieldsChanged implements FieldsChanged {
     required TResult Function(Uninitialized value) uninitialized,
     required TResult Function(Initialized value) initialized,
     required TResult Function(LoggedIn value) loggedIn,
+    required TResult Function(LoggedOut value) loggedOut,
     required TResult Function(FieldsChanged value) fieldsChanged,
     required TResult Function(Error value) error,
     required TResult Function(Loading value) loading,
@@ -668,6 +866,7 @@ class _$FieldsChanged implements FieldsChanged {
     TResult? Function(Uninitialized value)? uninitialized,
     TResult? Function(Initialized value)? initialized,
     TResult? Function(LoggedIn value)? loggedIn,
+    TResult? Function(LoggedOut value)? loggedOut,
     TResult? Function(FieldsChanged value)? fieldsChanged,
     TResult? Function(Error value)? error,
     TResult? Function(Loading value)? loading,
@@ -682,6 +881,7 @@ class _$FieldsChanged implements FieldsChanged {
     TResult Function(Uninitialized value)? uninitialized,
     TResult Function(Initialized value)? initialized,
     TResult Function(LoggedIn value)? loggedIn,
+    TResult Function(LoggedOut value)? loggedOut,
     TResult Function(FieldsChanged value)? fieldsChanged,
     TResult Function(Error value)? error,
     TResult Function(Loading value)? loading,
@@ -771,6 +971,7 @@ class _$Error implements Error {
     required TResult Function() uninitialized,
     required TResult Function(bool isFirstTime) initialized,
     required TResult Function() loggedIn,
+    required TResult Function(bool isTimedOut) loggedOut,
     required TResult Function(String username, String password) fieldsChanged,
     required TResult Function(String message) error,
     required TResult Function() loading,
@@ -785,6 +986,7 @@ class _$Error implements Error {
     TResult? Function()? uninitialized,
     TResult? Function(bool isFirstTime)? initialized,
     TResult? Function()? loggedIn,
+    TResult? Function(bool isTimedOut)? loggedOut,
     TResult? Function(String username, String password)? fieldsChanged,
     TResult? Function(String message)? error,
     TResult? Function()? loading,
@@ -799,6 +1001,7 @@ class _$Error implements Error {
     TResult Function()? uninitialized,
     TResult Function(bool isFirstTime)? initialized,
     TResult Function()? loggedIn,
+    TResult Function(bool isTimedOut)? loggedOut,
     TResult Function(String username, String password)? fieldsChanged,
     TResult Function(String message)? error,
     TResult Function()? loading,
@@ -817,6 +1020,7 @@ class _$Error implements Error {
     required TResult Function(Uninitialized value) uninitialized,
     required TResult Function(Initialized value) initialized,
     required TResult Function(LoggedIn value) loggedIn,
+    required TResult Function(LoggedOut value) loggedOut,
     required TResult Function(FieldsChanged value) fieldsChanged,
     required TResult Function(Error value) error,
     required TResult Function(Loading value) loading,
@@ -831,6 +1035,7 @@ class _$Error implements Error {
     TResult? Function(Uninitialized value)? uninitialized,
     TResult? Function(Initialized value)? initialized,
     TResult? Function(LoggedIn value)? loggedIn,
+    TResult? Function(LoggedOut value)? loggedOut,
     TResult? Function(FieldsChanged value)? fieldsChanged,
     TResult? Function(Error value)? error,
     TResult? Function(Loading value)? loading,
@@ -845,6 +1050,7 @@ class _$Error implements Error {
     TResult Function(Uninitialized value)? uninitialized,
     TResult Function(Initialized value)? initialized,
     TResult Function(LoggedIn value)? loggedIn,
+    TResult Function(LoggedOut value)? loggedOut,
     TResult Function(FieldsChanged value)? fieldsChanged,
     TResult Function(Error value)? error,
     TResult Function(Loading value)? loading,
@@ -905,6 +1111,7 @@ class _$Loading implements Loading {
     required TResult Function() uninitialized,
     required TResult Function(bool isFirstTime) initialized,
     required TResult Function() loggedIn,
+    required TResult Function(bool isTimedOut) loggedOut,
     required TResult Function(String username, String password) fieldsChanged,
     required TResult Function(String message) error,
     required TResult Function() loading,
@@ -919,6 +1126,7 @@ class _$Loading implements Loading {
     TResult? Function()? uninitialized,
     TResult? Function(bool isFirstTime)? initialized,
     TResult? Function()? loggedIn,
+    TResult? Function(bool isTimedOut)? loggedOut,
     TResult? Function(String username, String password)? fieldsChanged,
     TResult? Function(String message)? error,
     TResult? Function()? loading,
@@ -933,6 +1141,7 @@ class _$Loading implements Loading {
     TResult Function()? uninitialized,
     TResult Function(bool isFirstTime)? initialized,
     TResult Function()? loggedIn,
+    TResult Function(bool isTimedOut)? loggedOut,
     TResult Function(String username, String password)? fieldsChanged,
     TResult Function(String message)? error,
     TResult Function()? loading,
@@ -951,6 +1160,7 @@ class _$Loading implements Loading {
     required TResult Function(Uninitialized value) uninitialized,
     required TResult Function(Initialized value) initialized,
     required TResult Function(LoggedIn value) loggedIn,
+    required TResult Function(LoggedOut value) loggedOut,
     required TResult Function(FieldsChanged value) fieldsChanged,
     required TResult Function(Error value) error,
     required TResult Function(Loading value) loading,
@@ -965,6 +1175,7 @@ class _$Loading implements Loading {
     TResult? Function(Uninitialized value)? uninitialized,
     TResult? Function(Initialized value)? initialized,
     TResult? Function(LoggedIn value)? loggedIn,
+    TResult? Function(LoggedOut value)? loggedOut,
     TResult? Function(FieldsChanged value)? fieldsChanged,
     TResult? Function(Error value)? error,
     TResult? Function(Loading value)? loading,
@@ -979,6 +1190,7 @@ class _$Loading implements Loading {
     TResult Function(Uninitialized value)? uninitialized,
     TResult Function(Initialized value)? initialized,
     TResult Function(LoggedIn value)? loggedIn,
+    TResult Function(LoggedOut value)? loggedOut,
     TResult Function(FieldsChanged value)? fieldsChanged,
     TResult Function(Error value)? error,
     TResult Function(Loading value)? loading,
@@ -1061,6 +1273,7 @@ class _$Reset implements Reset {
     required TResult Function() uninitialized,
     required TResult Function(bool isFirstTime) initialized,
     required TResult Function() loggedIn,
+    required TResult Function(bool isTimedOut) loggedOut,
     required TResult Function(String username, String password) fieldsChanged,
     required TResult Function(String message) error,
     required TResult Function() loading,
@@ -1075,6 +1288,7 @@ class _$Reset implements Reset {
     TResult? Function()? uninitialized,
     TResult? Function(bool isFirstTime)? initialized,
     TResult? Function()? loggedIn,
+    TResult? Function(bool isTimedOut)? loggedOut,
     TResult? Function(String username, String password)? fieldsChanged,
     TResult? Function(String message)? error,
     TResult? Function()? loading,
@@ -1089,6 +1303,7 @@ class _$Reset implements Reset {
     TResult Function()? uninitialized,
     TResult Function(bool isFirstTime)? initialized,
     TResult Function()? loggedIn,
+    TResult Function(bool isTimedOut)? loggedOut,
     TResult Function(String username, String password)? fieldsChanged,
     TResult Function(String message)? error,
     TResult Function()? loading,
@@ -1107,6 +1322,7 @@ class _$Reset implements Reset {
     required TResult Function(Uninitialized value) uninitialized,
     required TResult Function(Initialized value) initialized,
     required TResult Function(LoggedIn value) loggedIn,
+    required TResult Function(LoggedOut value) loggedOut,
     required TResult Function(FieldsChanged value) fieldsChanged,
     required TResult Function(Error value) error,
     required TResult Function(Loading value) loading,
@@ -1121,6 +1337,7 @@ class _$Reset implements Reset {
     TResult? Function(Uninitialized value)? uninitialized,
     TResult? Function(Initialized value)? initialized,
     TResult? Function(LoggedIn value)? loggedIn,
+    TResult? Function(LoggedOut value)? loggedOut,
     TResult? Function(FieldsChanged value)? fieldsChanged,
     TResult? Function(Error value)? error,
     TResult? Function(Loading value)? loading,
@@ -1135,6 +1352,7 @@ class _$Reset implements Reset {
     TResult Function(Uninitialized value)? uninitialized,
     TResult Function(Initialized value)? initialized,
     TResult Function(LoggedIn value)? loggedIn,
+    TResult Function(LoggedOut value)? loggedOut,
     TResult Function(FieldsChanged value)? fieldsChanged,
     TResult Function(Error value)? error,
     TResult Function(Loading value)? loading,

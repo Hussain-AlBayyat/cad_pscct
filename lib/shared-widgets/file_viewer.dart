@@ -16,7 +16,7 @@ class FileViewer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<File?>(
-        future: warehouseLogisticsRepository.getCo2Image(file_key),
+        future: warehouseLogisticsRepository.getFileData(file_key),
         builder: (context, file) {
           if (file.hasError)
             return Center(

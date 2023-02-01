@@ -53,7 +53,11 @@ class _LoginScreenState extends State<LoginScreen>
       }
       if (state is Error && ModalRoute.of(context)?.isCurrent != true)
         Navigator.pop(context);
-
+      if(state is LoggedOut){
+          DialogController.showPopup("Session Time Out",
+              "Sorry, you have been logged out due to inactivity for a long time",
+              context);
+      }
       if (state is Loading) DialogController.showFullDialog(context);
       if (state is Reset)
         DialogController.showPopup("Reset", "", context,
@@ -62,6 +66,7 @@ class _LoginScreenState extends State<LoginScreen>
       return DefaultScaffold(
         isScrollable: true,
         addSpacing: false,
+        backgroundColor: Colors.red,
         showSettings: true,
         showBackButton: false,
         padding: EdgeInsets.all(getProportionateScreenWidth(20)),
@@ -70,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen>
           SizedBox(
             height: getProportionateScreenHeight(16),
           ),
-          Align(
+          /*Align(
               alignment: Alignment.centerRight,
               child: IconButton(
                   onPressed: () =>
@@ -78,9 +83,9 @@ class _LoginScreenState extends State<LoginScreen>
                   icon: Icon(
                     Icons.settings_outlined,
                     size: 32,
-                  ))),
+                  ))),*/
           SizedBox(
-            height: getProportionateScreenHeight(SizeConfig.screenHeight * .04),
+            height: getProportionateScreenHeight(SizeConfig.screenHeight * .1),
           ),
           Center(
             child: Image.asset(
@@ -121,27 +126,27 @@ class _LoginScreenState extends State<LoginScreen>
           SizedBox(
             height: getProportionateScreenHeight(45),
           ),
-          //if (!loginCubit.isFirstTime)
-          Center(
-            child: GestureDetector(
-              onTap: loginCubit.loginWithBiometric,
-              child: ScaleTransition(
-                scale: CurvedAnimation(
-                    parent: animationController,
-                    curve: Curves.fastLinearToSlowEaseIn),
-                child: Image.asset(
-                  Assets.faceIdIcon,
-                  color: Theme.of(context).primaryColor,
-                  height: getProportionateScreenHeight(112),
+          if (!loginCubit.isFirstTime)
+            Center(
+              child: GestureDetector(
+                onTap: loginCubit.loginWithBiometric,
+                child: ScaleTransition(
+                  scale: CurvedAnimation(
+                      parent: animationController,
+                      curve: Curves.fastLinearToSlowEaseIn),
+                  child: Image.asset(
+                    Assets.faceIdIcon,
+                    color: Theme.of(context).primaryColor,
+                    height: getProportionateScreenHeight(112),
+                  ),
                 ),
               ),
             ),
-          ),
           SizedBox(
             height: getProportionateScreenHeight(45),
           ),
           Text(
-            "Version 1.0.0",
+            "Version 1.0.1",
             style: TextStyle(color: Colors.grey[500]),
           )
         ],

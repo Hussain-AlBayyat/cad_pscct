@@ -16,15 +16,7 @@ class HttpService {
   static final Dio _dio = Dio();
   static List<CancelToken> _cancelTokens = [];
   static String cookie = '';
-  // static String _basicAuth =
-  //     'Basic ' + base64Encode(ascii.encode('T_BI_Alerts:Alerts_4'));
-  // static Options _options = Options(headers: {
-  //   'Authorization': _basicAuth,
-  //   "Accept": "*/*",
-  //   "Cache-Control": "no-cache",
-  //   "Accept-Encoding": "gzip, deflate, br",
-  //   "Connection": "keep-alive"
-  // });
+
   static Future<Response> get({required String path, Options? options}) async {
     (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient dioClient) {
@@ -32,11 +24,10 @@ class HttpService {
           ((X509Certificate cert, String host, int port) => true);
       return dioClient;
     };
-    CancelToken cancelToken = CancelToken();
-
+   // CancelToken cancelToken = CancelToken();
     Response response = await _dio.get(path,
-        options: options ?? Options(receiveTimeout: 30000),
-        cancelToken: cancelToken);
+        options: options ?? Options(receiveTimeout: 10000),
+        );
 
     return response;
   }

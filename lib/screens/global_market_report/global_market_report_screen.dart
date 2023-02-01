@@ -24,6 +24,7 @@ class GlobalMarketReportScreen extends StatelessWidget {
                   child: Center(
                       child: Text(
                     (file.error as DioError).message,
+                    textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 18, color: Colors.red),
                   )),
                 );

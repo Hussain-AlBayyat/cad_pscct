@@ -8,10 +8,10 @@ import '../models/pscct_alert.dart';
 import '../models/pscct_kpi.dart';
 
 class WarehouseLogisticsRepository extends PSCCTRepository {
-  static final WarehouseLogisticsRepository _whLogiticsRepository =
+  static final WarehouseLogisticsRepository _whLogisticsRepository =
       WarehouseLogisticsRepository._internal();
   factory WarehouseLogisticsRepository() {
-    return _whLogiticsRepository;
+    return _whLogisticsRepository;
   }
   Future<List<PSCCTReport>> getWhLogisticsReports() async {
     List<PSCCTReport> reports =
@@ -30,8 +30,8 @@ class WarehouseLogisticsRepository extends PSCCTRepository {
     return kpis;
   }
 
-  Future<File?> getCo2Image(String id) async {
-    File? file = await this.getImage(id: id);
+  Future<File?> getFileData(String id) async {
+    File? file = await this.getFile(id: id);
     return file;
   }
 

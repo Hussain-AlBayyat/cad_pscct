@@ -4,36 +4,41 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:pscct/helper.dart';
 import 'package:pscct/models/pscct_alert.dart';
 import 'package:pscct/models/pscct_kpi.dart';
+import 'package:pscct/services/auth_service.dart';
 import 'package:pscct/services/http_service.dart';
 
+import '../helper.dart';
 import '../models/enums/pscct_categories.dart';
 import '../models/pscct_report.dart';
 
 abstract class PSCCTRepository {
-  static String _prefix = "/MobComponents";
+  static String _prefix =
+      "/MobComponents?\$format=json&\$filter=(ShowOnApp eq true and ComponentCategory eq ";
+  static String _postFix = ")&\$expand=DataSourceNav";
+  static String _dvb = "https://dvb.aramco.com.sa:44303";
+  static String _prw = "https://prwascs.aramco.com.sa:44382";
+  static String _odataBase = "/sap/opu/odata/sap/zscm_ct_config_srv";
+  static String _bspBase =
+      "/sap/bc/bsp/sap/zbw_reporting/execute_report_oo.htm?query=";
+
   //Development
-  static String dvbOdataUrl =
-      "https://dvb.aramco.com.sa:44303/sap/opu/odata/sap/zscm_ct_config_srv";
-  static const String dvbBspUrl =
-      "https://dvb.aramco.com.sa:44303/sap/bc/bsp/sap/zbw_reporting/execute_report_oo.htm?query=";
+  static String dvbOdataUrl = "$_dvb$_odataBase";
+  static String dvbBspUrl = "$_dvb$_bspBase";
   //Production
-  static String prOdataUrl =
-      "https://prwascs.aramco.com.sa:44303/sap/opu/odata/sap/zscm_ct_config_srv";
-  static const String prBspUrl =
-      "https://prwascs.aramco.com.sa: 44382/sap/bc/bsp/sap/zbw_reporting/execute_report_oo.htm?query=";
+  static String prOdataUrl = "$_prw$_odataBase";
+  static String prBspUrl = "$_prw$_bspBase";
 
-  static String _alertsPath =
-      "$prOdataUrl$_prefix?\$format=json&\$filter=(ComponentCategory eq 'A')&\$expand=DataSourceNav";
-  static String _kpisPath =
-      "$prOdataUrl$_prefix?\$format=json&\$filter=(ComponentCategory eq 'K')&\$expand=DataSourceNav";
-  static String _reportsPath =
-      "$prOdataUrl$_prefix?\$format=json&\$filter=(ComponentCategory eq 'O')&\$expand=DataSourceNav";
+  static String requestBase =
+      "${AuthService.authUrl.contains("myhome") ? prOdataUrl : dvbOdataUrl}";
 
-  String _pdfPath = "$prOdataUrl/FilePDFs('pdf')?\$format=json";
-  String _imagePath = "$prOdataUrl/FileUtils";
+  static String _alertsPath = "$requestBase$_prefix'A'$_postFix";
+  static String _kpisPath = "$requestBase$_prefix'K'$_postFix";
+  static String _reportsPath = "$requestBase$_prefix'O'$_postFix";
+
+  String _pdfPath = "$requestBase/FilePDFs('pdf')?\$format=json";
+  String _imagePath = "$requestBase/FileUtils";
 
   static List<PSCCTReport> _reportsList = [];
   static List<PSCCTAlert> _alertsList = [];
@@ -46,10 +51,14 @@ abstract class PSCCTRepository {
   }
 
   getAlerts({required PSCCTCategories category}) async {
+    requestBase =
+        "${AuthService.authUrl.contains("myhome") ? prOdataUrl : dvbOdataUrl}";
+    _alertsPath = "$requestBase$_prefix'A'$_postFix";
+    // HttpService.addInterceptor(interceptorsWrapper: MockInterceptor());
     if (_alertsList.isEmpty) {
       Response response = await HttpService.get(path: _alertsPath);
       List data = response.data["d"]["results"];
-      _alertsList.addAll(data.map((e) => PSCCTAlert.fromJson(e)).toList());
+      _alertsList = (data.map((e) => PSCCTAlert.fromJson(e)).toList());
       _alertsList
           .sort((item1, item2) => item1.OrderOnApp.compareTo(item2.OrderOnApp));
     }
@@ -61,10 +70,14 @@ abstract class PSCCTRepository {
   }
 
   getKpis({required PSCCTCategories category}) async {
+    requestBase =
+        "${AuthService.authUrl.contains("myhome") ? prOdataUrl : dvbOdataUrl}";
+    _kpisPath = "$requestBase$_prefix'K'$_postFix";
+
     if (_kpisList.isEmpty) {
       Response response = await HttpService.get(path: _kpisPath);
       List data = response.data["d"]["results"];
-      _kpisList.addAll(data.map((e) => PSCCTKpi.fromJson(e)).toList());
+      _kpisList = (data.map((e) => PSCCTKpi.fromJson(e)).toList());
       _kpisList
           .sort((item1, item2) => item1.OrderOnApp.compareTo(item2.OrderOnApp));
     }
@@ -74,11 +87,14 @@ abstract class PSCCTRepository {
   }
 
   Future<List<PSCCTReport>> getReports({PSCCTCategories? category}) async {
-    //HttpService.addInterceptor(interceptorsWrapper: MockInterceptor());
+    requestBase =
+        "${AuthService.authUrl.contains("myhome") ? prOdataUrl : dvbOdataUrl}";
+    _reportsPath = "$requestBase$_prefix'O'$_postFix";
+    /*HttpService.addInterceptor(interceptorsWrapper: MockInterceptor());*/
     if (_reportsList.isEmpty) {
       Response response = await HttpService.get(path: _reportsPath);
       List data = response.data["d"]["results"];
-      _reportsList.addAll(data.map((e) => PSCCTReport.fromJson(e)).toList());
+      _reportsList = (data.map((e) => PSCCTReport.fromJson(e)).toList());
       _reportsList
           .sort((item1, item2) => item1.OrderOnApp.compareTo(item2.OrderOnApp));
     }
@@ -89,7 +105,9 @@ abstract class PSCCTRepository {
         _reportsList;
   }
 
-  Future<File?> getImage({required String id}) async {
+  Future<File?> getFile({required String id}) async {
+    requestBase =
+        "${AuthService.authUrl.contains("myhome") ? prOdataUrl : dvbOdataUrl}";
     //HttpService.addInterceptor(interceptorsWrapper: MockInterceptor());
     //if (_co2Image != null) return _co2Image;
     var imagePath = "$_imagePath('$id')?\$format=json";
@@ -100,6 +118,8 @@ abstract class PSCCTRepository {
   }
 
   Future<File?> getPdfFile() async {
+    requestBase =
+        "${AuthService.authUrl.contains("myhome") ? prOdataUrl : dvbOdataUrl}";
     //HttpService.addInterceptor(interceptorsWrapper: MockInterceptor());
     if (_pdfFile != null) return _pdfFile;
     Response response = await HttpService.get(path: _pdfPath /*_reportsPath*/);
@@ -120,7 +140,9 @@ abstract class PSCCTRepository {
   }
 
   Future<List<Map>> getAlertTrend(String queryName) async {
-    String url = "$prBspUrl$queryName";
+    // HttpService.addInterceptor(interceptorsWrapper: MockInterceptor());
+    String url =
+        "${AuthService.authUrl.contains("myhome") ? prBspUrl : dvbBspUrl}$queryName";
     Response response = await HttpService.get(path: url /*_reportsPath*/);
     var json = Helper.convertXmlToJsonList(response.data);
 

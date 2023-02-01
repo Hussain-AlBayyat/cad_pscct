@@ -1,9 +1,14 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:no_context_navigation/no_context_navigation.dart';
 import 'package:pscct/blocs/login_bloc/login_state.dart';
 import 'package:pscct/repositories/procurement_repository.dart';
 import 'package:pscct/services/auth_service.dart';
+
+import '../../router.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(const Uninitialized());
@@ -12,6 +17,9 @@ class LoginCubit extends Cubit<LoginState> {
   late String _url;
   bool _isLoggedIn = false, isFirstTime = true;
   late FlutterSecureStorage storage;
+  static Timer? _timer;
+  bool isTimedOut = false;
+  static const autoLogoutTimer = 30;
   final androidOptions = AndroidOptions(encryptedSharedPreferences: true);
   final iosOption =
       IOSOptions(accessibility: KeychainAccessibility.first_unlock);
@@ -25,7 +33,7 @@ class LoginCubit extends Cubit<LoginState> {
     if (_username.isNotEmpty && _password.isNotEmpty && isBiometricSupported)
       //User signed in before - show face Id button
       isFirstTime = false;
-    _url = AuthService.portalUrl;
+    _url = AuthService.authUrl;
     emit(Initialized(isFirstTime: isFirstTime));
   }
 
@@ -56,9 +64,12 @@ class LoginCubit extends Cubit<LoginState> {
       // bool isLoggedIn =
       //     await AuthService.login("Mohata0j", "Bihana@9").catchError((onError) {
       //   emit(Error(message: 'Error'));
-      //   typedPassword = "";
-      //   typedUserName = "";
+      //   typedPassword = ""; SID_BWSCM_01
+      //   typedUserName = ""; Sb2hj26ZLoG6nJiwCDH2nx7HKMr2nyDr
+
       // });
+      // procurementRepository.getProcurementReports();
+
       _isLoggedIn = await AuthService.login(typedUserName, typedPassword)
           .catchError((onError) {
         typedPassword = "";
@@ -66,25 +77,19 @@ class LoginCubit extends Cubit<LoginState> {
         emit(Error(message: (onError as DioError).error.toString()));
       });
       //await Future.delayed(Duration(seconds: 2));
+
       if (_isLoggedIn) {
         _saveCredential();
         isFirstTime = false;
+        isTimedOut = false;
+        typedPassword = "";
+        typedUserName = "";
+        emit(LoggedIn());
         await Future.wait([
           procurementRepository.getProcurementReports(),
           procurementRepository.getProcurementAlerts(),
           procurementRepository.getProcurementKpis()
-        ]).catchError((onError) {
-          AuthService.logout();
-          typedPassword = "";
-
-          emit(Error(
-            message: (onError as DioError).message ?? onError.toString(),
-          ));
-        }).then((value) {
-          typedPassword = "";
-          typedUserName = "";
-          emit(LoggedIn());
-        });
+        ]);
       } else {
         typedPassword = "";
 
@@ -97,12 +102,16 @@ class LoginCubit extends Cubit<LoginState> {
 
   isLoggedIn() => _isLoggedIn;
 
-  logOut() {
+  logOut() async {
+    await AuthService.logout();
     _isLoggedIn = false;
+    //sessionConfig.dispose();
+    emit(LoggedOut(isTimedOut));
+    navService.pushReplacementNamed(AppRouter.loginRoute);
   }
 
   updateEnvironmentUrl() {
-    AuthService.portalUrl = _url!;
+    AuthService.authUrl = _url!;
     emit(Initialized(isFirstTime: isFirstTime));
   }
 
@@ -133,6 +142,42 @@ class LoginCubit extends Cubit<LoginState> {
       typedUserName = _username;
       typedPassword = _password;
       login();
+    }
+  }
+
+  void startNewTimer() {
+    stopTimer();
+    if (_isLoggedIn) {
+      print("timer started");
+      _timer = Timer.periodic(const Duration(minutes: autoLogoutTimer), (_) {
+        isTimedOut = true;
+        timedOut();
+      });
+    }
+  }
+
+  /// Stops the existing timer if it exists
+  void stopTimer() {
+    if (_timer != null || (_timer?.isActive != null && _timer!.isActive)) {
+      _timer?.cancel();
+    }
+  }
+
+  /// Track user activity and reset timer
+  void trackUserActivity([_]) async {
+    print('User Activity Detected!');
+    if (_isLoggedIn && _timer != null) {
+      startNewTimer();
+    }
+  }
+
+  /// Called if the user is inactive for a period of time and opens a dialog
+  Future<void> timedOut() async {
+    stopTimer();
+    if (_isLoggedIn) {
+// Logout the user and pass the reason to the Auth Service
+
+      logOut();
     }
   }
 
