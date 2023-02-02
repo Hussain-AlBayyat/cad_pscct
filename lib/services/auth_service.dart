@@ -23,7 +23,7 @@ class AuthService {
   static String myHomeUrl = "https://myhome.aramco.com.sa/irj/portal";
   static String logoutUrl =
       "https://dp4.aramco.com.sa/aramco.com~it~ca~myhome~masthead/html/logoff.html";
-  static String authUrl = myHomeUrl;
+  static String authUrl = portalUrl;
   static String username = '';
   static String orgCode = '';
 

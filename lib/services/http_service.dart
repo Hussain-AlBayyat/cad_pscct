@@ -24,10 +24,11 @@ class HttpService {
           ((X509Certificate cert, String host, int port) => true);
       return dioClient;
     };
-   // CancelToken cancelToken = CancelToken();
-    Response response = await _dio.get(path,
-        options: options ?? Options(receiveTimeout: 10000),
-        );
+    // CancelToken cancelToken = CancelToken();
+    Response response = await _dio.get(
+      path,
+      options: options ?? Options(receiveTimeout: 30000),
+    );
 
     return response;
   }

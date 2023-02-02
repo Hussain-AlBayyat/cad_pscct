@@ -10,9 +10,7 @@ class PdfViewer extends StatelessWidget {
       swipeHorizontal: false,
       autoSpacing: true,
       pageFling: true,
-      nightMode:Theme.of(context).brightness == Brightness.dark?true:false ,
-      //nightMode: true,
-      // defaultPage: 1,
+      nightMode: Theme.of(context).brightness == Brightness.dark ? true : false,
       onError: (error) {
         print(error.toString());
       },

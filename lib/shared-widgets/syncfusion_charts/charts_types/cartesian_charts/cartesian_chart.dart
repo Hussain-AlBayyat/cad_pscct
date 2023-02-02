@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../models/cartesian_chart.dart';
-
 class SyncfusionCartesianChart extends StatelessWidget {
-  SyncfusionCartesianChart({required this.chartsTypes, Key? key})
-      : super(key: key);
-  final List<CartesianChart> chartsTypes;
+  SyncfusionCartesianChart({Key? key}) : super(key: key);
 
-  SyncfusionCartesianChart.line(this.chartsTypes);
   @override
   Widget build(BuildContext context) {
     return Container();

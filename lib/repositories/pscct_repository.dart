@@ -110,8 +110,8 @@ abstract class PSCCTRepository {
         "${AuthService.authUrl.contains("myhome") ? prOdataUrl : dvbOdataUrl}";
     //HttpService.addInterceptor(interceptorsWrapper: MockInterceptor());
     //if (_co2Image != null) return _co2Image;
-    var imagePath = "$_imagePath('$id')?\$format=json";
-    Response response = await HttpService.get(path: imagePath /*_reportsPath*/);
+    var filePath = "$_imagePath('$id')?\$format=json";
+    Response response = await HttpService.get(path: filePath /*_reportsPath*/);
     Map data = response.data["d"];
     _co2Image = await fileFromBlob(data);
     return _co2Image;

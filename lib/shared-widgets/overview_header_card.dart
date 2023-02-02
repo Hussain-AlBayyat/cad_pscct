@@ -23,8 +23,8 @@ class OverviewHeaderCard extends StatelessWidget {
       child: CustomCard(
         linearGradiant: AppTheme.menuItemGradient,
         padding: EdgeInsets.symmetric(
-            horizontal: getProportionateScreenWidth(28),
-            vertical: getProportionateScreenHeight(24)),
+            horizontal: getProportionateScreenWidth(18),
+            vertical: getProportionateScreenHeight(16)),
         child: Column(
           children: [
             ...List.generate(
@@ -44,8 +44,12 @@ class OverviewHeaderCard extends StatelessWidget {
                             ),
                           ),
                           leading: report.Category == "LG"
-                              ? Image.asset(Assets.hashtagIcon)
-                              : Image.asset(Assets.dollarIcon),
+                              ? Image.asset(
+                                  Assets.hashtagIcon,
+                                )
+                              : Image.asset(
+                                  Assets.dollarIcon,
+                                ),
                           subtitle: Text(
                             "${Helper.compactNumber2(report.RawData.toList()[index].values.last).toString()} ${report.Uom ?? ""}",
                             style: TextStyle(
@@ -55,7 +59,7 @@ class OverviewHeaderCard extends StatelessWidget {
                         ),
                         if (index != report.RawData.length - 1)
                           Divider(
-                            height: 30,
+                            height: 8,
                             thickness: 0.7,
                             color: Colors.white.withOpacity(0.3),
                           ),
