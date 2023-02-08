@@ -23,6 +23,16 @@ class EChartCharts extends StatelessWidget {
   final List<EChartConfigurator>? configurations;
   List<Map> seriesList = [];
   List legendsData = [];
+  final List defaultColors = [
+    '#00A3E0',
+    '#84BD00',
+    '#00843D',
+    '#0033A0',
+    '#26A8AB',
+    '#643278',
+    '#FFC846',
+    '#F05F41'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +64,7 @@ class EChartCharts extends StatelessWidget {
         height: getProportionateScreenHeight(300),
         child: Echarts(
           option: '''{
-  color: ['#00A3E0','#84BD00','#00843D','#0033A0','#26A8AB','#643278','#FFC846','#F05F41'],
+  color: ${jsonEncode(defaultColors)},
   tooltip: {
       trigger: 'axis',
       axisPointer: {
@@ -169,20 +179,12 @@ class EChartCharts extends StatelessWidget {
           "formatter":
               Helper.compactNumber(seriesDataList.values.toList()[index].first)
         },
-        "data": formatData(seriesDataList.values.toList()[index]),
+        "data": seriesDataList.values.toList()[index],
       };
       seriesList.add(series);
     }
 
     return seriesList;
-  }
-
-  formatData(List data) {
-    var da = data
-        .map((e) => e != null ? double.parse(e).toStringAsFixed(0) : null)
-        .toList();
-
-    return data;
   }
 
   test() {
@@ -229,7 +231,7 @@ class EChartCharts extends StatelessWidget {
           // "formatter":
           //     dataSet[index] != null ? dataSet.map((e) => Helper.compactNumber(e)).toList() : ""
         },
-        "data": formatData(dataSet),
+        "data": dataSet,
       };
 
       seriesList.add(series);

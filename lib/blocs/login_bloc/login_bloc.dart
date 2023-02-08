@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:no_context_navigation/no_context_navigation.dart';
 import 'package:pscct/blocs/login_bloc/login_state.dart';
@@ -60,21 +59,16 @@ class LoginCubit extends Cubit<LoginState> {
       emit(Reset(_url));
     } else {
       emit(Loading());
-      //"Mohata0j" , "Bihana@9"
-      // bool isLoggedIn =
-      //     await AuthService.login("Mohata0j", "Bihana@9").catchError((onError) {
-      //   emit(Error(message: 'Error'));
-      //   typedPassword = ""; SID_BWSCM_01
-      //   typedUserName = ""; Sb2hj26ZLoG6nJiwCDH2nx7HKMr2nyDr
 
-      // });
-
-      _isLoggedIn = await AuthService.login(typedUserName, typedPassword)
-          .catchError((onError) {
+      try {
+        _isLoggedIn = await AuthService.login(typedUserName, typedPassword);
+      } catch (error) {
         typedPassword = "";
+        emit(Error(
+          message: error.toString(),
+        ));
+      }
 
-        emit(Error(message: (onError as DioError).error.toString()));
-      });
       //await Future.delayed(Duration(seconds: 2));
 
       if (_isLoggedIn) {
@@ -84,16 +78,19 @@ class LoginCubit extends Cubit<LoginState> {
         typedPassword = "";
         typedUserName = "";
         emit(LoggedIn());
+        startNewTimer();
         await Future.wait([
           procurementRepository.getProcurementReports(),
           procurementRepository.getProcurementAlerts(),
           procurementRepository.getProcurementKpis()
-        ]);
-      } else {
+        ]).catchError((onError) {
+          print("Error After Login:${onError.toString()}");
+        });
+      }else{
         typedPassword = "";
 
         emit(Error(
-          message: "Error signing you in",
+          message: "Error logging you in",
         ));
       }
     }

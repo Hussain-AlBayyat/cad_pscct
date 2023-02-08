@@ -6,9 +6,14 @@ import 'package:pscct/shared-widgets/custom_card.dart';
 import 'package:pscct/size_config.dart';
 
 import '../helper.dart';
+import '../models/enums/echart_configurator.dart';
+import '../repositories/procurement_repository.dart';
+import 'echarts/echart.dart';
+import 'loading_circular.dart';
 
 class KPI extends StatelessWidget {
   KPI({required this.kpi, Key? key}) : super(key: key);
+  final ProcurementRepository procurementRepository = ProcurementRepository();
 
   final PSCCTKpi kpi;
   @override
@@ -20,6 +25,31 @@ class KPI extends StatelessWidget {
         onTap: () => DialogController.showPopup(
           kpi.Title,
           kpi.Description,
+          dialogBody:
+              kpi.Trend && (kpi.DataSourceNav["results"] as List).isNotEmpty
+                  ? FutureBuilder<List<Map>>(
+                      future: procurementRepository.getAlertTrend(
+                          kpi.DataSourceNav["results"][0]!["TechnicalName"]),
+                      builder: (context, data) {
+                        if (data.hasError)
+                          return Center(
+                              child: Text(
+                            data.error.toString(),
+                            style: TextStyle(fontSize: 18, color: Colors.red),
+                          ));
+                        if (!data.hasData) {
+                          return LoadingCircular();
+                        }
+
+                        return EChartCharts(
+                          data: data.data!,
+                          name: kpi.Title,
+                          configurations: [
+                            EChartConfigurator(chartType: ChartType.line),
+                          ],
+                        );
+                      })
+                  : Container(),
           context,
         ),
         child: CustomCard(

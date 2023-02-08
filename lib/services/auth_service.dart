@@ -6,24 +6,14 @@ import 'package:pscct/services/http_service.dart';
 
 import '../repositories/pscct_repository.dart';
 
-/*
-  usr: Mohata0j
-  pass: Bihana@9
 
-  DVB User: T_BI_Alerts
-  PW: Alerts_4
-kidwaimo
-Welcome.1
-  DVP User: alsham0y
-  PW: pscctapp&1
-   */
 class AuthService {
   static String _cookie = '';
   static String portalUrl = "https://dp4.aramco.com.sa/irj/portal";
   static String myHomeUrl = "https://myhome.aramco.com.sa/irj/portal";
   static String logoutUrl =
       "https://dp4.aramco.com.sa/aramco.com~it~ca~myhome~masthead/html/logoff.html";
-  static String authUrl = portalUrl;
+  static String authUrl = myHomeUrl;
   static String username = '';
   static String orgCode = '';
 
@@ -42,6 +32,7 @@ class AuthService {
   static Future<bool> login(String username, String password) async {
     String basicAuth =
         'Basic ' + base64Encode(ascii.encode('$username:$password'));
+
     Response response = await HttpService.get(
         path: authUrl,
         options: Options(headers: {
@@ -49,7 +40,7 @@ class AuthService {
           "Accept": "*/*",
           "Cache-Control": "no-cache",
           "Accept-Encoding": "gzip, deflate, br",
-          "Connection": "keep-alive"
+          "Connection": "keep-alive",
         }));
 
     //Successful login

@@ -8,8 +8,10 @@ class PdfViewer extends StatelessWidget {
   Widget build(BuildContext context) {
     return PDF(
       swipeHorizontal: false,
-      autoSpacing: true,
-      pageFling: true,
+      autoSpacing: false,
+      fitEachPage: true,
+      fitPolicy: FitPolicy.BOTH,
+      pageFling: false,
       nightMode: Theme.of(context).brightness == Brightness.dark ? true : false,
       onError: (error) {
         print(error.toString());

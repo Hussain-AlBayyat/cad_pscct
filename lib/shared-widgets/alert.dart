@@ -30,9 +30,9 @@ class Alert extends StatelessWidget {
       onTap: () => DialogController.showPopup(
         pscctAlert.Title,
         pscctAlert.Description,
-        dialogBody: (pscctAlert.DataSourceNav["results"] as List).isEmpty
-            ? Container()
-            : FutureBuilder<List<Map>>(
+        dialogBody: pscctAlert.Trend &&
+                (pscctAlert.DataSourceNav["results"] as List).isNotEmpty
+            ? FutureBuilder<List<Map>>(
                 future: procurementRepository.getAlertTrend(
                     pscctAlert.DataSourceNav["results"][0]!["TechnicalName"]),
                 builder: (context, data) {
@@ -53,7 +53,8 @@ class Alert extends StatelessWidget {
                       EChartConfigurator(chartType: ChartType.line),
                     ],
                   );
-                }),
+                })
+            : Container(),
         context,
       ),
       child: Padding(

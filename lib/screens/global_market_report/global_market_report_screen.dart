@@ -15,6 +15,7 @@ class GlobalMarketReportScreen extends StatelessWidget {
     return DefaultScaffold(
       title: "Global Market Report",
       addSpacing: false,
+
       body: [
         FutureBuilder(
             future: globalMarketRepository.getPdf(),

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'pscct_kpi.dart';
 
@@ -27,6 +27,7 @@ mixin _$PSCCTKpi {
   String get CompId => throw _privateConstructorUsedError;
   bool get Inversed => throw _privateConstructorUsedError;
   String get Value => throw _privateConstructorUsedError;
+  bool get Trend => throw _privateConstructorUsedError;
   String get Target => throw _privateConstructorUsedError;
   bool get ShowOnApp => throw _privateConstructorUsedError;
   bool get IsCurrencyFormat => throw _privateConstructorUsedError;
@@ -34,6 +35,7 @@ mixin _$PSCCTKpi {
   String? get Uom => throw _privateConstructorUsedError;
   String get OrderOnApp => throw _privateConstructorUsedError;
   String get ManualValue => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic> get DataSourceNav => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,13 +56,15 @@ abstract class $PSCCTKpiCopyWith<$Res> {
       String CompId,
       bool Inversed,
       String Value,
+      bool Trend,
       String Target,
       bool ShowOnApp,
       bool IsCurrencyFormat,
       String DecimalDigits,
       String? Uom,
       String OrderOnApp,
-      String ManualValue});
+      String ManualValue,
+      Map<dynamic, dynamic> DataSourceNav});
 }
 
 /// @nodoc
@@ -83,6 +87,7 @@ class _$PSCCTKpiCopyWithImpl<$Res, $Val extends PSCCTKpi>
     Object? CompId = null,
     Object? Inversed = null,
     Object? Value = null,
+    Object? Trend = null,
     Object? Target = null,
     Object? ShowOnApp = null,
     Object? IsCurrencyFormat = null,
@@ -90,6 +95,7 @@ class _$PSCCTKpiCopyWithImpl<$Res, $Val extends PSCCTKpi>
     Object? Uom = freezed,
     Object? OrderOnApp = null,
     Object? ManualValue = null,
+    Object? DataSourceNav = null,
   }) {
     return _then(_value.copyWith(
       Title: null == Title
@@ -120,6 +126,10 @@ class _$PSCCTKpiCopyWithImpl<$Res, $Val extends PSCCTKpi>
           ? _value.Value
           : Value // ignore: cast_nullable_to_non_nullable
               as String,
+      Trend: null == Trend
+          ? _value.Trend
+          : Trend // ignore: cast_nullable_to_non_nullable
+              as bool,
       Target: null == Target
           ? _value.Target
           : Target // ignore: cast_nullable_to_non_nullable
@@ -148,6 +158,10 @@ class _$PSCCTKpiCopyWithImpl<$Res, $Val extends PSCCTKpi>
           ? _value.ManualValue
           : ManualValue // ignore: cast_nullable_to_non_nullable
               as String,
+      DataSourceNav: null == DataSourceNav
+          ? _value.DataSourceNav
+          : DataSourceNav // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>,
     ) as $Val);
   }
 }
@@ -167,13 +181,15 @@ abstract class _$$_PSCCTKpiCopyWith<$Res> implements $PSCCTKpiCopyWith<$Res> {
       String CompId,
       bool Inversed,
       String Value,
+      bool Trend,
       String Target,
       bool ShowOnApp,
       bool IsCurrencyFormat,
       String DecimalDigits,
       String? Uom,
       String OrderOnApp,
-      String ManualValue});
+      String ManualValue,
+      Map<dynamic, dynamic> DataSourceNav});
 }
 
 /// @nodoc
@@ -194,6 +210,7 @@ class __$$_PSCCTKpiCopyWithImpl<$Res>
     Object? CompId = null,
     Object? Inversed = null,
     Object? Value = null,
+    Object? Trend = null,
     Object? Target = null,
     Object? ShowOnApp = null,
     Object? IsCurrencyFormat = null,
@@ -201,6 +218,7 @@ class __$$_PSCCTKpiCopyWithImpl<$Res>
     Object? Uom = freezed,
     Object? OrderOnApp = null,
     Object? ManualValue = null,
+    Object? DataSourceNav = null,
   }) {
     return _then(_$_PSCCTKpi(
       Title: null == Title
@@ -231,6 +249,10 @@ class __$$_PSCCTKpiCopyWithImpl<$Res>
           ? _value.Value
           : Value // ignore: cast_nullable_to_non_nullable
               as String,
+      Trend: null == Trend
+          ? _value.Trend
+          : Trend // ignore: cast_nullable_to_non_nullable
+              as bool,
       Target: null == Target
           ? _value.Target
           : Target // ignore: cast_nullable_to_non_nullable
@@ -259,6 +281,10 @@ class __$$_PSCCTKpiCopyWithImpl<$Res>
           ? _value.ManualValue
           : ManualValue // ignore: cast_nullable_to_non_nullable
               as String,
+      DataSourceNav: null == DataSourceNav
+          ? _value._DataSourceNav
+          : DataSourceNav // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>,
     ));
   }
 }
@@ -274,14 +300,17 @@ class _$_PSCCTKpi extends _PSCCTKpi {
       required this.CompId,
       required this.Inversed,
       required this.Value,
+      required this.Trend,
       required this.Target,
       required this.ShowOnApp,
       this.IsCurrencyFormat = false,
       this.DecimalDigits = "1",
       this.Uom,
       required this.OrderOnApp,
-      required this.ManualValue})
-      : super._();
+      required this.ManualValue,
+      required final Map<dynamic, dynamic> DataSourceNav})
+      : _DataSourceNav = DataSourceNav,
+        super._();
 
   factory _$_PSCCTKpi.fromJson(Map<String, dynamic> json) =>
       _$$_PSCCTKpiFromJson(json);
@@ -301,6 +330,8 @@ class _$_PSCCTKpi extends _PSCCTKpi {
   @override
   final String Value;
   @override
+  final bool Trend;
+  @override
   final String Target;
   @override
   final bool ShowOnApp;
@@ -316,10 +347,17 @@ class _$_PSCCTKpi extends _PSCCTKpi {
   final String OrderOnApp;
   @override
   final String ManualValue;
+  final Map<dynamic, dynamic> _DataSourceNav;
+  @override
+  Map<dynamic, dynamic> get DataSourceNav {
+    if (_DataSourceNav is EqualUnmodifiableMapView) return _DataSourceNav;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_DataSourceNav);
+  }
 
   @override
   String toString() {
-    return 'PSCCTKpi(Title: $Title, Description: $Description, Category: $Category, CategoryText: $CategoryText, CompId: $CompId, Inversed: $Inversed, Value: $Value, Target: $Target, ShowOnApp: $ShowOnApp, IsCurrencyFormat: $IsCurrencyFormat, DecimalDigits: $DecimalDigits, Uom: $Uom, OrderOnApp: $OrderOnApp, ManualValue: $ManualValue)';
+    return 'PSCCTKpi(Title: $Title, Description: $Description, Category: $Category, CategoryText: $CategoryText, CompId: $CompId, Inversed: $Inversed, Value: $Value, Trend: $Trend, Target: $Target, ShowOnApp: $ShowOnApp, IsCurrencyFormat: $IsCurrencyFormat, DecimalDigits: $DecimalDigits, Uom: $Uom, OrderOnApp: $OrderOnApp, ManualValue: $ManualValue, DataSourceNav: $DataSourceNav)';
   }
 
   @override
@@ -338,6 +376,7 @@ class _$_PSCCTKpi extends _PSCCTKpi {
             (identical(other.Inversed, Inversed) ||
                 other.Inversed == Inversed) &&
             (identical(other.Value, Value) || other.Value == Value) &&
+            (identical(other.Trend, Trend) || other.Trend == Trend) &&
             (identical(other.Target, Target) || other.Target == Target) &&
             (identical(other.ShowOnApp, ShowOnApp) ||
                 other.ShowOnApp == ShowOnApp) &&
@@ -349,7 +388,9 @@ class _$_PSCCTKpi extends _PSCCTKpi {
             (identical(other.OrderOnApp, OrderOnApp) ||
                 other.OrderOnApp == OrderOnApp) &&
             (identical(other.ManualValue, ManualValue) ||
-                other.ManualValue == ManualValue));
+                other.ManualValue == ManualValue) &&
+            const DeepCollectionEquality()
+                .equals(other._DataSourceNav, _DataSourceNav));
   }
 
   @JsonKey(ignore: true)
@@ -363,13 +404,15 @@ class _$_PSCCTKpi extends _PSCCTKpi {
       CompId,
       Inversed,
       Value,
+      Trend,
       Target,
       ShowOnApp,
       IsCurrencyFormat,
       DecimalDigits,
       Uom,
       OrderOnApp,
-      ManualValue);
+      ManualValue,
+      const DeepCollectionEquality().hash(_DataSourceNav));
 
   @JsonKey(ignore: true)
   @override
@@ -394,13 +437,15 @@ abstract class _PSCCTKpi extends PSCCTKpi {
       required final String CompId,
       required final bool Inversed,
       required final String Value,
+      required final bool Trend,
       required final String Target,
       required final bool ShowOnApp,
       final bool IsCurrencyFormat,
       final String DecimalDigits,
       final String? Uom,
       required final String OrderOnApp,
-      required final String ManualValue}) = _$_PSCCTKpi;
+      required final String ManualValue,
+      required final Map<dynamic, dynamic> DataSourceNav}) = _$_PSCCTKpi;
   const _PSCCTKpi._() : super._();
 
   factory _PSCCTKpi.fromJson(Map<String, dynamic> json) = _$_PSCCTKpi.fromJson;
@@ -420,6 +465,8 @@ abstract class _PSCCTKpi extends PSCCTKpi {
   @override
   String get Value;
   @override
+  bool get Trend;
+  @override
   String get Target;
   @override
   bool get ShowOnApp;
@@ -433,6 +480,8 @@ abstract class _PSCCTKpi extends PSCCTKpi {
   String get OrderOnApp;
   @override
   String get ManualValue;
+  @override
+  Map<dynamic, dynamic> get DataSourceNav;
   @override
   @JsonKey(ignore: true)
   _$$_PSCCTKpiCopyWith<_$_PSCCTKpi> get copyWith =>

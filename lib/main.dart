@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +16,10 @@ import 'Theme/theme.dart';
 import 'blocs/settings_bloc/settings_bloc.dart';
 
 void main() {
-  runApp(MyApp());
+  runZonedGuarded(() => runApp(MyApp()), (error, stackTrace) {
+    print("APP Error: ${error.toString()}");
+    print("Error Trace: ${stackTrace.toString()}");
+  });
 }
 
 class MyApp extends StatefulWidget {
@@ -41,49 +46,43 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onPanDown: (_) {
-        loginCubit.startNewTimer();
-      },
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider<LoginCubit>(
-            create: (BuildContext context) => loginCubit..initialize(),
-          ),
-          BlocProvider<ProcurementCubit>(
-            create: (BuildContext context) => ProcurementCubit(),
-          ),
-          BlocProvider<SettingsCubit>(
-            create: (BuildContext context) => SettingsCubit()..initialize(),
-          ),
-        ],
-        child: BlocBuilder<SettingsCubit, SettingsState>(
-            builder: (context, state) {
-          return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'Supply Chain',
-              theme: AppTheme.light,
-              darkTheme: AppTheme.dark,
-              themeMode: state.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-              navigatorKey: NavigationService.navigationKey,
-              onGenerateRoute: AppRouter.generateRoute,
-              builder: (context, child) => ResponsiveWrapper.builder(
-                    child,
-                    maxWidth: 1366,
-                    minWidth: 480,
-                    defaultScale: false,
-                    breakpoints: const [
-                      ResponsiveBreakpoint.autoScale(480, name: MOBILE),
-                      ResponsiveBreakpoint.autoScale(730, name: TABLET),
-                      ResponsiveBreakpoint.resize(1024, name: DESKTOP),
-                    ],
-                  ),
-              home: IntroVideo()
-              //LoginScreen(),
-              );
-        }),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<LoginCubit>(
+          create: (BuildContext context) => loginCubit..initialize(),
+        ),
+        BlocProvider<ProcurementCubit>(
+          create: (BuildContext context) => ProcurementCubit(),
+        ),
+        BlocProvider<SettingsCubit>(
+          create: (BuildContext context) => SettingsCubit()..initialize(),
+        ),
+      ],
+      child: BlocBuilder<SettingsCubit, SettingsState>(
+          builder: (context, state) {
+        return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Supply Chain',
+            theme: AppTheme.light,
+            darkTheme: AppTheme.dark,
+            themeMode: state.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+            navigatorKey: NavigationService.navigationKey,
+            onGenerateRoute: AppRouter.generateRoute,
+            builder: (context, child) => ResponsiveWrapper.builder(
+                  child,
+                  maxWidth: 1366,
+                  minWidth: 480,
+                  defaultScale: false,
+                  breakpoints: const [
+                    ResponsiveBreakpoint.autoScale(480, name: MOBILE),
+                    ResponsiveBreakpoint.autoScale(730, name: TABLET),
+                    ResponsiveBreakpoint.resize(1024, name: DESKTOP),
+                  ],
+                ),
+            home: IntroVideo()
+            //LoginScreen(),
+            );
+      }),
     ); //LandingPageScreen());
   }
 }

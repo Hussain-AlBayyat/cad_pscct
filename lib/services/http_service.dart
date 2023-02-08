@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_user_agentx/flutter_user_agent.dart';
 
 class HttpService {
   static final HttpService _appHttpClient = HttpService._internal();
@@ -25,12 +26,21 @@ class HttpService {
       return dioClient;
     };
     // CancelToken cancelToken = CancelToken();
-    Response response = await _dio.get(
-      path,
-      options: options ?? Options(receiveTimeout: 30000),
-    );
+    String userAgent = await FlutterUserAgent.getPropertyAsync('userAgent');
+    print("Url:$path");
+    try {
+      Response response = await _dio.get(
+        path,
+        options: options ?? Options(receiveTimeout: 30000,headers: {
+          "User-Agent":userAgent.toLowerCase()
+        }),
+      );
 
-    return response;
+      return response;
+    } catch (error) {
+      print("Http Error: $error");
+      return Future.error((error as DioError).message);
+    }
   }
 
   static addInterceptor({required Interceptor interceptorsWrapper}) {

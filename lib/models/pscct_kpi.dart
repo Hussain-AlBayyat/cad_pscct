@@ -14,6 +14,7 @@ class PSCCTKpi with _$PSCCTKpi {
     required String CompId,
     required bool Inversed,
     required String Value,
+    required bool Trend,
     required String Target,
     required bool ShowOnApp,
     @Default(false) bool IsCurrencyFormat,
@@ -21,6 +22,7 @@ class PSCCTKpi with _$PSCCTKpi {
     String? Uom,
     required String OrderOnApp,
     required String ManualValue,
+    required Map DataSourceNav,
   }) = _PSCCTKpi;
   factory PSCCTKpi.fromJson(Map<String, dynamic> json) =>
       _$PSCCTKpiFromJson(json);

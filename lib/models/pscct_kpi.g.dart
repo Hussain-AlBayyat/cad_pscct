@@ -14,6 +14,7 @@ _$_PSCCTKpi _$$_PSCCTKpiFromJson(Map<String, dynamic> json) => _$_PSCCTKpi(
       CompId: json['CompId'] as String,
       Inversed: json['Inversed'] as bool,
       Value: json['Value'] as String,
+      Trend: json['Trend'] as bool,
       Target: json['Target'] as String,
       ShowOnApp: json['ShowOnApp'] as bool,
       IsCurrencyFormat: json['IsCurrencyFormat'] as bool? ?? false,
@@ -21,6 +22,7 @@ _$_PSCCTKpi _$$_PSCCTKpiFromJson(Map<String, dynamic> json) => _$_PSCCTKpi(
       Uom: json['Uom'] as String?,
       OrderOnApp: json['OrderOnApp'] as String,
       ManualValue: json['ManualValue'] as String,
+      DataSourceNav: json['DataSourceNav'] as Map<String, dynamic>,
     );
 
 Map<String, dynamic> _$$_PSCCTKpiToJson(_$_PSCCTKpi instance) =>
@@ -32,6 +34,7 @@ Map<String, dynamic> _$$_PSCCTKpiToJson(_$_PSCCTKpi instance) =>
       'CompId': instance.CompId,
       'Inversed': instance.Inversed,
       'Value': instance.Value,
+      'Trend': instance.Trend,
       'Target': instance.Target,
       'ShowOnApp': instance.ShowOnApp,
       'IsCurrencyFormat': instance.IsCurrencyFormat,
@@ -39,4 +42,5 @@ Map<String, dynamic> _$$_PSCCTKpiToJson(_$_PSCCTKpi instance) =>
       'Uom': instance.Uom,
       'OrderOnApp': instance.OrderOnApp,
       'ManualValue': instance.ManualValue,
+      'DataSourceNav': instance.DataSourceNav,
     };
